@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+<modules>
+	<module folder="modules" module="${1:mod_hello}" />
+</modules> 
+]]></content>
+<tabTrigger>jcomponentmanifestmodules</tabTrigger>
+</snippet>

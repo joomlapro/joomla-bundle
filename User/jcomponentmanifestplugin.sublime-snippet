@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+<plugins>
+	<plugin folder="plugins" plugin="${1:plg_hello}" group="${2:user}" />
+</plugins>
+]]></content>
+<tabTrigger>jcomponentmanifestplugin</tabTrigger>
+</snippet>
