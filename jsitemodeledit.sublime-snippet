@@ -1,0 +1,44 @@
+<snippet>
+	<content><![CDATA[
+jimport('joomla.application.component.modelitem');
+
+/**
+ * ${4:Hello} Model
+ *
+ * @package		${1:Hello}
+ * @subpackage	${2:com_hello}
+ * @since		2.5
+ */
+class ${3:Hello}Model${4:Hello} extends JModelItem
+{
+	/**
+	 * Method to get ${5:hello} data.
+	 *
+	 * @param	integer	The id of the ${5:hello}.
+	 *
+	 * @return	mixed	Menu item data object on success, false on failure.
+	 */
+	public function &getItem(\$pk = null)
+	{
+		\$id = JRequest::getInt('id');
+		
+		// Initialiase variables.
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+		
+		// Prepare query.
+		\$query->select('');
+		\$query->from('#__');
+		\$query->where('');
+		
+		// Inject the query and load the result.
+		\$db->setQuery(\$query);
+		\$item = \$db->loadObject();
+		
+		return \$item;
+	}
+}
+
+]]></content>
+<tabTrigger>jsitemodeledit</tabTrigger>
+</snippet>

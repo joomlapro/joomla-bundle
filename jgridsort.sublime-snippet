@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[
+<?php echo JHtml::_('grid.sort', 'COM_${1:HELLO}_HEADING_${2:TITLE}', 'a.${3:title}', \$listDirn, \$listOrder); ?>
+]]></content>
+<tabTrigger>jgridsort</tabTrigger>
+</snippet>

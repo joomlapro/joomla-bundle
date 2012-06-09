@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Form Field ${3:Name} class.
+ *
+ * @package		${1:Hello}
+ * @subpackage	${2:com_hello}
+ * @since		2.5
+ */
+class JFormField${3:Name} extends JFormField
+{
+	/**
+	 * The field type.
+	 *
+	 * @var		string
+	 */
+	protected \$type = '${3:Name}';
+
+	/**
+	 * Method to get the field input.
+	 *
+	 * @return	string		The field input.
+	 * @since	2.5
+	 */
+	protected function getInput()
+	{
+		\$return = '';
+
+		return \$return;
+	}
+}
+
+]]></content>
+<tabTrigger>jfield</tabTrigger>
+</snippet>

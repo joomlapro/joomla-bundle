@@ -1,0 +1,45 @@
+<snippet>
+	<content><![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="2.5" type="template" client="site">
+	<name>${1:hello}</name>
+	<creationDate>$2</creationDate>
+	<author>${3:Bruno Batista}</author>
+	<authorEmail>${4:bruno@atomtech.com.br}</authorEmail>
+	<authorUrl>${5:http://www.atomtech.com.br}</authorUrl>
+	<copyright>Copyright (C) ${6:2012 AtomTech, Inc}. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>2.5.0</version>
+	<description>TPL_${7:HELLO}_XML_DESCRIPTION</description>
+	<files>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>templateDetails.xml</filename>
+	</files>
+	<positions>
+		<position>${1:hello}-mainmenu</position>
+		<position>${1:hello}-search</position>
+		<position>${1:hello}-sidebar</position>
+		<position>${1:hello}-footer</position>
+		<position>${1:hello}-footermenu</position>
+	</positions>
+	<languages folder="language">
+		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.tpl_${1:hello}.ini</language>
+		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.tpl_${1:hello}.sys.ini</language>
+	</languages>
+</extension>
+
+]]></content>
+<tabTrigger>jsitetemplatemanifest</tabTrigger>
+</snippet>

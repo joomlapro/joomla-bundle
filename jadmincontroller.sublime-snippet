@@ -1,0 +1,47 @@
+<snippet>
+	<content><![CDATA[
+jimport('joomla.application.component.controller');
+
+/**
+ * ${3:Hello} Component Controller
+ *
+ * @package		${1:Hello}
+ * @subpackage	${2:com_hello}
+ */
+class ${3:Hello}Controller extends JController
+{
+	/**
+	 * @var		string	The default view.
+	 * @since	2.5
+	 */
+	protected \$default_view = '${4:cpanel}';
+
+	/**
+	 * Method to display a view.
+	 *
+	 * @param	boolean			If true, the view output will be cached
+	 * @param	array			An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
+	 *
+	 * @return	JController		This object to support chaining.
+	 * @since	2.5
+	 */
+	public function display(\$cachable = false, \$urlparams = false)
+	{
+		require_once JPATH_COMPONENT.'/helpers/${5:hello}.php';
+
+		// Load the submenu.
+		${3:Hello}Helper::addSubmenu(JRequest::getCmd('view', '${4:cpanel}'));
+
+		\$view	= JRequest::getCmd('view', '${4:cpanel}');
+		\$layout = JRequest::getCmd('layout', 'default');
+		\$id		= JRequest::getInt('id');
+
+		parent::display();
+
+		return \$this;
+	}
+}
+
+]]></content>
+<tabTrigger>jadmincontroller</tabTrigger>
+</snippet>

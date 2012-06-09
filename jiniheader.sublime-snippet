@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+; ${1:Hello}
+; Copyright (C) ${2:2012 AtomTech, Inc}. All rights reserved.
+; License GNU General Public License version 2 or later; see LICENSE.txt, see LICENSE.php
+; Note : All ini files need to be saved as UTF-8 - No BOM
+
+
+]]></content>
+<tabTrigger>jiniheader</tabTrigger>
+</snippet>

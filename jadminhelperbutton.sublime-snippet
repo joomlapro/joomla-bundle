@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Method to generate html code for a list of buttons
+ *
+ * @param   array|object   \$button  Button properties
+ *
+ * @return  string
+ *
+ * @since   2.5
+ */
+public static function button(\$controller, \$images, \$text)
+{
+	// define variables
+	\$option = JRequest::getCmd('option');
+	\$link = JRoute::_('index.php?option=' . \$option . '&view=' . \$controller, false);
+	
+	\$html[] = '<div class="icon-wrapper">';
+	\$html[] = '<div class="icon">';
+	\$html[] = '<a href=' . \$link . '>';
+	\$html[] = JHTML::_('image', JURI::root() . 'media/' . \$option . '/images/icon/' . \$images, \$text, NULL, \$text);
+	\$html[] = '<span>' . \$text . '</span>';
+	\$html[] = '</a>';
+	\$html[] = '</div>';
+	\$html[] = '</div>';
+	
+	echo implode(\$html);
+}
+
+]]></content>
+<tabTrigger>jadminhelperbutton</tabTrigger>
+</snippet>

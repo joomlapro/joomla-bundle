@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+<select name="filter_${1:hello}" class="inputbox" onchange="this.form.submit()">
+	<option value=""><?php echo JText::_('COM_${2:HELLO}_SELECT_${3:HELLO}');?></option>
+	<?php echo JHtml::_('select.options', ${4:Hello}Helper::get${5:Hello}Options(), 'value', 'text', \$this->state->get('filter.${1:hello}'));?>
+</select>
+]]></content>
+<tabTrigger>jadminfilter</tabTrigger>
+</snippet>

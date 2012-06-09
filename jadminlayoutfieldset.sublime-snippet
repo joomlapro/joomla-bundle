@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+<fieldset class="adminform">
+	<legend><?php echo JText::_('COM_${1:HELLO}_FIELDSET_${2:PUBLISH}'); ?></legend>
+	<ul class="adminformlist">
+		<?php foreach(\$this->form->getFieldset('${3:publish}') as \$field): ?>
+		<li><?php echo \$field->label; ?>
+			<?php echo \$field->input; ?></li>
+		<?php endforeach; ?>
+	</ul>
+</fieldset>
+
+]]></content>
+<tabTrigger>jadminlayoutfieldset</tabTrigger>
+</snippet>

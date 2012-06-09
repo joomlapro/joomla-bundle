@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * @since	2.5
+ */
+function onExtensionBeforeUpdate(\$type, \$manifest)
+{
+	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionBeforeUpdate: Updating a '. \$type);
+}
+
+]]></content>
+<tabTrigger>jpluginextensionbeforeupdate</tabTrigger>
+</snippet>

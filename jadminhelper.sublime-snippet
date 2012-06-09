@@ -1,0 +1,61 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * ${3:Hello} component helper.
+ *
+ * @package		${1:Hello}
+ * @subpackage	${2:com_hello}
+ * @since		2.5
+ */
+class ${3:Hello}Helper
+{
+	public static \$extension = '${2:com_hello}';
+
+	/**
+	 * Configure the Linkbar.
+	 *
+	 * @param	string	\$vName	The name of the active view.
+	 *
+	 * @return	void
+	 * @since	2.5
+	 */
+	public static function addSubmenu(\$vName)
+	{
+		JSubMenuHelper::addEntry(
+			JText::_('COM_${5:HELLO}_SUBMENU_${5:HELLO}'),
+			'index.php?option=${2:com_hello}&view=${4:hello}',
+			\$vName == '${4:hello}'
+		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_${5:HELLO}_SUBMENU_CATEGORIES'),
+			'index.php?option=com_categories&extension=${2:com_hello}',
+			\$vName == 'categories'
+		);
+	}
+
+	/**
+	 * Gets a list of the actions that can be performed.
+	 *
+	 * @return	JObject
+	 */
+	public static function getActions()
+	{
+		\$user		= JFactory::getUser();
+		\$result		= new JObject;
+		\$assetName	= '${2:com_hello}';
+
+		\$actions = array(
+			'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.state', 'core.delete'
+		);
+
+		foreach (\$actions as \$action) {
+			\$result->set(\$action,	\$user->authorise(\$action, \$assetName));
+		}
+
+		return \$result;
+	}
+}
+
+]]></content>
+<tabTrigger>jadminhelper</tabTrigger>
+</snippet>

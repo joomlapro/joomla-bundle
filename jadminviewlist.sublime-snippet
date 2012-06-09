@@ -1,0 +1,124 @@
+<snippet>
+	<content><![CDATA[
+jimport('joomla.application.component.view');
+
+/**
+ * View class for a list of ${6:hellos}.
+ *
+ * @package     ${1:Hello}
+ * @subpackage  ${2:com_hello}
+ * @since       2.5
+ */
+class ${3:Hello}View${4:Hellos} extends JView
+{
+	protected \$categories;
+	protected \$items;
+	protected \$pagination;
+	protected \$state;
+
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  \$tpl  A template file to load. [optional]
+	 *
+	 * @return  mixed  A string if successful, otherwise a JError object.
+	 *
+	 * @since   1.6
+	 */
+	public function display(\$tpl = null)
+	{
+		// Initialise variables.
+		\$this->categories	= \$this->get('CategoryOrders');
+		\$this->items		= \$this->get('Items');
+		\$this->pagination	= \$this->get('Pagination');
+		\$this->state		= \$this->get('State');
+
+		// Check for errors.
+		if (count(\$errors = \$this->get('Errors')))
+		{
+			JError::raiseError(500, implode("\n", \$errors));
+			return false;
+		}
+
+		\$this->addToolbar();
+		// Include the component HTML helpers.
+		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+
+		parent::display(\$tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	 */
+	protected function addToolbar()
+	{
+		require_once JPATH_COMPONENT . '/helpers/${5:hellos}.php';
+
+		\$canDo = ${3:Hello}Helper::getActions(\$this->state->get('filter.category_id'));
+		\$user = JFactory::getUser();
+		JToolBarHelper::title(JText::_('COM_${7:HELLO}_MANAGER_${8:HELLOS}'), '${6:hellos}.png');
+		if (count(\$user->getAuthorisedCategories('${2:com_hello}', 'core.create')) > 0)
+		{
+			JToolBarHelper::addNew('${9:hello}.add');
+		}
+
+		if ((\$canDo->get('core.edit')))
+		{
+			JToolBarHelper::editList('${9:hello}.edit');
+		}
+
+		if (\$canDo->get('core.edit.state'))
+		{
+			if (\$this->state->get('filter.state') != 2)
+			{
+				JToolBarHelper::divider();
+				JToolBarHelper::publish('${6:hellos}.publish', 'JTOOLBAR_PUBLISH', true);
+				JToolBarHelper::unpublish('${6:hellos}.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+			}
+
+			if (\$this->state->get('filter.state') != -1)
+			{
+				JToolBarHelper::divider();
+				if (\$this->state->get('filter.state') != 2)
+				{
+					JToolBarHelper::archiveList('${6:hellos}.archive');
+				}
+				elseif (\$this->state->get('filter.state') == 2)
+				{
+					JToolBarHelper::unarchiveList('${6:hellos}.publish');
+				}
+			}
+		}
+
+		if (\$canDo->get('core.edit.state'))
+		{
+			JToolBarHelper::checkin('${6:hellos}.checkin');
+		}
+
+		if (\$this->state->get('filter.state') == -2 && \$canDo->get('core.delete'))
+		{
+			JToolBarHelper::deleteList('', '${6:hellos}.delete', 'JTOOLBAR_EMPTY_TRASH');
+			JToolBarHelper::divider();
+		}
+		elseif (\$canDo->get('core.edit.state'))
+		{
+			JToolBarHelper::trash('${6:hellos}.trash');
+			JToolBarHelper::divider();
+		}
+
+		if (\$canDo->get('core.admin'))
+		{
+			JToolBarHelper::preferences('${2:com_hello}');
+			JToolBarHelper::divider();
+		}
+		JToolBarHelper::help('${6:hellos}', \$com = true);
+	}
+}
+
+]]></content>
+<tabTrigger>jadminviewlist</tabTrigger>
+</snippet>

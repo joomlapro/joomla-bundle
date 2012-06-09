@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * ${4:Hello} ${3:Folder} plugin
+ *
+ * @package		${1:Hello}
+ * @subpackage	${2:plg_hello}
+ * @since		2.5
+ */
+class plg${3:Folder}${4:Hello} extends JPlugin
+{
+	/**
+	 * Constructor
+	 *
+	 * @param       object  \$subject The object to observe
+	 * @param       array   \$config  An array that holds the plugin configuration
+	 *
+	 * @since       2.5
+	 */
+	public function __construct(& \$subject, \$config)
+	{
+		parent::__construct(\$subject, \$config);
+		\$this->loadLanguage();
+	}
+}
+
+]]></content>
+<tabTrigger>jplugin</tabTrigger>
+</snippet>

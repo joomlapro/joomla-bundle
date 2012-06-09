@@ -1,0 +1,68 @@
+<snippet>
+	<content><![CDATA[
+jimport('joomla.application.component.modeladmin');
+
+/**
+ * ${4:Hello} model.
+ *
+ * @package		${1:Hello}
+ * @subpackage	${2:com_hello}
+ * @since		2.5
+ */
+class ${3:Hello}Model${4:Hello} extends JModelAdmin
+{
+	/**
+	 * Returns a reference to the a Table object, always creating it.
+	 *
+	 * @param	type	The table type to instantiate
+	 * @param	string	A prefix for the table class name. Optional.
+	 * @param	array	Configuration array for model. Optional.
+	 * @return	JTable	A database object
+	 * @since	2.5
+	 */
+	public function getTable(\$type = '${4:Hello}', \$prefix = '${3:Hello}Table', \$config = array())
+	{
+		return JTable::getInstance(\$type, \$prefix, \$config);
+	}
+
+	/**
+	 * Method to get the record form.
+	 *
+	 * @param	array	\$data		Data for the form.
+	 * @param	boolean	\$loadData	True if the form is to load its own data (default case), false if not.
+	 * @return	mixed	A JForm object on success, false on failure
+	 * @since	2.5
+	 */
+	public function getForm(\$data = array(), \$loadData = true)
+	{
+		// Get the form.
+		\$form = \$this->loadForm('${2:com_hello}.${5:hello}', '${5:hello}', array('control' => 'jform', 'load_data' => \$loadData));
+		if (empty(\$form)) {
+			return false;
+		}
+
+		return \$form;
+	}
+
+	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return	mixed	The data for the form.
+	 * @since	2.5
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		\$data = JFactory::getApplication()->getUserState('${2:com_hello}.edit.${5:hello}.data', array());
+
+		if (empty(\$data)) {
+			\$data = \$this->getItem();
+		}
+
+		return \$data;
+	}
+}
+
+]]></content>
+<tabTrigger>jadminmodeledit</tabTrigger>
+</snippet>

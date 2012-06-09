@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+// Access check.
+if (!JFactory::getUser()->authorise('core.manage', '${1:com_hello}')) {
+	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+}
+
+// Include dependancies
+jimport('joomla.application.component.controller');
+
+// Execute the task.
+\$controller = JController::getInstance('${2:Hello}');
+\$controller->execute(JRequest::getCmd('task'));
+\$controller->redirect();
+
+]]></content>
+<tabTrigger>jadmincomponent</tabTrigger>
+</snippet>

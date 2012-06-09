@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+jimport('joomla.application.component.controllerform');
+
+/**
+ * ${4:Hello} controller class.
+ *
+ * @package     ${1:Hello}
+ * @subpackage  ${2:com_hello}
+ * @since       2.5
+ */
+class ${3:Hello}Controller${4:Hello} extends JControllerForm
+{
+	/**
+	 * @var    string  The prefix to use with controller messages.
+	 * @since  2.5
+	 */
+	protected \$text_prefix = 'COM_${5:HELLO}_${6:HELLO}';
+	
+}
+
+]]></content>
+<tabTrigger>jadmincontrolleredit</tabTrigger>
+</snippet>

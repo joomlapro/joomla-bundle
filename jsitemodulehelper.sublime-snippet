@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * ${1:Hello} module helper.
+ *
+ * @package     ${1:Hello}
+ * @subpackage  ${2:mod_hello}
+ * @since       2.5
+ */
+class Mod${1:Hello}Helper
+{
+	/**
+	 * Get a list of the ${3:hello} items.
+	 *
+	 * @param	JRegistry	\$params	The module options.
+	 *
+	 * @return	array
+	 * @since	2.5
+	 */
+	static function getList(&\$params)
+	{
+		// Initialiase variables.
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+		
+		// Prepare query.
+		\$query->select('');
+		\$query->from('#__');
+		\$query->where('');
+		
+		// Inject the query and load the items.
+		\$db->setQuery(\$query);
+		\$items = \$db->loadObjectList();
+		
+		// Check for errors.
+		if (\$error = \$db->getErrorMsg()) {
+			\$this->setError(\$error);
+			\$items = false;
+			return \$items;
+		}
+		
+		return \$items;
+	}
+}
+
+]]></content>
+<tabTrigger>jsitemodulehelper</tabTrigger>
+</snippet>

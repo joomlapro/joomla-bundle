@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="${1:user}">
+	<name>plg_${2:hello}</name>
+	<author>${3:Bruno Batista}</author>
+	<creationDate>$4</creationDate>
+	<copyright>(C) ${5:2012 AtomTech, Inc}. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>${6:bruno@atomtech.com.br}</authorEmail>
+	<authorUrl>${7:http://www.atomtech.com.br}</authorUrl>
+	<version>2.5.0</version>
+	<description>PLG_${8:HELLO}_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="${2:hello}">${2:hello}.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="${9:pt-BR}">${9:pt-BR}.plg_${1:user}_${2:hello}.ini</language>
+		<language tag="${9:pt-BR}">${9:pt-BR}.plg_${1:user}_${2:hello}.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+		</fields>
+	</config>
+</extension>
+
+]]></content>
+<tabTrigger>jpluginmanifest</tabTrigger>
+</snippet>

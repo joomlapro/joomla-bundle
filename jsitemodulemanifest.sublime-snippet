@@ -1,0 +1,45 @@
+<snippet>
+	<content><![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>${1:mod_hello}</name>
+	<author>${2:Bruno Batista}</author>
+	<creationDate>$3</creationDate>
+	<copyright>Copyright (C) ${4:2012 AtomTech, Inc}. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>${5:bruno@atomtech.com.br}</authorEmail>
+	<authorUrl>${6:http://www.atomtech.com.br}</authorUrl>
+	<version>2.5.0</version>
+	<description>MOD_${7:HELLO}_XML_DESCRIPTION</description>
+	<files>
+		<filename module="${1:mod_hello}">${1:mod_hello}.php</filename>
+		<folder>tmpl</folder>
+		<filename>${1:mod_hello}.xml</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="${8:pt-BR}">${8:pt-BR}.${1:mod_hello}.ini</language>
+		<language tag="${8:pt-BR}">${8:pt-BR}.${1:mod_hello}.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field name="cachemode" type="hidden" default="static">
+					<option value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
+
+]]></content>
+<tabTrigger>jsitemodulemanifest</tabTrigger>
+</snippet>

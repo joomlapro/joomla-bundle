@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+.icon-48-${1:hellos}, .icon-48-${2:hello} {
+	background: url(../images/toolbar/${2:hello}.png) no-repeat left;
+}
+
+]]></content>
+<tabTrigger>jcssicon</tabTrigger>
+</snippet>

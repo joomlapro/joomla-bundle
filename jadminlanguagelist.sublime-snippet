@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_ARCHIVED="%d ${3:Hellos} arquivados com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_ARCHIVED_0="Nenhum ${4:Hello} arquivado."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_ARCHIVED_1="1 ${4:Hello} arquivado com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_DELETED="%d ${3:Hellos} deletados com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_DELETED_0="Nenhum ${4:Hello} deletado."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_DELETED_1="1 ${4:Hello} deletado com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_PUBLISHED="%d ${3:Hellos} publicados com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_PUBLISHED_0="Nenhum ${4:Hello} publicado."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_PUBLISHED_1="1 ${4:Hello} publicado com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_TRASHED="%d ${3:Hellos} lixeira com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_TRASHED_0="Nenhum ${4:Hello} lixeira."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_TRASHED_1="1 ${4:Hello} lixeira com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_UNPUBLISHED="%d ${3:Hellos} despublicados com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_UNPUBLISHED_0="Nenhum ${4:Hello} despublicado."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_UNPUBLISHED_1="1 ${4:Hello} despublicado com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_CHECKED_IN="%d ${3:Hellos} desbloqueados com sucesso."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_CHECKED_IN_0="Nenhum ${4:Hello} desbloqueado."
+COM_${1:HELLO}${2:_VIEW}_N_ITEMS_CHECKED_IN_1="1 ${4:Hello} desbloqueado com sucesso."
+]]></content>
+<tabTrigger>jadminlanguagelist</tabTrigger>
+</snippet>

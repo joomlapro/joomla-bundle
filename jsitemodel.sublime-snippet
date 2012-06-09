@@ -1,0 +1,55 @@
+<snippet>
+	<content><![CDATA[
+jimport('joomla.application.component.modellist');
+
+/**
+ * ${4:Hello} model.
+ *
+ * @package		${1:Hello}
+ * @subpackage	${2:com_hello}
+ * @since		2.5
+ */
+class ${3:Hello}Model${4:Hello} extends JModelList
+{
+	/**
+	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
+	 *
+	 * @return  void
+	 *
+	 * @since   2.5
+	 */
+	protected function populateState(\$ordering = null, \$direction = null)
+	{
+		// Initialise variables.
+		\$app	= JFactory::getApplication();
+		\$params	= JComponentHelper::getParams('${2:com_hello}');
+		\$itemid	= JRequest::getInt('Itemid', 0);
+				
+		// Load the parameters.
+		\$this->setState('params', \$params);
+	}
+	
+	/**
+	 * Gets a list of ${5:hello}
+	 *
+	 * @return	array	An array of banner objects.
+	 * @since	2.5
+	 */
+	protected function getListQuery()
+	{
+		// Initialiase variables.
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+		
+		// Prepare query.
+		\$query->select('');
+		\$query->from('#__');
+		\$query->where('');
+
+		return \$query;
+	}
+}
+
+]]></content>
+<tabTrigger>jsitemodel</tabTrigger>
+</snippet>

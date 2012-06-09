@@ -1,0 +1,62 @@
+<snippet>
+	<content><![CDATA[
+jimport('joomla.application.component.modellist');
+
+/**
+ * ${4:Hellos} model.
+ *
+ * @package		${1:Hello}
+ * @subpackage	${2:com_hello}
+ * @since		2.5
+ */
+class ${3:Hello}Model${4:Hellos} extends JModelList
+{
+	/**
+	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
+	 *
+	 * @return  void
+	 *
+	 * @since   2.5
+	 */
+	protected function populateState(\$ordering = null, \$direction = null)
+	{
+		// Initialise variables.
+		\$app	= JFactory::getApplication();
+		\$params	= JComponentHelper::getParams('${2:com_hello}');
+		\$itemid	= JRequest::getInt('Itemid', 0);
+
+		// List state information
+		\$limit = \$app->getUserStateFromRequest('${2:com_hello}.${5:hellos}.list' . \$itemid . '.limit', 'limit', \$params->get('num_${5:hellos}'));
+		\$this->setState('list.limit', \$limit);
+				
+		\$limitstart = JRequest::getVar('limitstart', 0, '', 'int');
+		\$this->setState('list.start', \$limitstart);
+				
+		// Load the parameters.
+		\$this->setState('params', \$params);
+	}
+	
+	/**
+	 * Gets a list of ${5:hello}
+	 *
+	 * @return	array	An array of banner objects.
+	 * @since	2.5
+	 */
+	protected function getListQuery()
+	{
+		// Initialiase variables.
+		\$app = JFactory::getApplication('site');
+		\$query = \$db->getQuery(true);
+		
+		// Prepare query.
+		\$query->select('');
+		\$query->from('#__');
+		\$query->where('');
+
+		return \$query;
+	}
+}
+
+]]></content>
+<tabTrigger>jsitemodellist</tabTrigger>
+</snippet>

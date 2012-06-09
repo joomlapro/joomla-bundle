@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[
+<?php echo JHtml::_('date', \$item->${1:created}, JText::_('${2:DATE_FORMAT_LC4}')); ?>
+]]></content>
+<tabTrigger>jhtmldate</tabTrigger>
+</snippet>

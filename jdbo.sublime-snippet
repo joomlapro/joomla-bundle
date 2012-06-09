@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+// Initialiase variables.
+\$db = JFactory::getDbo();
+// Use following line in a model.
+//\$db = \$this->getDbo();
+\$query = \$db->getQuery(true);
+
+// Prepare query.
+\$query->select('');
+\$query->from('#__');
+\$query->where('');
+
+// Inject the query and load the result.
+\$db->setQuery(\$query);
+\$result = \$db->loadObjectList();
+
+// Check for errors.
+if (\$error = \$db->getErrorMsg()) {
+	\$this->setError(\$error);
+	\$result = false;
+	return \$result;
+}
+
+]]></content>
+<tabTrigger>jdbo</tabTrigger>
+</snippet>

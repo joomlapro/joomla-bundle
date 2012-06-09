@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+// Component Helper
+jimport('joomla.application.component.helper');
+jimport('joomla.application.categories');
+
+/**
+ * ${3:Hello} Component Category Tree
+ *
+ * @static
+ * @package		${1:Hello}
+ * @subpackage	${2:com_hello}
+ * @since		2.5
+ */
+class ${3:Hello}Categories extends JCategories
+{
+	public function __construct(\$options = array())
+	{
+		\$options['table'] = '#__${4:hello}';
+		\$options['extension'] = '${2:com_hello}';
+		//\$options['statefield'] = 'published';
+		parent::__construct(\$options);
+	}
+}
+
+]]></content>
+<tabTrigger>jsitehelpercategory</tabTrigger>
+</snippet>
