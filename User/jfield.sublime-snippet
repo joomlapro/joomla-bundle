@@ -22,7 +22,7 @@ class JFormField${3:Name} extends JFormField
 	 * @return	string		The field input.
 	 * @since	2.5
 	 */
-	protected function getInput()
+	public function getInput()
 	{
 		\$return = '';
 

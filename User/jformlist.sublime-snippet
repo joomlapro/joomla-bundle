@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+<field name="${1:hello}" type="list" class="inputbox" size="1" default="1" label="COM_${2:HELLO}_FIELD_${3:HELLO}_LABEL" description="COM_${2:HELLO}_FIELD_${3:HELLO}_DESC">
+	<option value="0">JNO</option>
+	<option value="1">JYES</option>
+</field>
+]]></content>
+<tabTrigger>jformlist</tabTrigger>
+</snippet>

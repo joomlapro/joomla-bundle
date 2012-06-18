@@ -18,9 +18,9 @@
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
 	</files>
-	<languages>
-		<language tag="${8:pt-BR}">${8:pt-BR}.${1:mod_hello}.ini</language>
-		<language tag="${8:pt-BR}">${8:pt-BR}.${1:mod_hello}.sys.ini</language>
+	<languages folder="language">
+		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.${1:mod_hello}.ini</language>
+		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.${1:mod_hello}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">

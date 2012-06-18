@@ -38,6 +38,12 @@
 		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.tpl_${1:hello}.ini</language>
 		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.tpl_${1:hello}.sys.ini</language>
 	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			</fieldset>
+		</fields>
+	</config>
 </extension>
 
 ]]></content>

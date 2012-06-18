@@ -1,6 +1,8 @@
 <snippet>
 	<content><![CDATA[
-<?php echo \$this->loadTemplate('$1'); ?>
+<div class="width-40 fltrt">
+	<?php echo $this->loadTemplate('publish'); ?>
+</div>
 ]]></content>
 <tabTrigger>jloadtemplate</tabTrigger>
 </snippet>

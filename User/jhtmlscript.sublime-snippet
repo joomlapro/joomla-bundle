@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[
+JHtml::script('${1:mod_hello}/${2:script}.js', false, true);
+]]></content>
+<tabTrigger>jhtmlscript</tabTrigger>
+</snippet>

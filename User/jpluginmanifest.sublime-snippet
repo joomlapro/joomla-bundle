@@ -2,7 +2,7 @@
 	<content><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="${1:user}">
-	<name>plg_${2:hello}</name>
+	<name>plg_${1:user}_${2:hello}</name>
 	<author>${3:Bruno Batista}</author>
 	<creationDate>$4</creationDate>
 	<copyright>(C) ${5:2012 AtomTech, Inc}. All rights reserved.</copyright>
@@ -15,9 +15,9 @@
 		<filename plugin="${2:hello}">${2:hello}.php</filename>
 		<filename>index.html</filename>
 	</files>
-	<languages>
-		<language tag="${9:pt-BR}">${9:pt-BR}.plg_${1:user}_${2:hello}.ini</language>
-		<language tag="${9:pt-BR}">${9:pt-BR}.plg_${1:user}_${2:hello}.sys.ini</language>
+	<languages folder="language">
+		<language tag="${9:pt-BR}">${9:pt-BR}/${9:pt-BR}.plg_${1:user}_${2:hello}.ini</language>
+		<language tag="${9:pt-BR}">${9:pt-BR}/${9:pt-BR}.plg_${1:user}_${2:hello}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">

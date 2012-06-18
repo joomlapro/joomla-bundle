@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[
+COM_${1:HELLO}_XML_DESCRIPTION="Este componente gerencia ${2:hellos}"
+]]></content>
+<tabTrigger>jinidesc</tabTrigger>
+</snippet>

@@ -39,7 +39,7 @@
 		<menu img="class:${9:hello}">${1:com_hello}</menu>
 		<submenu>
 			<menu link="option=${1:com_hello}" view="${9:hello}" img="class:${9:hello}" alt="${10:Hello}/${10:Hello}">${1:com_hello}</menu>
-			<menu link="option=com_categories&amp;extension=${1:com_hello}" view="categories" img="class:${9:hello}-cat" alt="${10:Hello}/Categories">${1:com_hello}_categories</menu>
+			<menu link="option=com_categories&amp;extension=${1:com_hello}" view="categories" img="class:category" alt="${10:Hello}/Categories">${1:com_hello}_categories</menu>
 		</submenu>
 		<files folder="admin">
 			<folder>controllers</folder>

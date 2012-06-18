@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+// Join over the ${1:hello}.
+\$query->select('$2');
+\$query->join('LEFT', '#__${3:hello} AS $4 ON $4.id = a.${5:id}');
+]]></content>
+<tabTrigger>jjoin</tabTrigger>
+</snippet>
