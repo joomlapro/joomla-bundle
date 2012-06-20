@@ -11,7 +11,7 @@
 	<copyright>Copyright (C) ${6:2012 AtomTech, Inc}. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>2.5.0</version>
-	<description>TPL_${7:HELLO}_XML_DESCRIPTION</description>
+	<description>TPL_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
 		<folder>css</folder>
 		<folder>html</folder>
@@ -28,15 +28,15 @@
 		<filename>templateDetails.xml</filename>
 	</files>
 	<positions>
-		<position>${1:hello}-mainmenu</position>
-		<position>${1:hello}-search</position>
-		<position>${1:hello}-sidebar</position>
-		<position>${1:hello}-footer</position>
-		<position>${1:hello}-footermenu</position>
+		<position>${1}-mainmenu</position>
+		<position>${1}-search</position>
+		<position>${1}-sidebar</position>
+		<position>${1}-footer</position>
+		<position>${1}-footermenu</position>
 	</positions>
 	<languages folder="language">
-		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.tpl_${1:hello}.ini</language>
-		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.tpl_${1:hello}.sys.ini</language>
+		<language tag="${7:pt-BR}">${7}/${7}.tpl_${1}.ini</language>
+		<language tag="${7}">${7}/${7}.tpl_${1}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">

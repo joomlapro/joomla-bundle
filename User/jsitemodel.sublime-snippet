@@ -3,13 +3,13 @@
 jimport('joomla.application.component.modellist');
 
 /**
- * ${4:Hello} model.
+ * ${2} model.
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class ${3:Hello}Model${4:Hello} extends JModelList
+class ${1}Model${2:Hello} extends JModelList
 {
 	/**
 	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
@@ -22,7 +22,7 @@ class ${3:Hello}Model${4:Hello} extends JModelList
 	{
 		// Initialise variables.
 		\$app	= JFactory::getApplication();
-		\$params	= JComponentHelper::getParams('${2:com_hello}');
+		\$params	= JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
 		\$itemid	= JRequest::getInt('Itemid', 0);
 				
 		// Load the parameters.
@@ -30,7 +30,7 @@ class ${3:Hello}Model${4:Hello} extends JModelList
 	}
 	
 	/**
-	 * Gets a list of ${5:hello}
+	 * Gets a list of ${2/(.+)/\L\1/g}
 	 *
 	 * @return	array	An array of banner objects.
 	 * @since	2.5

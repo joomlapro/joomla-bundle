@@ -1,10 +1,10 @@
 <snippet>
 	<content><![CDATA[
 /**
- * Supports an HTML select list of ${3:hellos}
+ * Supports an HTML select list of ${2:hellos}
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
 class JFormFieldOrdering extends JFormField
@@ -13,7 +13,7 @@ class JFormFieldOrdering extends JFormField
 	 * The form field type.
 	 *
 	 * @var		string
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	protected \$type = 'Ordering';
 
@@ -21,7 +21,7 @@ class JFormFieldOrdering extends JFormField
 	 * Method to get the field input markup.
 	 *
 	 * @return	string	The field input markup.
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	protected function getInput()
 	{
@@ -38,23 +38,23 @@ class JFormFieldOrdering extends JFormField
 		\$attr .= \$this->element['onchange'] ? ' onchange="'.(string) \$this->element['onchange'].'"' : '';
 
 		// Get some field values from the form.
-		\$${4:hello}Id	= (int) \$this->form->getValue('id');
+		\$${3:hello}Id	= (int) \$this->form->getValue('id');
 		\$categoryId	= (int) \$this->form->getValue('catid');
 
 		// Build the query for the ordering list.
-		\$query = 'SELECT ordering AS value, ${6:title} AS text' .
-				' FROM #__${5:hellos}' .
+		\$query = 'SELECT ordering AS value, ${5:title} AS text' .
+				' FROM #__${4:hellos}' .
 				' WHERE catid = ' . (int) \$categoryId .
 				' ORDER BY ordering';
 
-		// Create a read-only list (no ${6:title}) with a hidden input to store the value.
+		// Create a read-only list (no ${5}) with a hidden input to store the value.
 		if ((string) \$this->element['readonly'] == 'true') {
-			\$html[] = JHtml::_('list.ordering', '', \$query, trim(\$attr), \$this->value, \$${4:hello}Id ? 0 : 1);
-			\$html[] = '<input type="hidden" name="'.\$this->${6:title}.'" value="'.\$this->value.'"/>';
+			\$html[] = JHtml::_('list.ordering', '', \$query, trim(\$attr), \$this->value, \$${3}Id ? 0 : 1);
+			\$html[] = '<input type="hidden" name="'.\$this->${5}.'" value="'.\$this->value.'"/>';
 		}
 		// Create a regular list.
 		else {
-			\$html[] = JHtml::_('list.ordering', \$this->${6:title}, \$query, trim(\$attr), \$this->value, \$${4:hello}Id ? 0 : 1);
+			\$html[] = JHtml::_('list.ordering', \$this->${5}, \$query, trim(\$attr), \$this->value, \$${3}Id ? 0 : 1);
 		}
 
 		return implode(\$html);

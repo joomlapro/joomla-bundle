@@ -3,18 +3,18 @@
 jimport('joomla.application.component.modelitem');
 
 /**
- * ${4:Hello} Model
+ * ${2} Model
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class ${3:Hello}Model${4:Hello} extends JModelItem
+class ${1}Model${2:Hello} extends JModelItem
 {
 	/**
-	 * Method to get ${5:hello} data.
+	 * Method to get ${2/(.+)/\L\1/g} data.
 	 *
-	 * @param	integer	The id of the ${5:hello}.
+	 * @param	integer	The id of the ${2/(.+)/\L\1/g}.
 	 *
 	 * @return	mixed	Menu item data object on success, false on failure.
 	 */

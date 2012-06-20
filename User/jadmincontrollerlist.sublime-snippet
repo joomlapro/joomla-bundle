@@ -3,19 +3,19 @@
 jimport('joomla.application.component.controlleradmin');
 
 /**
- * ${4:Hellos} list controller class.
+ * ${2} list controller class.
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class ${3:Hello}Controller${4:Hellos} extends JControllerAdmin
+class ${1}Controller${2:Hellos} extends JControllerAdmin
 {
 	/**
 	 * @var		string	The prefix to use with controller messages.
 	 * @since	2.5
 	 */
-	protected \$text_prefix = 'COM_${5:HELLO}_${6:HELLOS}';
+	protected \$text_prefix = 'COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}';
 
 	/**
 	 * Constructor.
@@ -33,7 +33,7 @@ class ${3:Hello}Controller${4:Hellos} extends JControllerAdmin
 	 * Proxy for getModel.
 	 * @since	2.5
 	 */
-	public function getModel(\$name = '${7:Hello}', \$prefix = '${3:Hello}Model', \$config = array('ignore_request' => true))
+	public function getModel(\$name = '${3:Hello}', \$prefix = '${1}Model', \$config = array('ignore_request' => true))
 	{
 		\$model = parent::getModel(\$name, \$prefix, \$config);
 		return \$model;

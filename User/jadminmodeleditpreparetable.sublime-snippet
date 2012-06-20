@@ -13,11 +13,11 @@ protected function prepareTable(&\$table)
 	\$date = JFactory::getDate();
 	\$user = JFactory::getUser();
 
-	\$table->${1:title}		= htmlspecialchars_decode(\$table->${1:title}, ENT_QUOTES);
+	\$table->${1:title}		= htmlspecialchars_decode(\$table->${1}, ENT_QUOTES);
 	\$table->alias		= JApplication::stringURLSafe(\$table->alias);
 
 	if (empty(\$table->alias)) {
-		\$table->alias = JApplication::stringURLSafe(\$table->${1:title});
+		\$table->alias = JApplication::stringURLSafe(\$table->${1});
 	}
 
 	if (empty(\$table->id)) {
@@ -36,6 +36,7 @@ protected function prepareTable(&\$table)
 		// Set the values
 	}
 }
+
 ]]></content>
 <tabTrigger>jadminmodeleditpreparetable</tabTrigger>
 </snippet>

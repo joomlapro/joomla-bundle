@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[
 /**
- * ${3:Hello} Quickicon plugin
+ * ${1} Quickicon plugin
  *
  * @package		${1:Hello}
- * @subpackage	${2:plg_hello}
+ * @subpackage	plg_quickicon_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class plgQuickicon${3:Hello} extends JPlugin
+class plgQuickicon${1} extends JPlugin
 {
 	/**
 	 * Constructor
@@ -42,10 +42,10 @@ class plgQuickicon${3:Hello} extends JPlugin
 		}
 
 		return array(array(
-			'link' => 'index.php?option=${4:com_hello}',
-			'image' => JURI::root() . 'media/${4:com_hello}/images/icon/${5:hello}.png',,
-			'text' => JText::_('PLG_QUICKICON_${6:HELLO}_CHECKING'),
-			'id' => 'plg_quickicon_${4:com_hello}'
+			'link' => 'index.php?option=com_${1/(.+)/\L\1/g}',
+			'image' => JURI::root() . 'media/com_${1/(.+)/\L\1/g}/images/icon/${1/(.+)/\L\1/g}.png',,
+			'text' => JText::_('PLG_QUICKICON_${1/(.+)/\U\1/g}_${1/(.+)/\U\1/g}'),
+			'id' => 'plg_quickicon_com_${1/(.+)/\L\1/g}'
 		));
 	}
 }

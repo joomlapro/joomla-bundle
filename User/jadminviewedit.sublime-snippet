@@ -3,13 +3,13 @@
 jimport('joomla.application.component.view');
 
 /**
- * View to edit a ${7:hello}.
+ * View to edit a ${2/(.+)/\L\1/g}.
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class ${3:Hello}View${4:Hello} extends JView
+class ${1}View${2:Hello} extends JView
 {
 	protected \$form;
 	protected \$item;
@@ -50,34 +50,34 @@ class ${3:Hello}View${4:Hello} extends JView
 		\$isNew	= (\$this->item->id == 0);
 		\$checkedOut = !(\$this->item->checked_out == 0 || \$this->item->checked_out == \$userId);
 		// Since we don't track these assets at the item level, use the category id.
-		\$canDo	= ${3:Hello}Helper::getActions(\$this->item->catid,0);
+		\$canDo	= ${1}Helper::getActions(\$this->item->catid,0);
 
-		JToolBarHelper::title(\$isNew ? JText::_('COM_${5:HELLO}_${6:HELLO}_ADD') : JText::_('COM_${5:HELLO}_${6:HELLO}_EDIT'), '${7:hello}.png');
+		JToolBarHelper::title(\$isNew ? JText::_('COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ADD') : JText::_('COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_EDIT'), '${2/(.+)/\L\1/g}.png');
 
 		// If not checked out, can save the item.
-		if (!\$checkedOut && (\$canDo->get('core.edit') || count(\$user->getAuthorisedCategories('${2:com_hello}', 'core.create')) > 0)) {
-			JToolBarHelper::apply('${8:hello}.apply');
-			JToolBarHelper::save('${8:hello}.save');
+		if (!\$checkedOut && (\$canDo->get('core.edit') || count(\$user->getAuthorisedCategories('com_${1/(.+)/\L\1/g}', 'core.create')) > 0)) {
+			JToolBarHelper::apply('${2/(.+)/\L\1/g}.apply');
+			JToolBarHelper::save('${2/(.+)/\L\1/g}.save');
 
 			if (\$canDo->get('core.create')) {
-				JToolBarHelper::save2new('${8:hello}.save2new');
+				JToolBarHelper::save2new('${2/(.+)/\L\1/g}.save2new');
 			}
 		}
 
 		// If an existing item, can save to a copy.
 		if (!\$isNew && \$canDo->get('core.create')) {
-			JToolBarHelper::save2copy('${8:hello}.save2copy');
+			JToolBarHelper::save2copy('${2/(.+)/\L\1/g}.save2copy');
 		}
 
 		if (empty(\$this->item->id))  {
-			JToolBarHelper::cancel('${8:hello}.cancel');
+			JToolBarHelper::cancel('${2/(.+)/\L\1/g}.cancel');
 		}
 		else {
-			JToolBarHelper::cancel('${8:hello}.cancel', 'JTOOLBAR_CLOSE');
+			JToolBarHelper::cancel('${2/(.+)/\L\1/g}.cancel', 'JTOOLBAR_CLOSE');
 		}
 
 		JToolBarHelper::divider();
-		JToolBarHelper::help('${8:hello}', \$com = true);
+		JToolBarHelper::help('${2/(.+)/\L\1/g}', \$com = true);
 	}
 }
 

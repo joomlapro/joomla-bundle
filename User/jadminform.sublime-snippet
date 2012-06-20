@@ -2,21 +2,21 @@
 	<content><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset name="details" addfieldpath="/administrator/components/${1:com_hello}/models/fields">
+	<fieldset name="details" addfieldpath="/administrator/components/com_${1:hello}/models/fields">
 		<field name="id" type="text" default="0" readonly="true" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
-		<field name="${3:title}" type="text" class="inputbox" size="40" label="JGLOBAL_TITLE" description="JFIELD_TITLE_DESC" required="true" />
+		<field name="${2:title}" type="text" class="inputbox" size="40" label="JGLOBAL_TITLE" description="JFIELD_TITLE_DESC" required="true" />
 		<field name="alias" type="text" class="inputbox" size="40" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
-		<field name="catid" type="categoryedit" extension="${1:com_hello}" label="JCATEGORY" description="COM_${2:HELLO}_FIELD_CATEGORY_DESC" class="inputbox" required="true" addfieldpath="/administrator/components/com_categories/models/fields">
+		<field name="catid" type="categoryedit" extension="com_${1}" label="JCATEGORY" description="COM_${1/(.+)/\U\1/g}_FIELD_CATEGORY_DESC" class="inputbox" required="true" addfieldpath="/administrator/components/com_categories/models/fields">
 			<option value="">JSELECT</option>
 		</field>
-		<field name="published" type="list" label="JSTATUS" description="COM_${2:HELLO}_FIELD_STATE_DESC" class="inputbox" size="1" default="1">
+		<field name="published" type="list" label="JSTATUS" description="COM_${1/(.+)/\U\1/g}_FIELD_STATE_DESC" class="inputbox" size="1" default="1">
 			<option value="1">JPUBLISHED</option>
 			<option value="0">JUNPUBLISHED</option>
 			<option value="2">JARCHIVED</option>
 			<option value="-2">JTRASHED</option>
 		</field>
 		<field name="ordering" type="ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
-		<field name="description" type="editor" label="JGLOBAL_DESCRIPTION" description="COM_${2:HELLO}_FIELD_DESCRIPTION_DESC" class="inputbox" filter="JComponentHelper::filterText" buttons="true" hide="readmore,pagebreak" />
+		<field name="description" type="editor" label="JGLOBAL_DESCRIPTION" description="COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" class="inputbox" filter="JComponentHelper::filterText" buttons="true" hide="readmore,pagebreak" />
 	</fieldset>
 	<fieldset name="publish">
 		<field name="created" type="calendar" label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />

@@ -3,18 +3,18 @@
 jimport('joomla.application.component.controller');
 
 /**
- * ${3:Hello} Component Controller
+ * ${1} Component Controller
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  */
-class ${3:Hello}Controller extends JController
+class ${1}Controller extends JController
 {
 	/**
 	 * @var		string	The default view.
 	 * @since	2.5
 	 */
-	protected \$default_view = '${4:cpanel}';
+	protected \$default_view = '${2:cpanel}';
 
 	/**
 	 * Method to display a view.
@@ -27,12 +27,12 @@ class ${3:Hello}Controller extends JController
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{
-		require_once JPATH_COMPONENT.'/helpers/${5:hello}.php';
+		require_once JPATH_COMPONENT.'/helpers/${1/(.+)/\L\1/g}.php';
 
 		// Load the submenu.
-		${3:Hello}Helper::addSubmenu(JRequest::getCmd('view', '${4:cpanel}'));
+		${1}Helper::addSubmenu(JRequest::getCmd('view', '${2}'));
 
-		\$view	= JRequest::getCmd('view', '${4:cpanel}');
+		\$view	= JRequest::getCmd('view', '${2}');
 		\$layout = JRequest::getCmd('layout', 'default');
 		\$id		= JRequest::getInt('id');
 

@@ -5,19 +5,19 @@ jimport('joomla.application.component.helper');
 jimport('joomla.application.categories');
 
 /**
- * ${3:Hello} Component Category Tree
+ * ${1} Component Category Tree
  *
  * @static
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class ${3:Hello}Categories extends JCategories
+class ${1}Categories extends JCategories
 {
 	public function __construct(\$options = array())
 	{
-		\$options['table'] = '#__${4:hello}';
-		\$options['extension'] = '${2:com_hello}';
+		\$options['table'] = '#__${2:hello}';
+		\$options['extension'] = 'com_${1/(.+)/\L\1/g}';
 		//\$options['statefield'] = 'published';
 		parent::__construct(\$options);
 	}

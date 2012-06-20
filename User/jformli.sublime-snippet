@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <li><?php echo \$this->form->getLabel('${1:hello}'); ?>
-<?php echo \$this->form->getInput('${1:hello}'); ?></li>
+<?php echo \$this->form->getInput('${1}'); ?></li>
 ]]></content>
 <tabTrigger>jformli</tabTrigger>
 </snippet>

@@ -3,13 +3,13 @@
 jimport('joomla.application.component.modeladmin');
 
 /**
- * ${4:Hello} model.
+ * ${2} model.
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class ${3:Hello}Model${4:Hello} extends JModelAdmin
+class ${1}Model${2:Hello} extends JModelAdmin
 {
 	/**
 	 * Returns a reference to the a Table object, always creating it.
@@ -20,7 +20,7 @@ class ${3:Hello}Model${4:Hello} extends JModelAdmin
 	 * @return	JTable	A database object
 	 * @since	2.5
 	 */
-	public function getTable(\$type = '${4:Hello}', \$prefix = '${3:Hello}Table', \$config = array())
+	public function getTable(\$type = '${2}', \$prefix = '${1}Table', \$config = array())
 	{
 		return JTable::getInstance(\$type, \$prefix, \$config);
 	}
@@ -36,7 +36,7 @@ class ${3:Hello}Model${4:Hello} extends JModelAdmin
 	public function getForm(\$data = array(), \$loadData = true)
 	{
 		// Get the form.
-		\$form = \$this->loadForm('${2:com_hello}.${5:hello}', '${5:hello}', array('control' => 'jform', 'load_data' => \$loadData));
+		\$form = \$this->loadForm('com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}', '${2/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
 		if (empty(\$form)) {
 			return false;
 		}
@@ -53,7 +53,7 @@ class ${3:Hello}Model${4:Hello} extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		\$data = JFactory::getApplication()->getUserState('${2:com_hello}.edit.${5:hello}.data', array());
+		\$data = JFactory::getApplication()->getUserState('com_${1/(.+)/\L\1/g}.edit.${2/(.+)/\L\1/g}.data', array());
 
 		if (empty(\$data)) {
 			\$data = \$this->getItem();

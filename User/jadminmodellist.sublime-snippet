@@ -3,13 +3,13 @@
 jimport('joomla.application.component.modellist');
 
 /**
- * Methods supporting a list of ${5:hello} records.
+ * Methods supporting a list of ${2} records.
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class ${3:Hello}Model${4:Hellos} extends JModelList
+class ${1}Model${2:Hellos} extends JModelList
 {
 	/**
 	 * Constructor.
@@ -23,7 +23,7 @@ class ${3:Hello}Model${4:Hellos} extends JModelList
 		if (empty(\$config['filter_fields'])) {
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
-				'${6:title}', 'a.${6:title}',
+				'${3:title}', 'a.${3}',
 				'alias', 'a.alias',
 				'catid', 'a.catid', 'category_title',
 				'published', 'a.published',
@@ -64,7 +64,7 @@ class ${3:Hello}Model${4:Hellos} extends JModelList
 		\$this->setState('filter.category_id', \$categoryId);
 
 		// List state information.
-		parent::populateState('a.${6:title}', 'asc');
+		parent::populateState('a.${3}', 'asc');
 	}
 
 	/**
@@ -106,11 +106,11 @@ class ${3:Hello}Model${4:Hellos} extends JModelList
 		\$query->select(
 			\$this->getState(
 				'list.select',
-				'a.id, a.catid, a.${6:title}, a.alias, a.description' .
+				'a.id, a.catid, a.${3}, a.alias, a.description' .
 				', a.ordering, a.published, a.created, a.created_by, a.checked_out, a.checked_out_time'
 			)
 		);
-		\$query->from('#__${6:table_name} AS a');
+		\$query->from('#__${4:hello} AS a');
 
 		// Join over the users for the checked out user.
 		\$query->select('uc.name AS editor');
@@ -148,12 +148,12 @@ class ${3:Hello}Model${4:Hellos} extends JModelList
 			}
 			else {
 				\$search = \$db->Quote('%'.\$db->escape(\$search, true).'%');
-				\$query->where('(a.${6:title} LIKE '.\$search.' OR a.alias LIKE '.\$search.')');
+				\$query->where('(a.${3} LIKE '.\$search.' OR a.alias LIKE '.\$search.')');
 			}
 		}
 
 		// Add the list ordering clause.
-		\$orderCol	= \$this->state->get('list.ordering', 'a.${6:title}');
+		\$orderCol	= \$this->state->get('list.ordering', 'a.${3}');
 		\$orderDirn	= \$this->state->get('list.direction', 'asc');
 		if (\$orderCol == 'a.ordering' || \$orderCol == 'category_title') {
 			\$orderCol = 'c.title '.\$orderDirn.', a.ordering';

@@ -1,10 +1,10 @@
 <snippet>
 	<content><![CDATA[
 /**
- * Form Field ${3:Name} class.
+ * Form Field ${3} class.
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
 class JFormField${3:Name} extends JFormField
@@ -14,7 +14,7 @@ class JFormField${3:Name} extends JFormField
 	 *
 	 * @var		string
 	 */
-	protected \$type = '${3:Name}';
+	protected \$type = '${3}';
 
 	/**
 	 * Method to get the field input.

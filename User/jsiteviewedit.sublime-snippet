@@ -3,13 +3,13 @@
 jimport('joomla.application.component.view');
 
 /**
- * HTML View class for the ${3:Hello} component.
+ * HTML View class for the ${2/(.+)/\L\1/g} component.
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class ${3:Hello}View${4:Hello} extends JView
+class ${1}View${2:Hello} extends JView
 {
 	protected \$state;
 	protected \$item;
@@ -61,7 +61,7 @@ class ${3:Hello}View${4:Hello} extends JView
 		{
 			\$this->params->def('page_heading', \$this->params->def('page_title', \$menu->title));
 		} else {
-			\$this->params->def('page_heading', JText::_('COM_${6:HELLO}_DEFAULT_PAGE_TITLE'));
+			\$this->params->def('page_heading', JText::_('COM_${1/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
 		}
 		\$title = \$this->params->get('page_title', '');
 		if (empty(\$title)) {

@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
-<access component="${1:com_hello}">
+<access component="com_${1:hello}">
 	<section name="component">
 		<action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />
 		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />

@@ -3,7 +3,7 @@
 <?php
 /**
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @copyright	Copyright (C) ${3:AtomTech}, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */

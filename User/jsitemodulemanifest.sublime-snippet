@@ -2,7 +2,7 @@
 	<content><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="2.5" client="site" method="upgrade">
-	<name>${1:mod_hello}</name>
+	<name>mod_${1:hello}</name>
 	<author>${2:Bruno Batista}</author>
 	<creationDate>$3</creationDate>
 	<copyright>Copyright (C) ${4:2012 AtomTech, Inc}. All rights reserved.</copyright>
@@ -10,17 +10,17 @@
 	<authorEmail>${5:bruno@atomtech.com.br}</authorEmail>
 	<authorUrl>${6:http://www.atomtech.com.br}</authorUrl>
 	<version>2.5.0</version>
-	<description>MOD_${7:HELLO}_XML_DESCRIPTION</description>
+	<description>MOD_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
-		<filename module="${1:mod_hello}">${1:mod_hello}.php</filename>
+		<filename module="mod_${1}">mod_${1}.php</filename>
 		<folder>tmpl</folder>
-		<filename>${1:mod_hello}.xml</filename>
+		<filename>mod_${1}.xml</filename>
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
 	</files>
 	<languages folder="language">
-		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.${1:mod_hello}.ini</language>
-		<language tag="${8:pt-BR}">${8:pt-BR}/${8:pt-BR}.${1:mod_hello}.sys.ini</language>
+		<language tag="${7:pt-BR}">${7}/${7}.mod_${1}.ini</language>
+		<language tag="${7}">${7}/${7}.mod_${1}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">

@@ -2,7 +2,7 @@
 	<content><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5" method="upgrade">
-	<name>${1:com_hello}</name>
+	<name>com_${1:hello}</name>
 	<author>${2:Bruno Batista}</author>
 	<creationDate>$3</creationDate>
 	<copyright>(C) ${4:2012 AtomTech, Inc}. All rights reserved.</copyright>
@@ -10,7 +10,7 @@
 	<authorEmail>${5:bruno@atomtech.com.br}</authorEmail>
 	<authorUrl>${6:http://www.atomtech.com.br}</authorUrl>
 	<version>2.5.0</version>
-	<description>COM_${8:HELLO}_XML_DESCRIPTION</description>
+	<description>COM_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<install>
 		<sql>
 			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
@@ -27,19 +27,19 @@
 		<folder>language</folder>
 		<folder>models</folder>
 		<folder>views</folder>
-		<filename>${9:hello}.php</filename>
+		<filename>${1/(.+)/\L\1/g}.php</filename>
 		<filename>controller.php</filename>
 		<filename>index.html</filename>
 		<filename>router.php</filename>
 	</files>
 	<languages folder="site">
-		<language tag="${11:pt-BR}">language/${11:pt-BR}.${1:com_hello}.ini</language>
+		<language tag="${7:pt-BR}">language/${7}.com_${1/(.+)/\L\1/g}.ini</language>
 	</languages>
 	<administration>
-		<menu img="class:${9:hello}">${1:com_hello}</menu>
+		<menu img="../media/com_${1/(.+)/\L\1/g}/images/menu/${1/(.+)/\L\1/g}.png">com_${1/(.+)/\L\1/g}</menu>
 		<submenu>
-			<menu link="option=${1:com_hello}" view="${9:hello}" img="class:${9:hello}" alt="${10:Hello}/${10:Hello}">${1:com_hello}</menu>
-			<menu link="option=com_categories&amp;extension=${1:com_hello}" view="categories" img="class:category" alt="${10:Hello}/Categories">${1:com_hello}_categories</menu>
+			<menu link="option=com_${1/(.+)/\L\1/g}" view="${1/(.+)/\L\1/g}" img="../media/com_${1/(.+)/\L\1/g}/images/menu/${1/(.+)/\L\1/g}.png" alt="${1/(.+)/\u\1/g}/${1/(.+)/\u\1/g}">com_${1/(.+)/\L\1/g}</menu>
+			<menu link="option=com_categories&amp;extension=com_${1/(.+)/\L\1/g}" view="categories" img="class:category" alt="${1/(.+)/\u\1/g}/Categories">com_${1/(.+)/\L\1/g}_categories</menu>
 		</submenu>
 		<files folder="admin">
 			<folder>controllers</folder>
@@ -49,15 +49,15 @@
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>views</folder>
-			<filename>${9:hello}.php</filename>
+			<filename>${1/(.+)/\L\1/g}.php</filename>
 			<filename>access.xml</filename>
 			<filename>config.xml</filename>
 			<filename>controller.php</filename>
 			<filename>index.html</filename>
 		</files>
 		<languages folder="admin">
-			<language tag="${11:pt-BR}">language/${11:pt-BR}.${1:com_hello}.ini</language>
-			<language tag="${11:pt-BR}">language/${11:pt-BR}.${1:com_hello}.sys.ini</language>
+			<language tag="${7}">language/${7}.com_${1/(.+)/\L\1/g}.ini</language>
+			<language tag="${7}">language/${7}.com_${1/(.+)/\L\1/g}.sys.ini</language>
 		</languages>
 	</administration>
 </extension>

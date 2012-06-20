@@ -3,13 +3,13 @@
 jimport('joomla.application.component.view');
 
 /**
- * View class for a list of ${6:hellos}.
+ * View class for a list of ${2/(.+)/\L\1/g}.
  *
  * @package     ${1:Hello}
- * @subpackage  ${2:com_hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
  * @since       2.5
  */
-class ${3:Hello}View${4:Hellos} extends JView
+class ${1}View${2:Hellos} extends JView
 {
 	protected \$categories;
 	protected \$items;
@@ -56,19 +56,19 @@ class ${3:Hello}View${4:Hellos} extends JView
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_COMPONENT . '/helpers/${5:hellos}.php';
+		require_once JPATH_COMPONENT . '/helpers/${1/(.+)/\L\1/g}.php';
 
-		\$canDo = ${3:Hello}Helper::getActions(\$this->state->get('filter.category_id'));
+		\$canDo = ${1}Helper::getActions(\$this->state->get('filter.category_id'));
 		\$user = JFactory::getUser();
-		JToolBarHelper::title(JText::_('COM_${7:HELLO}_MANAGER_${8:HELLOS}'), '${6:hellos}.png');
-		if (count(\$user->getAuthorisedCategories('${2:com_hello}', 'core.create')) > 0)
+		JToolBarHelper::title(JText::_('COM_${1/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}'), '${2/(.+)/\L\1/g}.png');
+		if (count(\$user->getAuthorisedCategories('com_${1/(.+)/\L\1/g}', 'core.create')) > 0)
 		{
 			JToolBarHelper::addNew('${9:hello}.add');
 		}
 
 		if ((\$canDo->get('core.edit')))
 		{
-			JToolBarHelper::editList('${9:hello}.edit');
+			JToolBarHelper::editList('${9}.edit');
 		}
 
 		if (\$canDo->get('core.edit.state'))
@@ -76,8 +76,8 @@ class ${3:Hello}View${4:Hellos} extends JView
 			if (\$this->state->get('filter.state') != 2)
 			{
 				JToolBarHelper::divider();
-				JToolBarHelper::publish('${6:hellos}.publish', 'JTOOLBAR_PUBLISH', true);
-				JToolBarHelper::unpublish('${6:hellos}.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+				JToolBarHelper::publish('${2/(.+)/\L\1/g}.publish', 'JTOOLBAR_PUBLISH', true);
+				JToolBarHelper::unpublish('${2/(.+)/\L\1/g}.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 			}
 
 			if (\$this->state->get('filter.state') != -1)
@@ -85,37 +85,37 @@ class ${3:Hello}View${4:Hellos} extends JView
 				JToolBarHelper::divider();
 				if (\$this->state->get('filter.state') != 2)
 				{
-					JToolBarHelper::archiveList('${6:hellos}.archive');
+					JToolBarHelper::archiveList('${2/(.+)/\L\1/g}.archive');
 				}
 				elseif (\$this->state->get('filter.state') == 2)
 				{
-					JToolBarHelper::unarchiveList('${6:hellos}.publish');
+					JToolBarHelper::unarchiveList('${2/(.+)/\L\1/g}.publish');
 				}
 			}
 		}
 
 		if (\$canDo->get('core.edit.state'))
 		{
-			JToolBarHelper::checkin('${6:hellos}.checkin');
+			JToolBarHelper::checkin('${2/(.+)/\L\1/g}.checkin');
 		}
 
 		if (\$this->state->get('filter.state') == -2 && \$canDo->get('core.delete'))
 		{
-			JToolBarHelper::deleteList('', '${6:hellos}.delete', 'JTOOLBAR_EMPTY_TRASH');
+			JToolBarHelper::deleteList('', '${2/(.+)/\L\1/g}.delete', 'JTOOLBAR_EMPTY_TRASH');
 			JToolBarHelper::divider();
 		}
 		elseif (\$canDo->get('core.edit.state'))
 		{
-			JToolBarHelper::trash('${6:hellos}.trash');
+			JToolBarHelper::trash('${2/(.+)/\L\1/g}.trash');
 			JToolBarHelper::divider();
 		}
 
 		if (\$canDo->get('core.admin'))
 		{
-			JToolBarHelper::preferences('${2:com_hello}');
+			JToolBarHelper::preferences('com_${1/(.+)/\L\1/g}');
 			JToolBarHelper::divider();
 		}
-		JToolBarHelper::help('${6:hellos}', \$com = true);
+		JToolBarHelper::help('${2/(.+)/\L\1/g}', \$com = true);
 	}
 }
 

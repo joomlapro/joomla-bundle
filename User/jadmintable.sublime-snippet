@@ -3,13 +3,13 @@
 jimport('joomla.database.table');
 
 /**
- * ${4:Hello} table class.
+ * ${2} table class.
  *
  * @package     ${1:Hello}
- * @subpackage  ${2:com_hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
  * @since       2.5
  */
-class ${3:Hello}Table${4:Hello} extends JTable
+class ${1}Table${2:Hello} extends JTable
 {
 	/**
 	 * Constructor
@@ -20,7 +20,7 @@ class ${3:Hello}Table${4:Hello} extends JTable
 	 */
 	public function __construct(&\$db)
 	{
-		parent::__construct('#__${5:hellos}', 'id', \$db);
+		parent::__construct('#__${3:hellos}', 'id', \$db);
 	}
 
 	/**
@@ -62,7 +62,7 @@ class ${3:Hello}Table${4:Hello} extends JTable
 	{
 		if (trim(\$this->alias) == '')
 		{
-			\$this->alias = \$this->${6:title};
+			\$this->alias = \$this->${4:title};
 		}
 
 		\$this->alias = JApplication::stringURLSafe(\$this->alias);
@@ -114,7 +114,7 @@ class ${3:Hello}Table${4:Hello} extends JTable
 		}
 
 		// Verify that the alias is unique
-		\$table = JTable::getInstance('${4:Hello}', '${3:Hello}Table');
+		\$table = JTable::getInstance('${2}', '${1}Table');
 		if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
 		{
 			\$this->setError(JText::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));

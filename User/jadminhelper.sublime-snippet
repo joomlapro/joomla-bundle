@@ -1,15 +1,15 @@
 <snippet>
 	<content><![CDATA[
 /**
- * ${3:Hello} component helper.
+ * ${1} component helper.
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-class ${3:Hello}Helper
+class ${1}Helper
 {
-	public static \$extension = '${2:com_hello}';
+	public static \$extension = 'com_${1/(.+)/\L\1/g}';
 
 	/**
 	 * Configure the Linkbar.
@@ -22,13 +22,13 @@ class ${3:Hello}Helper
 	public static function addSubmenu(\$vName)
 	{
 		JSubMenuHelper::addEntry(
-			JText::_('COM_${5:HELLO}_SUBMENU_${5:HELLO}'),
-			'index.php?option=${2:com_hello}&view=${4:hello}',
-			\$vName == '${4:hello}'
+			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_${1/(.+)/\U\1/g}'),
+			'index.php?option=com_${1/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}',
+			\$vName == '${1/(.+)/\L\1/g}'
 		);
 		JSubMenuHelper::addEntry(
-			JText::_('COM_${5:HELLO}_SUBMENU_CATEGORIES'),
-			'index.php?option=com_categories&extension=${2:com_hello}',
+			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_CATEGORIES'),
+			'index.php?option=com_categories&extension=com_${1/(.+)/\L\1/g}',
 			\$vName == 'categories'
 		);
 	}
@@ -42,14 +42,14 @@ class ${3:Hello}Helper
 	{
 		\$user		= JFactory::getUser();
 		\$result		= new JObject;
-		\$assetName	= '${2:com_hello}';
+		\$assetName	= 'com_${1/(.+)/\L\1/g}';
 
 		\$actions = array(
 			'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.state', 'core.delete'
 		);
 
 		foreach (\$actions as \$action) {
-			\$result->set(\$action,	\$user->authorise(\$action, \$assetName));
+			\$result->set(\$action, \$user->authorise(\$action, \$assetName));
 		}
 
 		return \$result;

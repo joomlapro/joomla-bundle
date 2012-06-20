@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <fieldset class="adminform">
-	<legend><?php echo JText::_('COM_PRODUCTS_FIELDSET_PUBLISH'); ?></legend>
+	<legend><?php echo JText::_('COM_${1:HELLO}_FIELDSET_${2:PUBLISH}'); ?></legend>
 	<ul class="adminformlist">
 		<?php if (\$this->item->id) : ?>
 		<li><?php echo \$this->form->getLabel('created'); ?>

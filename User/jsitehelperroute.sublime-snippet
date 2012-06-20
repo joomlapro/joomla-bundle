@@ -5,30 +5,30 @@ jimport('joomla.application.component.helper');
 jimport('joomla.application.categories');
 
 /**
- * ${3:Hello} Component Route Helper
+ * ${1} Component Route Helper
  *
  * @package		${1:Hello}
- * @subpackage	${2:com_hello}
+ * @subpackage	com_${1/(.+)/\L\1/g}
  * @since		2.5
  */
-abstract class ${3:Hello}HelperRoute
+abstract class ${1}HelperRoute
 {
 	protected static \$lookup;
 
 	/**
-	 * @param	int	The route of the ${5:hello}
+	 * @param	int	The route of the ${2/(.+)/\L\1/g}
 	 */
-	public static function get${4:Hello}Route(\$id, \$catid)
+	public static function get${2:Hello}Route(\$id, \$catid)
 	{
 		\$needles = array(
-			'${5:hello}'  => array((int) \$id)
+			'${2/(.+)/\L\1/g}'  => array((int) \$id)
 		);
 
 		//Create the link
-		\$link = 'index.php?option=${2:com_hello}&view=${5:hello}&id='. \$id;
+		\$link = 'index.php?option=com_${1/(.+)/\L\1/g}&view=${2/(.+)/\L\1/g}&id='. \$id;
 
 		if ((int)\$catid > 1) {
-			\$categories = JCategories::getInstance('${3:Hello}');
+			\$categories = JCategories::getInstance('${1}');
 			\$category = \$categories->get((int)\$catid);
 
 			if (\$category) {
@@ -59,7 +59,7 @@ abstract class ${3:Hello}HelperRoute
 		else
 		{
 			\$id = (int) \$catid;
-			\$category = JCategories::getInstance('${3:Hello}')->get(\$id);
+			\$category = JCategories::getInstance('${1}')->get(\$id);
 		}
 
 		if(\$id < 1)
@@ -79,7 +79,7 @@ abstract class ${3:Hello}HelperRoute
 			else
 			{
 				//Create the link
-				\$link = 'index.php?option=${2:com_hello}&view=category&id='.\$id;
+				\$link = 'index.php?option=com_${1/(.+)/\L\1/g}&view=category&id='.\$id;
 				if(\$category)
 				{
 					\$catids = array_reverse(\$category->getPath());
@@ -110,7 +110,7 @@ abstract class ${3:Hello}HelperRoute
 		{
 			self::\$lookup = array();
 
-			\$component	= JComponentHelper::getComponent('${2:com_hello}');
+			\$component	= JComponentHelper::getComponent('com_${1/(.+)/\L\1/g}');
 			\$items		= \$menus->getItems('component_id', \$component->id);
 			foreach (\$items as \$item)
 			{

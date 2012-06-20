@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <div class="width-40 fltrt">
-	<?php echo $this->loadTemplate('publish'); ?>
+	<?php echo $this->loadTemplate('${1:publish}'); ?>
 </div>
 ]]></content>
 <tabTrigger>jloadtemplate</tabTrigger>

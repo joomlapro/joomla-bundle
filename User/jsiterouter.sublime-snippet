@@ -3,20 +3,20 @@
 jimport('joomla.application.categories');
 
 /**
- * Build the route for the ${1:com_hello} component
+ * Build the route for the com_${1/(.+)/\L\1/g} component
  *
  * @param	array	An array of URL arguments
  *
  * @return	array	The URL arguments to use to assemble the subsequent URL.
  */
-function ${2:Hello}BuildRoute(&\$query)
+function ${1:Hello}BuildRoute(&\$query)
 {
 	\$segments = array();
 
 	// get a menu item based on Itemid or currently active
 	\$app		= JFactory::getApplication();
 	\$menu		= \$app->getMenu();
-	\$params		= JComponentHelper::getParams('${1:com_hello}');
+	\$params		= JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
 	\$advanced	= \$params->get('sef_advanced_link', 0);
 
 	// we need a menu item.  Either the one specified in the query, or the current active one if none specified
@@ -44,7 +44,7 @@ function ${2:Hello}BuildRoute(&\$query)
 		}
 	}
 
-	// are we dealing with an ${4:hello} that is attached to a menu item?
+	// are we dealing with an ${2:hello} that is attached to a menu item?
 	if (isset(\$query['view']) && (\$mView == \$query['view']) and (isset(\$query['id'])) and (\$mId == intval(\$query['id']))) {
 		unset(\$query['view']);
 		unset(\$query['catid']);
@@ -53,9 +53,9 @@ function ${2:Hello}BuildRoute(&\$query)
 		return \$segments;
 	}
 
-	if (isset(\$view) and (\$view == 'category' or \$view == '${4:hello}' )) {
+	if (isset(\$view) and (\$view == 'category' or \$view == '${2}' )) {
 		if (\$mId != intval(\$query['id']) || \$mView != \$view) {
-			if (\$view == '${4:hello}' && isset(\$query['catid'])) {
+			if (\$view == '${2}' && isset(\$query['catid'])) {
 				\$catid = \$query['catid'];
 			}
 			elseif (isset(\$query['id'])) {
@@ -63,7 +63,7 @@ function ${2:Hello}BuildRoute(&\$query)
 			}
 
 			\$menuCatid = \$mId;
-			\$categories = JCategories::getInstance('${2:Hello}');
+			\$categories = JCategories::getInstance('${1/(.+)/\u\1/g}');
 			\$category = \$categories->get(\$catid);
 
 			if (\$category) {
@@ -87,7 +87,7 @@ function ${2:Hello}BuildRoute(&\$query)
 				\$segments = array_merge(\$segments, array_reverse(\$array));
 			}
 
-			if (\$view == '${4:hello}') {
+			if (\$view == '${2}') {
 				if (\$advanced) {
 					list(\$tmp, \$id) = explode(':', \$query['id'], 2);
 				}
@@ -125,7 +125,7 @@ function ${2:Hello}BuildRoute(&\$query)
  *
  * @return	array	The URL attributes to be used by the application.
  */
-function ${2:Hello}ParseRoute(\$segments)
+function ${1/(.+)/\u\1/g}ParseRoute(\$segments)
 {
 	\$vars = array();
 
@@ -133,7 +133,7 @@ function ${2:Hello}ParseRoute(\$segments)
 	\$app	= JFactory::getApplication();
 	\$menu	= \$app->getMenu();
 	\$item	= \$menu->getActive();
-	\$params = JComponentHelper::getParams('${1:com_hello}');
+	\$params = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
 	\$advanced = \$params->get('sef_advanced_link', 0);
 
 	// Count route segments
@@ -149,7 +149,7 @@ function ${2:Hello}ParseRoute(\$segments)
 	// From the categories view, we can only jump to a category.
 	\$id = (isset(\$item->query['id']) && \$item->query['id'] > 1) ? \$item->query['id'] : 'root';
 
-	\$category = JCategories::getInstance('${2:Hello}')->get(\$id);
+	\$category = JCategories::getInstance('${1/(.+)/\u\1/g}')->get(\$id);
 
 	\$categories = \$category->getChildren();
 	\$found = 0;
@@ -180,7 +180,7 @@ function ${2:Hello}ParseRoute(\$segments)
 			}
 
 			\$vars['id'] = \$id;
-			\$vars['view'] = '${4:hello}';
+			\$vars['view'] = '${2}';
 
 			break;
 		}

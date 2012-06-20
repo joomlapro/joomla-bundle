@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[
 /**
- * ${4:Hello} ${3:Folder} plugin
+ * ${3} ${2} plugin
  *
  * @package		${1:Hello}
- * @subpackage	${2:plg_hello}
+ * @subpackage	plg_${2/(.+)/\L\1/g}_${3/(.+)/\L\1/g}
  * @since		2.5
  */
-class plg${3:Folder}${4:Hello} extends JPlugin
+class plg${2:Folder}${3:Hello} extends JPlugin
 {
 	/**
 	 * Constructor

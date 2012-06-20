@@ -1,16 +1,16 @@
 <snippet>
 	<content><![CDATA[
 /**
- * ${1:Hello} module helper.
+ * ${1} module helper.
  *
  * @package     ${1:Hello}
- * @subpackage  ${2:mod_hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
  * @since       2.5
  */
-class Mod${1:Hello}Helper
+class Mod${1}Helper
 {
 	/**
-	 * Get a list of the ${3:hello} items.
+	 * Get a list of the ${2:hello} items.
 	 *
 	 * @param	JRegistry	\$params	The module options.
 	 *

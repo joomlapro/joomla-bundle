@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-<field name="${1:hello}" type="textarea" class="inputbox" rows="3" cols="30" label="COM_${2:HELLO}_FIELD_${3:HELLO}_LABEL" description="COM_${2:HELLO}_FIELD_${3:HELLO}_DESC" />
+<field name="${1:hello}" type="textarea" class="inputbox" rows="3" cols="30" label="COM_${2:HELLO}_FIELD_${3:HELLO}_LABEL" description="COM_${2}_FIELD_${3}_DESC" />
 ]]></content>
 <tabTrigger>jformtextarea</tabTrigger>
 </snippet>
