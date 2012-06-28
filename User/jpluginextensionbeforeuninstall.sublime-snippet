@@ -1,12 +1,15 @@
 <snippet>
 	<content><![CDATA[
 /**
- * @param	int			extension id
- * @since	2.5
+ * @param   int  \$eid  extension id
+ *
+ * @return  string
+ *
+ * @since   2.5
  */
 function onExtensionBeforeUninstall(\$eid)
 {
-	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionBeforeUninstall: Uninstalling '. \$eid);
+	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionBeforeUninstall: Uninstalling ' . \$eid);
 }
 
 ]]></content>

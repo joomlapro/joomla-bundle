@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <fieldset class="adminform">
-	<legend><?php echo JText::_('COM_${1:HELLO}_FIELDSET_${2:PUBLISH}'); ?></legend>
+	<legend><?php echo JText::_('COM_${1:HELLO}_FIELDSET_${2:HELLO}'); ?></legend>
 	<ul class="adminformlist">
 		<?php foreach(\$this->form->getFieldset('${2/(.+)/\L\1/g}') as \$field): ?>
 		<li><?php echo \$field->label; ?>

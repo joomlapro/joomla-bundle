@@ -2,49 +2,60 @@
 	<content><![CDATA[
 /**
  * Prepares the document
+ *
+ * @return  void
  */
 protected function _prepareDocument()
 {
-	$app	= JFactory::getApplication();
-	$menus	= $app->getMenu();
-	$title	= null;
+	\$app   = JFactory::getApplication();
+	\$menus = \$app->getMenu();
+	\$title = null;
 
 	// Because the application sets a default page title,
 	// we need to get it from the menu item itself
-	$menu = $menus->getActive();
-	if($menu)
+	\$menu = \$menus->getActive();
+	if (\$menu)
 	{
-		$this->params->def('page_heading', $this->params->def('page_title', $menu->title));
-	} else {
-		$this->params->def('page_heading', JText::_('COM_${1:HELLO}_DEFAULT_PAGE_TITLE'));
+		\$this->params->def('page_heading', \$this->params->def('page_title', \$menu->title));
 	}
-	$title = $this->params->get('page_title', '');
-	if (empty($title)) {
-		$title = $app->getCfg('sitename');
-	}
-	elseif ($app->getCfg('sitename_pagetitles', 0) == 1) {
-		$title = JText::sprintf('JPAGETITLE', $app->getCfg('sitename'), $title);
-	}
-	elseif ($app->getCfg('sitename_pagetitles', 0) == 2) {
-		$title = JText::sprintf('JPAGETITLE', $title, $app->getCfg('sitename'));
-	}
-	$this->document->setTitle($title);
-
-	if ($this->params->get('menu-meta_description'))
+	else
 	{
-		$this->document->setDescription($this->params->get('menu-meta_description'));
+		\$this->params->def('page_heading', JText::_('COM_${1:HELLO}_DEFAULT_PAGE_TITLE'));
 	}
 
-	if ($this->params->get('menu-meta_keywords'))
+	\$title = \$this->params->get('page_title', '');
+
+	if (empty(\$title))
 	{
-		$this->document->setMetadata('keywords', $this->params->get('menu-meta_keywords'));
+		\$title = \$app->getCfg('sitename');
+	}
+	elseif (\$app->getCfg('sitename_pagetitles', 0) == 1)
+	{
+		\$title = JText::sprintf('JPAGETITLE', \$app->getCfg('sitename'), \$title);
+	}
+	elseif (\$app->getCfg('sitename_pagetitles', 0) == 2)
+	{
+		\$title = JText::sprintf('JPAGETITLE', \$title, \$app->getCfg('sitename'));
 	}
 
-	if ($this->params->get('robots'))
+	\$this->document->setTitle(\$title);
+
+	if (\$this->params->get('menu-meta_description'))
 	{
-		$this->document->setMetadata('robots', $this->params->get('robots'));
+		\$this->document->setDescription(\$this->params->get('menu-meta_description'));
+	}
+
+	if (\$this->params->get('menu-meta_keywords'))
+	{
+		\$this->document->setMetadata('keywords', \$this->params->get('menu-meta_keywords'));
+	}
+
+	if (\$this->params->get('robots'))
+	{
+		\$this->document->setMetadata('robots', \$this->params->get('robots'));
 	}
 }
+
 ]]></content>
-<tabTrigger>hello</tabTrigger>
+<tabTrigger>jsitepreparedocument</tabTrigger>
 </snippet>

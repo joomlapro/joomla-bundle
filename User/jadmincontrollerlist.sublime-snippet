@@ -3,13 +3,13 @@
 jimport('joomla.application.component.controlleradmin');
 
 /**
- * ${2} list controller class.
+ * $2 list controller class.
  *
- * @package		${1:Hello}
- * @subpackage	com_${1/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
  */
-class ${1}Controller${2:Hellos} extends JControllerAdmin
+class $1Controller${2:Hellos} extends JControllerAdmin
 {
 	/**
 	 * @var		string	The prefix to use with controller messages.
@@ -20,9 +20,10 @@ class ${1}Controller${2:Hellos} extends JControllerAdmin
 	/**
 	 * Constructor.
 	 *
-	 * @param	array An optional associative array of configuration settings.
-	 * @see		JController
-	 * @since	2.5
+	 * @param   array  \$config  An optional associative array of configuration settings.
+     * 
+	 * @see     JController
+	 * @since   2.5
 	 */
 	public function __construct(\$config = array())
 	{
@@ -31,14 +32,20 @@ class ${1}Controller${2:Hellos} extends JControllerAdmin
 
 	/**
 	 * Proxy for getModel.
+     * 
+	 * @param   string  \$name    The model name. Optional.
+	 * @param   string  \$prefix  The class prefix. Optional.
+	 * @param   array   \$config  Configuration array for model. Optional.
+     * 
+	 * @return  object  The model.
+     * 
 	 * @since	2.5
 	 */
-	public function getModel(\$name = '${3:Hello}', \$prefix = '${1}Model', \$config = array('ignore_request' => true))
+	public function getModel(\$name = '${3:Hello}', \$prefix = '$1Model', \$config = array('ignore_request' => true))
 	{
 		\$model = parent::getModel(\$name, \$prefix, \$config);
 		return \$model;
 	}
-
 }
 
 ]]></content>

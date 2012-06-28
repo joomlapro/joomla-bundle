@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+<fieldset name="${1:hello}">
+	$2
+</fieldset>
+]]></content>
+<tabTrigger>jfieldset</tabTrigger>
+</snippet>

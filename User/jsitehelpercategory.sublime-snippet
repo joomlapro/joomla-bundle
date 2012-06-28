@@ -5,15 +5,23 @@ jimport('joomla.application.component.helper');
 jimport('joomla.application.categories');
 
 /**
- * ${1} Component Category Tree
+ * $1 Component Category Tree
  *
  * @static
- * @package		${1:Hello}
- * @subpackage	com_${1/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ *
+ * @since       2.5
  */
-class ${1}Categories extends JCategories
+class $1Categories extends JCategories
 {
+	/**
+	 * Class constructor
+	 *
+	 * @param   array  \$options  Array of options
+	 *
+	 * @since   2.5
+	 */
 	public function __construct(\$options = array())
 	{
 		\$options['table'] = '#__${2:hello}';

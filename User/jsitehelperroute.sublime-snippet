@@ -5,18 +5,25 @@ jimport('joomla.application.component.helper');
 jimport('joomla.application.categories');
 
 /**
- * ${1} Component Route Helper
+ * $1 Component Route Helper
  *
- * @package		${1:Hello}
- * @subpackage	com_${1/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
  */
-abstract class ${1}HelperRoute
+abstract class $1HelperRoute
 {
 	protected static \$lookup;
 
 	/**
-	 * @param	int	The route of the ${2/(.+)/\L\1/g}
+	 * Get the ${2/(.+)/\L\1/g} route
+	 *
+	 * @param   int  \$id     The route of the ${2/(.+)/\L\1/g}.
+	 * @param   int  \$catid  The id of the category.
+	 *
+	 * @return  string
+	 *
+	 * @since   2.5
 	 */
 	public static function get${2:Hello}Route(\$id, \$catid)
 	{
@@ -24,31 +31,44 @@ abstract class ${1}HelperRoute
 			'${2/(.+)/\L\1/g}'  => array((int) \$id)
 		);
 
-		//Create the link
-		\$link = 'index.php?option=com_${1/(.+)/\L\1/g}&view=${2/(.+)/\L\1/g}&id='. \$id;
+		// Create the link
+		\$link = 'index.php?option=com_${1/(.+)/\L\1/g}&view=${2/(.+)/\L\1/g}&id=' . \$id;
 
-		if ((int)\$catid > 1) {
-			\$categories = JCategories::getInstance('${1}');
-			\$category = \$categories->get((int)\$catid);
+		if ((int) \$catid > 1)
+		{
+			\$categories = JCategories::getInstance('$1');
+			\$category = \$categories->get((int) \$catid);
 
-			if (\$category) {
-				//TODO Throw error that the category either not exists or is unpublished
+			if (\$category)
+			{
+				// TODO Throw error that the category either not exists or is unpublished
 				\$needles['category'] = array_reverse(\$category->getPath());
 				\$needles['categories'] = \$needles['category'];
-				\$link .= '&catid='.\$catid;
+				\$link .= '&catid=' . \$catid;
 			}
 		}
 
-		if (\$item = self::_findItem(\$needles)) {
-			\$link .= '&Itemid='.\$item;
+		if (\$item = self::_findItem(\$needles))
+		{
+			\$link .= '&Itemid=' . \$item;
 		}
-		elseif (\$item = self::_findItem()) {
-			\$link .= '&Itemid='.\$item;
+		elseif (\$item = self::_findItem())
+		{
+			\$link .= '&Itemid=' . \$item;
 		}
 
 		return \$link;
 	}
 
+	/**
+	 * Get the categiry route
+	 *
+	 * @param   int  \$catid  The id of the category.
+	 *
+	 * @return  string
+	 *
+	 * @since   2.5
+	 */
 	public static function getCategoryRoute(\$catid)
 	{
 		if (\$catid instanceof JCategoryNode)
@@ -59,10 +79,10 @@ abstract class ${1}HelperRoute
 		else
 		{
 			\$id = (int) \$catid;
-			\$category = JCategories::getInstance('${1}')->get(\$id);
+			\$category = JCategories::getInstance('$1')->get(\$id);
 		}
 
-		if(\$id < 1)
+		if (\$id < 1)
 		{
 			\$link = '';
 		}
@@ -74,24 +94,28 @@ abstract class ${1}HelperRoute
 
 			if (\$item = self::_findItem(\$needles))
 			{
-				\$link = 'index.php?Itemid='.\$item;
+				\$link = 'index.php?Itemid=' . \$item;
 			}
 			else
 			{
-				//Create the link
-				\$link = 'index.php?option=com_${1/(.+)/\L\1/g}&view=category&id='.\$id;
-				if(\$category)
+				// Create the link
+				\$link = 'index.php?option=com_${1/(.+)/\L\1/g}&view=category&id=' . \$id;
+
+				if (\$category)
 				{
 					\$catids = array_reverse(\$category->getPath());
 					\$needles = array(
 						'category' => \$catids,
 						'categories' => \$catids
 					);
-					if (\$item = self::_findItem(\$needles)) {
-						\$link .= '&Itemid='.\$item;
+
+					if (\$item = self::_findItem(\$needles))
+					{
+						\$link .= '&Itemid=' . \$item;
 					}
-					elseif (\$item = self::_findItem()) {
-						\$link .= '&Itemid='.\$item;
+					elseif (\$item = self::_findItem())
+					{
+						\$link .= '&Itemid=' . \$item;
 					}
 				}
 			}
@@ -100,6 +124,15 @@ abstract class ${1}HelperRoute
 		return \$link;
 	}
 
+	/**
+	 * Find the item
+	 *
+	 * @param   boleam  \$needles  The needles.
+	 *
+	 * @return  void
+	 *
+	 * @since   2.5
+	 */
 	protected static function _findItem(\$needles = null)
 	{
 		\$app		= JFactory::getApplication();
@@ -117,10 +150,12 @@ abstract class ${1}HelperRoute
 				if (isset(\$item->query) && isset(\$item->query['view']))
 				{
 					\$view = \$item->query['view'];
-					if (!isset(self::\$lookup[\$view])) {
+					if (!isset(self::\$lookup[\$view]))
+					{
 						self::\$lookup[\$view] = array();
 					}
-					if (isset(\$item->query['id'])) {
+					if (isset(\$item->query['id']))
+					{
 						self::\$lookup[\$view][\$item->query['id']] = \$item->id;
 					}
 				}
@@ -133,10 +168,11 @@ abstract class ${1}HelperRoute
 			{
 				if (isset(self::\$lookup[\$view]))
 				{
-					foreach(\$ids as \$id)
+					foreach (\$ids as \$id)
 					{
-						if (isset(self::\$lookup[\$view][(int)\$id])) {
-							return self::\$lookup[\$view][(int)\$id];
+						if (isset(self::\$lookup[\$view][(int) \$id]))
+						{
+							return self::\$lookup[\$view][(int) \$id];
 						}
 					}
 				}
@@ -145,7 +181,8 @@ abstract class ${1}HelperRoute
 		else
 		{
 			\$active = \$menus->getActive();
-			if (\$active) {
+			if (\$active)
+			{
 				return \$active->id;
 			}
 		}

@@ -33,7 +33,7 @@
 		<filename>router.php</filename>
 	</files>
 	<languages folder="site">
-		<language tag="${7:pt-BR}">language/${7}.com_${1/(.+)/\L\1/g}.ini</language>
+		<language tag="${7:pt-BR}">language/$7.com_${1/(.+)/\L\1/g}.ini</language>
 	</languages>
 	<administration>
 		<menu img="../media/com_${1/(.+)/\L\1/g}/images/menu/${1/(.+)/\L\1/g}.png">com_${1/(.+)/\L\1/g}</menu>
@@ -56,8 +56,8 @@
 			<filename>index.html</filename>
 		</files>
 		<languages folder="admin">
-			<language tag="${7}">language/${7}.com_${1/(.+)/\L\1/g}.ini</language>
-			<language tag="${7}">language/${7}.com_${1/(.+)/\L\1/g}.sys.ini</language>
+			<language tag="$7">language/$7.com_${1/(.+)/\L\1/g}.ini</language>
+			<language tag="$7">language/$7.com_${1/(.+)/\L\1/g}.sys.ini</language>
 		</languages>
 	</administration>
 </extension>

@@ -47,14 +47,14 @@ class JFormFieldOrdering extends JFormField
 				' WHERE catid = ' . (int) \$categoryId .
 				' ORDER BY ordering';
 
-		// Create a read-only list (no ${5}) with a hidden input to store the value.
+		// Create a read-only list (no $5) with a hidden input to store the value.
 		if ((string) \$this->element['readonly'] == 'true') {
-			\$html[] = JHtml::_('list.ordering', '', \$query, trim(\$attr), \$this->value, \$${3}Id ? 0 : 1);
-			\$html[] = '<input type="hidden" name="'.\$this->${5}.'" value="'.\$this->value.'"/>';
+			\$html[] = JHtml::_('list.ordering', '', \$query, trim(\$attr), \$this->value, \$$3Id ? 0 : 1);
+			\$html[] = '<input type="hidden" name="'.\$this->$5.'" value="'.\$this->value.'"/>';
 		}
 		// Create a regular list.
 		else {
-			\$html[] = JHtml::_('list.ordering', \$this->${5}, \$query, trim(\$attr), \$this->value, \$${3}Id ? 0 : 1);
+			\$html[] = JHtml::_('list.ordering', \$this->$5, \$query, trim(\$attr), \$this->value, \$$3Id ? 0 : 1);
 		}
 
 		return implode(\$html);

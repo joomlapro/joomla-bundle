@@ -3,10 +3,11 @@
 /**
  * Method is called before user data is deleted from the database
  *
- * @param	array		\$user	Holds the user data.
+ * @param   array  \$user  Holds the user data.
  *
- * @return	void
- * @since	2.5
+ * @return  void
+ *
+ * @since   2.5
  */
 public function onUserBeforeDelete(\$user)
 {

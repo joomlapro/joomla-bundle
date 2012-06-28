@@ -2,8 +2,6 @@
 	<content><![CDATA[
 // Initialiase variables.
 \$db = JFactory::getDbo();
-// Use following line in a model.
-//\$db = \$this->getDbo();
 \$query = \$db->getQuery(true);
 
 // Prepare query.
@@ -16,7 +14,8 @@
 \$result = \$db->loadObjectList();
 
 // Check for errors.
-if (\$error = \$db->getErrorMsg()) {
+if (\$error = \$db->getErrorMsg())
+{
 	\$this->setError(\$error);
 	\$result = false;
 	return \$result;

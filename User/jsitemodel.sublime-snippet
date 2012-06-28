@@ -3,16 +3,19 @@
 jimport('joomla.application.component.modellist');
 
 /**
- * ${2} model.
+ * $2 model.
  *
- * @package		${1:Hello}
- * @subpackage	com_${1/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
  */
-class ${1}Model${2:Hello} extends JModelList
+class $1Model${2:Hello} extends JModelList
 {
 	/**
 	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
+	 *
+	 * @param   int     \$ordering   The order to show.
+	 * @param   string  \$direction  The direction desc|asc.
 	 *
 	 * @return  void
 	 *
@@ -21,26 +24,27 @@ class ${1}Model${2:Hello} extends JModelList
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
 		// Initialise variables.
-		\$app	= JFactory::getApplication();
-		\$params	= JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
-		\$itemid	= JRequest::getInt('Itemid', 0);
-				
+		\$app    = JFactory::getApplication();
+		\$params = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
+		\$itemid = JRequest::getInt('Itemid', 0);
+
 		// Load the parameters.
 		\$this->setState('params', \$params);
 	}
-	
+
 	/**
 	 * Gets a list of ${2/(.+)/\L\1/g}
 	 *
-	 * @return	array	An array of banner objects.
-	 * @since	2.5
+	 * @return  array  An array of banner objects.
+	 *
+	 * @since   2.5
 	 */
 	protected function getListQuery()
 	{
 		// Initialiase variables.
 		\$db = JFactory::getDbo();
 		\$query = \$db->getQuery(true);
-		
+
 		// Prepare query.
 		\$query->select('');
 		\$query->from('#__');

@@ -2,9 +2,9 @@
 	<content><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="COM_${1:HELLO}_${2:HELLO}_VIEW_DEFAULT_TITLE" option="COM_${1}_${2}_VIEW_DEFAULT_OPTION">
+	<layout title="COM_${1:HELLO}_${2:HELLO}_VIEW_DEFAULT_TITLE" option="COM_$1_$2_VIEW_DEFAULT_OPTION">
 		<message>
-			<![CDATA[COM_${1}_${2}_VIEW_DEFAULT_DESC]] >
+			<![CDATA[COM_$1_$2_VIEW_DEFAULT_DESC]] >
 		</message>
 	</layout>
 </metadata>

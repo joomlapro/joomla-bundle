@@ -3,16 +3,19 @@
 jimport('joomla.application.component.modellist');
 
 /**
- * ${2} model.
+ * $2 model.
  *
- * @package		${1:Hello}
- * @subpackage	com_${1/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
  */
-class ${1}Model${2:Hellos} extends JModelList
+class $1Model${2:Hellos} extends JModelList
 {
 	/**
 	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
+	 *
+	 * @param   string  \$ordering   An optional ordering field.
+	 * @param   string  \$direction  An optional direction (asc|desc).
 	 *
 	 * @return  void
 	 *
@@ -21,26 +24,27 @@ class ${1}Model${2:Hellos} extends JModelList
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
 		// Initialise variables.
-		\$app	= JFactory::getApplication();
-		\$params	= JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
-		\$itemid	= JRequest::getInt('Itemid', 0);
+		\$app    = JFactory::getApplication();
+		\$params = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
+		\$itemid = JRequest::getInt('Itemid', 0);
 
 		// List state information
 		\$limit = \$app->getUserStateFromRequest('com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.list' . \$itemid . '.limit', 'limit', \$params->get('num_${2/(.+)/\L\1/g}'));
 		\$this->setState('list.limit', \$limit);
-				
+
 		\$limitstart = JRequest::getVar('limitstart', 0, '', 'int');
 		\$this->setState('list.start', \$limitstart);
-				
+
 		// Load the parameters.
 		\$this->setState('params', \$params);
 	}
-	
+
 	/**
 	 * Gets a list of ${2/(.+)/\L\1/g}
 	 *
-	 * @return	array	An array of banner objects.
-	 * @since	2.5
+	 * @return  array  An array of banner objects.
+	 *
+	 * @since   2.5
 	 */
 	protected function getListQuery()
 	{
@@ -48,7 +52,7 @@ class ${1}Model${2:Hellos} extends JModelList
 		\$app = JFactory::getApplication('site');
 		\$db = JFactory::getDbo();
 		\$query = \$db->getQuery(true);
-		
+
 		// Prepare query.
 		\$query->select('');
 		\$query->from('#__');

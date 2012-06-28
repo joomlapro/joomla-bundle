@@ -28,15 +28,15 @@
 		<filename>templateDetails.xml</filename>
 	</files>
 	<positions>
-		<position>${1}-mainmenu</position>
-		<position>${1}-search</position>
-		<position>${1}-sidebar</position>
-		<position>${1}-footer</position>
-		<position>${1}-footermenu</position>
+		<position>$1-mainmenu</position>
+		<position>$1-search</position>
+		<position>$1-sidebar</position>
+		<position>$1-footer</position>
+		<position>$1-footermenu</position>
 	</positions>
 	<languages folder="language">
-		<language tag="${7:pt-BR}">${7}/${7}.tpl_${1}.ini</language>
-		<language tag="${7}">${7}/${7}.tpl_${1}.sys.ini</language>
+		<language tag="${7:pt-BR}">$7/$7.tpl_$1.ini</language>
+		<language tag="$7">$7/$7.tpl_$1.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">

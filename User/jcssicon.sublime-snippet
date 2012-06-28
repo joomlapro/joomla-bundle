@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 .icon-48-${1:hellos}, .icon-48-${2:hello} {
-	background: url(../images/toolbar/${2}.png) no-repeat left;
+	background: url(../images/toolbar/$2.png) no-repeat left;
 }
 
 ]]></content>

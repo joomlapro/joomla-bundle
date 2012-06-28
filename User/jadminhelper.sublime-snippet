@@ -1,23 +1,24 @@
 <snippet>
 	<content><![CDATA[
 /**
- * ${1} component helper.
+ * $1 component helper.
  *
- * @package		${1:Hello}
- * @subpackage	com_${1/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
  */
-class ${1}Helper
+class $1Helper
 {
 	public static \$extension = 'com_${1/(.+)/\L\1/g}';
 
 	/**
 	 * Configure the Linkbar.
 	 *
-	 * @param	string	\$vName	The name of the active view.
+	 * @param   string  \$vName  The name of the active view.
 	 *
-	 * @return	void
-	 * @since	2.5
+	 * @return  void
+     * 
+	 * @since   2.5
 	 */
 	public static function addSubmenu(\$vName)
 	{
@@ -40,15 +41,16 @@ class ${1}Helper
 	 */
 	public static function getActions()
 	{
-		\$user		= JFactory::getUser();
-		\$result		= new JObject;
-		\$assetName	= 'com_${1/(.+)/\L\1/g}';
+		\$user      = JFactory::getUser();
+		\$result    = new JObject;
+		\$assetName = 'com_${1/(.+)/\L\1/g}';
 
 		\$actions = array(
 			'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.state', 'core.delete'
 		);
 
-		foreach (\$actions as \$action) {
+		foreach (\$actions as \$action)
+		{
 			\$result->set(\$action, \$user->authorise(\$action, \$assetName));
 		}
 

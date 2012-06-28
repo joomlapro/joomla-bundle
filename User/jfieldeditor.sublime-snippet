@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[
+<field name="${1:hello}" type="editor" class="inputbox" filter="JComponentHelper::filterText" buttons="true" hide="readmore,pagebreak" label="${2:COM}_${3:HELLO}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="$2_$3_FIELD_${1/(.+)/\U\1/g}_DESC" />
+]]></content>
+<tabTrigger>jfieldeditor</tabTrigger>
+</snippet>

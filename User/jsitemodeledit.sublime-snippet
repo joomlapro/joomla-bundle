@@ -3,38 +3,40 @@
 jimport('joomla.application.component.modelitem');
 
 /**
- * ${2} Model
+ * $2 Model
  *
- * @package		${1:Hello}
- * @subpackage	com_${1/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
  */
-class ${1}Model${2:Hello} extends JModelItem
+class $1Model${2:Hello} extends JModelItem
 {
 	/**
 	 * Method to get ${2/(.+)/\L\1/g} data.
 	 *
-	 * @param	integer	The id of the ${2/(.+)/\L\1/g}.
+	 * @param   integer  \$pk  The id of the ${2/(.+)/\L\1/g}.
 	 *
-	 * @return	mixed	Menu item data object on success, false on failure.
+	 * @return  mixed  Menu item data object on success, false on failure.
+	 *
+	 * @since   2.5
 	 */
 	public function &getItem(\$pk = null)
 	{
 		\$id = JRequest::getInt('id');
-		
+
 		// Initialiase variables.
 		\$db = JFactory::getDbo();
 		\$query = \$db->getQuery(true);
-		
+
 		// Prepare query.
 		\$query->select('');
 		\$query->from('#__');
 		\$query->where('');
-		
+
 		// Inject the query and load the result.
 		\$db->setQuery(\$query);
 		\$item = \$db->loadObject();
-		
+
 		return \$item;
 	}
 }

@@ -3,11 +3,12 @@
 /**
  * This method should handle any login logic and report back to the subject
  *
- * @param	array	\$user		Holds the user data.
- * @param	array	\$options	Extra options.
+ * @param   array  \$user     Holds the user data.
+ * @param   array  \$options  Extra options.
  *
- * @return	boolean	True on success
- * @since	2.5
+ * @return  boolean	True on success
+ *
+ * @since   2.5
  */
 public function onUserLogin(\$user, \$options)
 {

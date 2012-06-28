@@ -1,8 +1,8 @@
 <snippet>
 	<content><![CDATA[
-<select name="filter_${3:hello}" class="inputbox" onchange="this.form.submit()">
-	<option value=""><?php echo JText::_('COM_${1/(.+)/\U\1/g}_SELECT_${2:HELLO} ?></option>
-	<?php echo JHtml::_('select.options', ${1:Hello}Helper::get${3/(.+)/\u\1/g}Options(), 'value', 'text', \$this->state->get('filter.${3}')) ?>
+<select name="filter_${2:hello}_id" class="inputbox" onchange="this.form.submit()">
+	<option value=""><?php echo JText::_('COM_${1/(.+)/\U\1/g}_SELECT_${2/(.+)/\U\1/g}'); ?></option>
+	<?php echo JHtml::_('select.options', ${1:Hello}Helper::get${2/(.+)/\u\1/g}Options(), 'value', 'text', \$this->state->get('filter.$2_id')); ?>
 </select>
 ]]></content>
 <tabTrigger>jadminfilter</tabTrigger>

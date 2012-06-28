@@ -5,7 +5,7 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 \$canDo = ${1:Hello}Helper::getActions();
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&layout=edit&id='.(int) \$this->item->id); ?>" method="post" name="adminForm" id="${2:hello}-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${2:hello}-form" class="form-validate">
 	<div class="width-60 fltlft">
 		<fieldset class="adminform">
 			<legend><?php echo empty(\$this->item->id) ? JText::_('COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ADD') : JText::sprintf('COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_EDIT', \$this->item->id); ?></legend>
@@ -13,16 +13,16 @@ JHtml::_('behavior.formvalidation');
 				<?php if (\$this->item->id): ?>
 					<li><?php echo \$this->form->getLabel('id'); ?>
 					<?php echo \$this->form->getInput('id'); ?></li>
-				<?php endif ?>
+				<?php endif; ?>
 
 				<li><?php echo \$this->form->getLabel('${3:title}'); ?>
-				<?php echo \$this->form->getInput('${3}'); ?></li>
+				<?php echo \$this->form->getInput('$3'); ?></li>
 				<li><?php echo \$this->form->getLabel('alias'); ?>
 				<?php echo \$this->form->getInput('alias'); ?></li>
 				<li><?php echo \$this->form->getLabel('catid'); ?>
 				<?php echo \$this->form->getInput('catid'); ?></li>
 
-				<?php if (\$canDo->get('core.edit.state')) : ?>
+				<?php if (\$canDo->get('core.edit.state')): ?>
 					<li><?php echo \$this->form->getLabel('published'); ?>
 					<?php echo \$this->form->getInput('published'); ?></li>
 				<?php endif; ?>

@@ -4,10 +4,10 @@
 \$aquery = \$db->setQuery(\$db->getQuery(true)
 	->select('alias')
 	->from('#__${1:hellos}')
-	->where('id='.(int)\$query['id'])
+	->where('id=' . (int) \$query['id'])
 );
 \$alias = \$db->loadResult();
-\$query['id'] = \$query['id'].':'.\$alias;
+\$query['id'] = \$query['id'] . ':' . \$alias;
 
 ]]></content>
 <tabTrigger>jsiterouteralias</tabTrigger>

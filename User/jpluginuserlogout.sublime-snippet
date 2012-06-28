@@ -3,10 +3,11 @@
 /**
  * This method should handle any logout logic and report back to the subject
  *
- * @param	array	\$user	Holds the user data.
+ * @param   array  \$user  Holds the user data.
  *
- * @return	boolean	True on success
- * @since	2.5
+ * @return  boolean  True on success
+ *
+ * @since   2.5
  */
 public function onUserLogout(\$user)
 {

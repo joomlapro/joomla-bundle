@@ -2,7 +2,7 @@
 	<content><![CDATA[
 <fields name="request">
 	<fieldset name="request" addfieldpath="/administrator/components/com_${1:hello}/models/fields">
-		<field name="id" type="text" label="COM_${1/(.+)/\U\1/g}_${2:HELLO}_LABEL" description="COM_${1/(.+)/\U\1/g}_${2}_DESC" required="true" />
+		<field name="id" type="text" label="COM_${1/(.+)/\U\1/g}_${2:HELLO}_LABEL" description="COM_${1/(.+)/\U\1/g}_$2_DESC" required="true" />
 	</fieldset>
 </fields>
 ]]></content>

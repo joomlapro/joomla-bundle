@@ -3,14 +3,17 @@
 /**
  * Handle extension uninstall
  *
- * @param	JInstaller	Installer instance
- * @param	int			extension id
- * @param	int			installation result
- * @since	2.5
+ * @param   JInstaller  \$installer  Installer instance.
+ * @param   int         \$eid        Extension id.
+ * @param   int         \$result     Installation result.
+ *
+ * @return  string
+ *
+ * @since   2.5
  */
 function onExtensionAfterUninstall(\$installer, \$eid, \$result)
 {
-	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionAfterUninstall: Uninstallation of '. \$eid .' was a '. (\$result ? 'success' : 'failure'));
+	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionAfterUninstall: Uninstallation of ' . \$eid . ' was a ' . (\$result ? 'success' : 'failure'));
 }
 
 ]]></content>

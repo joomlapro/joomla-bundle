@@ -3,13 +3,15 @@
 /**
  * Allow to processing of extension data after it is saved.
  *
- * @param	object	The data representing the extension.
- * @param	boolean	True is this is new data, false if it is existing data.
- * @since	2.5
+ * @param   object   \$data   The data representing the extension.
+ * @param   boolean  \$isNew  True is this is new data, false if it is existing data.
+ *
+ * @return  string
+ *
+ * @since   2.5
  */
 function onExtensionAfterSave(\$data, \$isNew)
 {
-
 }
 
 ]]></content>

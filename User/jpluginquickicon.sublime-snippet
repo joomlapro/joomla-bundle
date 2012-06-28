@@ -1,23 +1,23 @@
 <snippet>
 	<content><![CDATA[
 /**
- * ${1} Quickicon plugin
+ * $1 Quickicon plugin
  *
- * @package		${1:Hello}
- * @subpackage	plg_quickicon_${1/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  plg_quickicon_${1/(.+)/\L\1/g}
+ * @since       2.5
  */
-class plgQuickicon${1} extends JPlugin
+class plgQuickicon$1 extends JPlugin
 {
 	/**
 	 * Constructor
 	 *
-	 * @param       object  \$subject The object to observe
-	 * @param       array   \$config  An array that holds the plugin configuration
+	 * @param   object  &\$subject  The object to observe
+	 * @param   array   \$config    An array that holds the plugin configuration
 	 *
-	 * @since       2.5
+	 * @since   2.5
 	 */
-	public function __construct(& \$subject, \$config)
+	public function __construct(&\$subject, \$config)
 	{
 		parent::__construct(\$subject, \$config);
 		\$this->loadLanguage();
@@ -28,22 +28,23 @@ class plgQuickicon${1} extends JPlugin
 	 * of icons. You can return an array which defines a single icon and it will
 	 * be rendered right after the stock Quick Icons.
 	 *
-	 * @param  \$context  The calling context
+	 * @param   string  \$context  The calling context
 	 *
-	 * @return array A list of icon definition associative arrays, consisting of the
-	 *				 keys link, image, text and access.
+	 * @return  array   A list of icon definition associative arrays, consisting of the
+	 *				    keys link, image, text and access.
 	 *
-	 * @since       2.5
+	 * @since   2.5
 	 */
 	public function onGetIcons(\$context)
 	{
-		if (\$context != \$this->params->get('context', 'mod_quickicon') || !JFactory::getUser()->authorise('core.manage', 'com_installer')) {
+		if (\$context != \$this->params->get('context', 'mod_quickicon') || !JFactory::getUser()->authorise('core.manage', 'com_installer'))
+		{
 			return;
 		}
 
 		return array(array(
 			'link' => 'index.php?option=com_${1/(.+)/\L\1/g}',
-			'image' => JURI::root() . 'media/com_${1/(.+)/\L\1/g}/images/icon/${1/(.+)/\L\1/g}.png',,
+			'image' => JURI::root() . 'media/com_${1/(.+)/\L\1/g}/images/icon/${1/(.+)/\L\1/g}.png',
 			'text' => JText::_('PLG_QUICKICON_${1/(.+)/\U\1/g}_${1/(.+)/\U\1/g}'),
 			'id' => 'plg_quickicon_com_${1/(.+)/\L\1/g}'
 		));

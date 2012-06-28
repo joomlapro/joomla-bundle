@@ -3,11 +3,12 @@
 /**
  * Method is called before user data is stored in the database
  *
- * @param	array		\$user	Holds the old user data.
- * @param	boolean		\$isnew	True if a new user is stored.
- * @param	array		\$new	Holds the new user data.
+ * @param   array    \$user   Holds the old user data.
+ * @param   boolean  \$isnew  True if a new user is stored.
+ * @param   array    \$new    Holds the new user data.
  *
  * @return	void
+ *
  * @since	2.5
  * @throws	Exception on error.
  */

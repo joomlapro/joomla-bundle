@@ -1,23 +1,25 @@
 <snippet>
 	<content><![CDATA[
 /**
- * ${2} Authentication plugin
+ * $2 Authentication plugin
  *
- * @package		${1:Hello}
- * @subpackage	plg_authentication_${2/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  plg_authentication_${2/(.+)/\L\1/g}
+ * @since       2.5
  */
 class plgAuthentication${2:Hello} extends JPlugin
 {
 	/**
 	 * This method should handle any authentication and report back to the subject
 	 *
-	 * @access	public
-	 * @param   array	\$credentials Array holding the user credentials
-	 * @param	array   \$options	Array of extra options
-	 * @param	object	\$response	Authentication response object
-	 * @return	boolean
-	 * @since	2.5
+	 * @access  public
+	 * @param   array   \$credentials  Array holding the user credentials.
+	 * @param   array   \$options      Array of extra options.
+	 * @param   object  &\$response    Authentication response object.
+	 *
+	 * @return  boolean
+	 *
+	 * @since   2.5
 	 */
 	function onUserAuthenticate(\$credentials, \$options, &\$response)
 	{
@@ -30,25 +32,24 @@ class plgAuthentication${2:Hello} extends JPlugin
 		 */
 		\$success = true;
 		\$response->type = 'Example';
-		
+
 		if (\$success)
 		{
-			\$response->status			= JAUTHENTICATE_STATUS_SUCCESS;
-			\$response->error_message	= '';
+			\$response->status = JAUTHENTICATE_STATUS_SUCCESS;
+			\$response->error_message = '';
+
 			// You may also define other variables:
-			/*
-			\$yourUser					= YourClass::getUser(\$credentials);
-			\$response->email			= \$yourUser->email;
-			\$response->fullname			= \$yourUser->name;
-			*/
-			
+			//\$yourUser = YourClass::getUser(\$credentials);
+			//\$response->email = \$yourUser->email;
+			//\$response->fullname = \$yourUser->name;
+
 			return true;
 		}
 		else
 		{
-			\$response->status			= JAUTHENTICATE_STATUS_FAILURE;
-			\$response->error_message	= 'Could not authenticate';
-			
+			\$response->status = JAUTHENTICATE_STATUS_FAILURE;
+			\$response->error_message = 'Could not authenticate';
+
 			return false;
 		}
 	}

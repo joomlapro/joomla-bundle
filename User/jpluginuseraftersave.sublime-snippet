@@ -3,12 +3,13 @@
 /**
  * Method is called after user data is stored in the database
  *
- * @param	array		\$user		Holds the new user data.
- * @param	boolean		\$isnew		True if a new user is stored.
- * @param	boolean		\$success	True if user was succesfully stored in the database.
- * @param	string		\$msg		Message.
+ * @param   array    \$user     Holds the new user data.
+ * @param   boolean  \$isnew    True if a new user is stored.
+ * @param   boolean  \$success  True if user was succesfully stored in the database.
+ * @param   string   \$msg      Message.
  *
  * @return	void
+ *
  * @since	2.5
  * @throws	Exception on error.
  */
@@ -25,11 +26,13 @@ public function onUserAfterSave(\$user, \$isnew, \$success, \$msg)
 	\$args['fullname']	= \$user['name'];
 	\$args['password']	= \$user['password'];
 
-	if (\$isnew) {
+	if (\$isnew)
+	{
 		// Call a function in the external app to create the user
 		// ThirdPartyApp::createUser(\$user['id'], \$args);
 	}
-	else {
+	else
+	{
 		// Call a function in the external app to update the user
 		// ThirdPartyApp::updateUser(\$user['id'], \$args);
 	}

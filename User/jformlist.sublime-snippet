@@ -1,9 +1,7 @@
 <snippet>
 	<content><![CDATA[
-<field name="${1:hello}" type="list" class="inputbox" size="1" default="1" label="COM_${2:HELLO}_FIELD_${3:HELLO}_LABEL" description="COM_${2}_FIELD_${3}_DESC">
-	<option value="0">JNO</option>
-	<option value="1">JYES</option>
-</field>
+<li><?php echo \$this->form->getLabel('${1:hello}'); ?>
+<?php echo \$this->form->getInput('$1'); ?></li>
 ]]></content>
 <tabTrigger>jformlist</tabTrigger>
 </snippet>

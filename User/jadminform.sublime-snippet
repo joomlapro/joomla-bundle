@@ -6,7 +6,7 @@
 		<field name="id" type="text" default="0" readonly="true" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
 		<field name="${2:title}" type="text" class="inputbox" size="40" label="JGLOBAL_TITLE" description="JFIELD_TITLE_DESC" required="true" />
 		<field name="alias" type="text" class="inputbox" size="40" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
-		<field name="catid" type="categoryedit" extension="com_${1}" label="JCATEGORY" description="COM_${1/(.+)/\U\1/g}_FIELD_CATEGORY_DESC" class="inputbox" required="true" addfieldpath="/administrator/components/com_categories/models/fields">
+		<field name="catid" type="categoryedit" extension="com_$1" label="JCATEGORY" description="COM_${1/(.+)/\U\1/g}_FIELD_CATEGORY_DESC" class="inputbox" required="true" addfieldpath="/administrator/components/com_categories/models/fields">
 			<option value="">JSELECT</option>
 		</field>
 		<field name="published" type="list" label="JSTATUS" description="COM_${1/(.+)/\U\1/g}_FIELD_STATE_DESC" class="inputbox" size="1" default="1">

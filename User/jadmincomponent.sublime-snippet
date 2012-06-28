@@ -1,7 +1,8 @@
 <snippet>
 	<content><![CDATA[
 // Access check.
-if (!JFactory::getUser()->authorise('core.manage', 'com_${1:hello}')) {
+if (!JFactory::getUser()->authorise('core.manage', 'com_${1:hello}'))
+{
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 

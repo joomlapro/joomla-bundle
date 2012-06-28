@@ -1,44 +1,46 @@
 <snippet>
 	<content><![CDATA[
 /**
- * ${1} module helper.
+ * $1 module helper.
  *
  * @package     ${1:Hello}
  * @subpackage  com_${1/(.+)/\L\1/g}
  * @since       2.5
  */
-class Mod${1}Helper
+class Mod$1Helper
 {
 	/**
 	 * Get a list of the ${2:hello} items.
 	 *
-	 * @param	JRegistry	\$params	The module options.
+	 * @param   JRegistry  &\$params  The module options.
 	 *
-	 * @return	array
-	 * @since	2.5
+	 * @return  array
+	 *
+	 * @since   2.5
 	 */
 	static function getList(&\$params)
 	{
 		// Initialiase variables.
 		\$db = JFactory::getDbo();
 		\$query = \$db->getQuery(true);
-		
+
 		// Prepare query.
 		\$query->select('');
 		\$query->from('#__');
 		\$query->where('');
-		
+
 		// Inject the query and load the items.
 		\$db->setQuery(\$query);
 		\$items = \$db->loadObjectList();
-		
+
 		// Check for errors.
-		if (\$error = \$db->getErrorMsg()) {
+		if (\$error = \$db->getErrorMsg())
+		{
 			\$this->setError(\$error);
 			\$items = false;
 			return \$items;
 		}
-		
+
 		return \$items;
 	}
 }

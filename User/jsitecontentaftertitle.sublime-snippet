@@ -3,12 +3,14 @@
 /**
  * Method is called by the view and the results are imploded and displayed in a placeholder
  *
- * @param	string		The context for the content passed to the plugin.
- * @param	object		The content object.  Note \$article->text is also available
- * @param	object		The content params
- * @param	int			The 'page' number
- * @return	string
- * @since	2.5
+ * @param   string  \$context     The context for the content passed to the plugin.
+ * @param   object  &\$article    The content object.  Note \$article->text is also available.
+ * @param   object  &\$params     The content params.
+ * @param   int     \$limitstart  The 'page' number.
+ *
+ * @return  string
+ *
+ * @since   2.5
  */
 public function onContentAfterTitle(\$context, &\$article, &\$params, \$limitstart)
 {

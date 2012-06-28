@@ -1,10 +1,12 @@
 <snippet>
 	<content><![CDATA[
 /**
- * @param	string	The context for the content passed to the plugin.
- * @param	object	The data relating to the content that is to be deleted.
- * @return	boolean
- * @since	2.5
+ * @param   string  \$context  The context for the content passed to the plugin.
+ * @param   object  \$data     The data relating to the content that is to be deleted.
+ *
+ * @return  boolean
+ *
+ * @since   2.5
  */
 public function onContentBeforeDelete(\$context, \$data)
 {

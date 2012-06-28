@@ -3,13 +3,13 @@
 jimport('joomla.database.table');
 
 /**
- * ${2} table class.
+ * $2 table class.
  *
  * @package     ${1:Hello}
  * @subpackage  com_${1/(.+)/\L\1/g}
  * @since       2.5
  */
-class ${1}Table${2:Hello} extends JTable
+class $1Table${2:Hello} extends JTable
 {
 	/**
 	 * Constructor
@@ -114,7 +114,7 @@ class ${1}Table${2:Hello} extends JTable
 		}
 
 		// Verify that the alias is unique
-		\$table = JTable::getInstance('${2}', '${1}Table');
+		\$table = JTable::getInstance('$2', '$1Table');
 		if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
 		{
 			\$this->setError(JText::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));

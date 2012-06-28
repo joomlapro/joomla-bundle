@@ -3,12 +3,13 @@
 jimport('joomla.application.component.controller');
 
 /**
- * ${1} Component Controller
+ * $1 Component Controller
  *
- * @package		${1:Hello}
- * @subpackage	com_${1/(.+)/\L\1/g}
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
  */
-class ${1}Controller extends JController
+class $1Controller extends JController
 {
 	/**
 	 * @var		string	The default view.
@@ -19,22 +20,23 @@ class ${1}Controller extends JController
 	/**
 	 * Method to display a view.
 	 *
-	 * @param	boolean			If true, the view output will be cached
-	 * @param	array			An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
+	 * @param   boolean  \$cachable   If true, the view output will be cached.
+	 * @param   array    \$urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
 	 *
-	 * @return	JController		This object to support chaining.
-	 * @since	2.5
+	 * @return  JController  This object to support chaining.
+     * 
+	 * @since   2.5
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{
-		require_once JPATH_COMPONENT.'/helpers/${1/(.+)/\L\1/g}.php';
+		require_once JPATH_COMPONENT . '/helpers/${1/(.+)/\L\1/g}.php';
 
 		// Load the submenu.
-		${1}Helper::addSubmenu(JRequest::getCmd('view', '${2}'));
+		TesteHelper::addSubmenu(JRequest::getCmd('view', '$2'));
 
-		\$view	= JRequest::getCmd('view', '${2}');
+		\$view   = JRequest::getCmd('view', '$2');
 		\$layout = JRequest::getCmd('layout', 'default');
-		\$id		= JRequest::getInt('id');
+		\$id     = JRequest::getInt('id');
 
 		parent::display();
 
