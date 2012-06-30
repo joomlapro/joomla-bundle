@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Get a list of the ${1/(.+)/\L\1/g} for filtering.
+ *
+ * @return  array  An array of JHtmlOption elements.
+ *
+ * @since   2.5
+ */
+public static function get${1:Hello}Options()
+{
+	// Initialize variables.
+	\$options = array();
+
+	\$db    = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	\$query->select('id AS value, name AS text');
+	\$query->from('#__${2:hello} AS a');
+	\$query->order('a.name');
+
+	// Get the options.
+	\$db->setQuery(\$query);
+	\$options = \$db->loadObjectList();
+
+	// Check for a database error.
+	if (\$db->getErrorNum())
+	{
+		JError::raiseWarning(500, \$db->getErrorMsg());
+	}
+
+	return \$options;
+}
+]]></content>
+<tabTrigger>jadminhelperoptions</tabTrigger>
+</snippet>

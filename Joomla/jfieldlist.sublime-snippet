@@ -1,0 +1,61 @@
+<snippet>
+	<content><![CDATA[
+JFormHelper::loadFieldClass('list');
+
+/**
+ * Form Field State class.
+ *
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * 
+ * @since       2.5
+ */
+class JFormField${2:Hello} extends JFormFieldList
+{
+	/**
+	 * The field type.
+	 *
+	 * @var  string
+	 */
+	protected \$type = '$2';
+
+	/**
+	 * Method to get the field options.
+	 *
+	 * @return  array  The field option objects.
+	 * 
+	 * @since   2.5
+	 */
+	public function getOptions()
+	{
+		// Initialiase variables.
+		\$options = array();
+
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Prepare query.
+		\$query->select('');
+		\$query->from('#__');
+		\$query->where('');
+
+		// Get the options.
+		\$db->setQuery(\$query);
+		\$options = \$db->loadObjectList();
+
+		// Check for a database error.
+		if (\$db->getErrorNum())
+		{
+			JError::raiseWarning(500, \$db->getErrorMsg());
+		}
+
+		// Merge any additional options in the XML definition.
+		\$options = array_merge(parent::getOptions(), \$options);
+
+		return \$options;
+	}
+}
+
+]]></content>
+<tabTrigger>jfieldlist</tabTrigger>
+</snippet>

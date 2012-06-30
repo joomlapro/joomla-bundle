@@ -5,5 +5,5 @@
 	<option value="1">JYES</option>
 </field>
 ]]></content>
-<tabTrigger>jfieldlist</tabTrigger>
+<tabTrigger>jformfieldlist</tabTrigger>
 </snippet>

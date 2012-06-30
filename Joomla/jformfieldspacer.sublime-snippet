@@ -2,5 +2,5 @@
 	<content><![CDATA[
 <field name="${1:hello}" type="spacer" class="text" hr="false" label="COM_${2:HELLO}_FIELD_${1/(.+)/\U\1/g}_LABEL" />
 ]]></content>
-<tabTrigger>jfieldspacer</tabTrigger>
+<tabTrigger>jformfieldspacer</tabTrigger>
 </snippet>

@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+<?php
+/**
+ * @package     ${1:Hello}
+ * @subpackage  ${2:com}_${1/(.+)/\L\1/g}
+ * @copyright   Copyright (C) 2012 ${3:AtomTech}, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+// No direct access
+defined('JPATH_BASE') or die;
+
+
+]]></content>
+<tabTrigger>jheader2</tabTrigger>
+</snippet>

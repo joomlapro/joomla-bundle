@@ -5,5 +5,5 @@
 	<option value="0">JNO</option>
 </field>
 ]]></content>
-<tabTrigger>jfieldradio</tabTrigger>
+<tabTrigger>jformfieldradio</tabTrigger>
 </snippet>

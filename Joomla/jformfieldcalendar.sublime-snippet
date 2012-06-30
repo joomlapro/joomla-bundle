@@ -2,5 +2,5 @@
 	<content><![CDATA[
 <field name="${1:hello}" type="calendar" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" label="${2:COM}_${3:HELLO}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="$2_$3_FIELD_${1/(.+)/\U\1/g}_DESC" />
 ]]></content>
-<tabTrigger>jfieldcalendar</tabTrigger>
+<tabTrigger>jformfieldcalendar</tabTrigger>
 </snippet>
