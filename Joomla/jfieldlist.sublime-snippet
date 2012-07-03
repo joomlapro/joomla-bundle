@@ -35,9 +35,9 @@ class JFormField${2:Hello} extends JFormFieldList
 		\$query = \$db->getQuery(true);
 
 		// Prepare query.
-		\$query->select('');
-		\$query->from('#__');
-		\$query->where('');
+		\$query->select('a.id AS value, a.name AS text');
+		\$query->from('#__${3:hello} AS a');
+		\$query->where('a.published = 1');
 
 		// Get the options.
 		\$db->setQuery(\$query);

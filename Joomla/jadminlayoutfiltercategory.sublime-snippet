@@ -5,5 +5,5 @@
 	<?php echo JHtml::_('select.options', JHtml::_('category.options', 'com_banners'), 'value', 'text', \$this->state->get('filter.category_id')); ?>
 </select>
 ]]></content>
-<tabTrigger>jadminfiltercategory</tabTrigger>
+<tabTrigger>jadminlayoutfiltercategory</tabTrigger>
 </snippet>

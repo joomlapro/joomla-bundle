@@ -3,18 +3,19 @@
 /**
  * Method to generate html code for a list of categories
  *
- * @param   string  \$image  The name of image.
- * @param   string  \$text   The title of buttom.
+ * @param   string  \$category  The name of option.
+ * @param   string  \$image     The name of image.
+ * @param   string  \$text      The title of buttom.
  *
  * @return  string
  *
  * @since   2.5
  */
-public static function buttonCategory(\$image, \$text)
+public static function buttonCategory(\$category, \$image, \$text)
 {
 	// Define variables
 	\$option = JRequest::getCmd('option');
-	\$link   = JRoute::_('index.php?option=com_categories&extension=' . \$option, false);
+	\$link   = JRoute::_('index.php?option=com_categories&extension=' . \$category, false);
 
 	\$html[] = '<div class="icon-wrapper">';
 	\$html[] = '<div class="icon">';

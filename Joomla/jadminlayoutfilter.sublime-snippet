@@ -5,5 +5,5 @@
 	<?php echo JHtml::_('select.options', ${1:Hello}Helper::get${2/(.+)/\u\1/g}Options(), 'value', 'text', \$this->state->get('filter.$2_id')); ?>
 </select>
 ]]></content>
-<tabTrigger>jadminfilter</tabTrigger>
+<tabTrigger>jadminlayoutfilter</tabTrigger>
 </snippet>

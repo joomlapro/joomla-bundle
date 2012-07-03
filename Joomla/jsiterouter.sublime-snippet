@@ -163,8 +163,9 @@ function ${1/(.+)/\u\1/g}ParseRoute(\$segments)
 	// Standard routing for ${3:hellos}.
 	if (!isset(\$item))
 	{
-		\$vars['view']	= \$segments[0];
-		\$vars['id']	= \$segments[\$count - 1];
+		\$vars['view'] = \$segments[0];
+		\$vars['id']   = \$segments[\$count - 1];
+
 		return \$vars;
 	}
 

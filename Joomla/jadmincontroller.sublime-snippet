@@ -32,7 +32,7 @@ class $1Controller extends JController
 		require_once JPATH_COMPONENT . '/helpers/${1/(.+)/\L\1/g}.php';
 
 		// Load the submenu.
-		TesteHelper::addSubmenu(JRequest::getCmd('view', '$2'));
+		$1Helper::addSubmenu(JRequest::getCmd('view', '$2'));
 
 		\$view   = JRequest::getCmd('view', '$2');
 		\$layout = JRequest::getCmd('layout', 'default');
