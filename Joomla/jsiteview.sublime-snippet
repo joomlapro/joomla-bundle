@@ -11,12 +11,6 @@ jimport('joomla.application.component.view');
  */
 class $1View${2:Hello} extends JView
 {
-	protected \$state;
-
-	protected \$items;
-
-	protected \$pagination;
-
 	/**
 	 * Method to display the view.
 	 *
@@ -31,11 +25,6 @@ class $1View${2:Hello} extends JView
 		// Initialise variables
 		\$app = JFactory::getApplication();
 		\$this->params = \$app->getParams();
-
-		// Get some data from the models
-		\$this->state = \$this->get('State');
-		\$this->items = \$this->get('Items');
-		\$this->pagination = \$this->get('Pagination');
 
 		// Check for errors.
 		if (count(\$errors = \$this->get('Errors')))
