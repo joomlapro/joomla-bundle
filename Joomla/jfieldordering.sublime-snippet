@@ -1,11 +1,11 @@
 <snippet>
 	<content><![CDATA[
 /**
- * Supports an HTML select list of ${2:hellos}
+ * Supports an HTML select list of products
  *
- * @package		${1:Hello}
- * @subpackage	com_${1/(.+)/\L\1/g}
- * @since		2.5
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
  */
 class JFormFieldOrdering extends JFormField
 {
@@ -21,6 +21,7 @@ class JFormFieldOrdering extends JFormField
 	 * Method to get the field input markup.
 	 *
 	 * @return	string	The field input markup.
+	 * 
 	 * @since	2.5
 	 */
 	protected function getInput()
@@ -30,31 +31,34 @@ class JFormFieldOrdering extends JFormField
 		\$attr = '';
 
 		// Initialize some field attributes.
-		\$attr .= \$this->element['class'] ? ' class="'.(string) \$this->element['class'].'"' : '';
+		\$attr .= \$this->element['class'] ? ' class="' . (string) \$this->element['class'] . '"' : '';
 		\$attr .= ((string) \$this->element['disabled'] == 'true') ? ' disabled="disabled"' : '';
-		\$attr .= \$this->element['size'] ? ' size="'.(int) \$this->element['size'].'"' : '';
+		\$attr .= \$this->element['size'] ? ' size="' . (int) \$this->element['size'] . '"' : '';
 
 		// Initialize JavaScript field attributes.
-		\$attr .= \$this->element['onchange'] ? ' onchange="'.(string) \$this->element['onchange'].'"' : '';
+		\$attr .= \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
 
 		// Get some field values from the form.
-		\$${3:hello}Id	= (int) \$this->form->getValue('id');
-		\$categoryId	= (int) \$this->form->getValue('catid');
+		\$productId  = (int) \$this->form->getValue('id');
+		\$categoryId = (int) \$this->form->getValue('catid');
 
 		// Build the query for the ordering list.
-		\$query = 'SELECT ordering AS value, ${5:title} AS text' .
-				' FROM #__${4:hellos}' .
-				' WHERE catid = ' . (int) \$categoryId .
-				' ORDER BY ordering';
+		\$query = 'SELECT ordering AS value, name AS text'
+			. ' FROM #__${2:hello}'
+			. ' WHERE catid = '
+			. (int) \$categoryId
+			. ' ORDER BY ordering';
 
-		// Create a read-only list (no $5) with a hidden input to store the value.
-		if ((string) \$this->element['readonly'] == 'true') {
-			\$html[] = JHtml::_('list.ordering', '', \$query, trim(\$attr), \$this->value, \$$3Id ? 0 : 1);
-			\$html[] = '<input type="hidden" name="'.\$this->$5.'" value="'.\$this->value.'"/>';
+		// Create a read-only list (no name) with a hidden input to store the value.
+		if ((string) \$this->element['readonly'] == 'true')
+		{
+			\$html[] = JHtml::_('list.ordering', '', \$query, trim(\$attr), \$this->value, \$productId ? 0 : 1);
+			\$html[] = '<input type="hidden" name="' . \$this->name . '" value="' . \$this->value . '"/>';
 		}
 		// Create a regular list.
-		else {
-			\$html[] = JHtml::_('list.ordering', \$this->$5, \$query, trim(\$attr), \$this->value, \$$3Id ? 0 : 1);
+		else
+		{
+			\$html[] = JHtml::_('list.ordering', \$this->name, \$query, trim(\$attr), \$this->value, \$productId ? 0 : 1);
 		}
 
 		return implode(\$html);
