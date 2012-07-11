@@ -15,6 +15,7 @@
 			<option value="2">JARCHIVED</option>
 			<option value="-2">JTRASHED</option>
 		</field>
+		<field name="access" type="accesslevel" class="inputbox" size="1" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />
 		<field name="ordering" type="ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
 		<field name="description" type="editor" label="JGLOBAL_DESCRIPTION" description="COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" class="inputbox" filter="JComponentHelper::filterText" buttons="true" hide="readmore,pagebreak" />
 	</fieldset>

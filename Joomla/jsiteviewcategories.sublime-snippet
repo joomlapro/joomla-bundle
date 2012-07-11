@@ -1,45 +1,64 @@
 <snippet>
 	<content><![CDATA[
-jimport('joomla.application.component.view');
-
 /**
- * HTML View class for the ${2/(.+)/\L\1/g} component.
+ * Content ${2/(.+)/\L\1/g} view.
  *
  * @package     ${1:Hello}
  * @subpackage  com_${1/(.+)/\L\1/g}
  * @since       2.5
  */
-class $1View${2:Hello} extends JView
+class $1View${2:Categories} extends JViewLegacy
 {
-	protected \$state;
+	protected \$state = null;
 
-	protected \$item;
+	protected \$item = null;
+
+	protected \$items = null;
 
 	/**
 	 * Method to display the view.
 	 *
 	 * @param   string  \$tpl  A template file to load. [optional]
 	 *
-	 * @return  mixed  A string if successful, otherwise a JError object.
+	 * @return  mixed  JError object on failure, void on success.
 	 *
 	 * @since   2.5
 	 */
 	public function display(\$tpl = null)
 	{
 		// Initialise variables
-		\$app = JFactory::getApplication();
-		\$this->params = \$app->getParams();
-
-		// Get some data from the models
-		\$this->state = \$this->get('State');
-		\$this->item = \$this->get('Item');
+		\$state  = \$this->get('State');
+		\$items  = \$this->get('Items');
+		\$parent = \$this->get('Parent');
 
 		// Check for errors.
 		if (count(\$errors = \$this->get('Errors')))
 		{
-			JError::raiseError(500, implode("\n", \$errors));
+			JError::raiseWarning(500, implode("\n", \$errors));
 			return false;
 		}
+
+		if (\$items === false)
+		{
+			return JError::raiseError(404, JText::_('JGLOBAL_CATEGORY_NOT_FOUND'));
+		}
+
+		if (\$parent == false)
+		{
+			return JError::raiseError(404, JText::_('JGLOBAL_CATEGORY_NOT_FOUND'));
+		}
+
+		\$params = &\$state->params;
+
+		\$items = array(\$parent->id => \$items);
+
+		// Escape strings for HTML output
+		\$this->pageclass_sfx = htmlspecialchars(\$params->get('pageclass_sfx'));
+
+		\$this->maxLevelcat = \$params->get('maxLevelcat', -1);
+		\$this->assignRef('params', \$params);
+		\$this->assignRef('parent', \$parent);
+		\$this->assignRef('items', \$items);
 
 		\$this->_prepareDocument();
 
@@ -48,8 +67,10 @@ class $1View${2:Hello} extends JView
 
 	/**
 	 * Prepares the document
-	 *
+	 * 
 	 * @return  void
+	 * 
+	 * @since   2.5
 	 */
 	protected function _prepareDocument()
 	{
@@ -58,12 +79,12 @@ class $1View${2:Hello} extends JView
 		\$title	= null;
 
 		// Because the application sets a default page title,
-		// We need to get it from the menu item itself
+		// we need to get it from the menu item itself
 		\$menu = \$menus->getActive();
 
 		if (\$menu)
 		{
-			\$this->params->def('page_heading', \$this->params->def('page_title', \$menu->title));
+			\$this->params->def('page_heading', \$this->params->get('page_title', \$menu->title));
 		}
 		else
 		{
@@ -84,6 +105,7 @@ class $1View${2:Hello} extends JView
 		{
 			\$title = JText::sprintf('JPAGETITLE', \$title, \$app->getCfg('sitename'));
 		}
+
 		\$this->document->setTitle(\$title);
 
 		if (\$this->params->get('menu-meta_description'))
@@ -104,5 +126,5 @@ class $1View${2:Hello} extends JView
 }
 
 ]]></content>
-<tabTrigger>jsiteviewedit</tabTrigger>
+<tabTrigger>jsiteviewcategories</tabTrigger>
 </snippet>

@@ -1,7 +1,5 @@
 <snippet>
 	<content><![CDATA[
-jimport('joomla.application.component.controller');
-
 /**
  * $1 Component Controller
  *
@@ -9,12 +7,12 @@ jimport('joomla.application.component.controller');
  * @subpackage  com_${1/(.+)/\L\1/g}
  * @since       2.5
  */
-class $1Controller extends JController
+class $1Controller extends JControllerLegacy
 {
 	/**
-	 * Method to display a view.
+	 * Method to show a ${1/(.+)/\L\1/g} view
 	 *
-	 * @param   boolean  \$cachable   If true, the view output will be cached.
+	 * @param   boolean  \$cachable   If true, the view output will be cached
 	 * @param   array    \$urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
 	 *
 	 * @return  JController  This object to support chaining.
@@ -23,26 +21,29 @@ class $1Controller extends JController
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{
-		// Initialise variables.
 		\$cachable = true;
-		\$user = JFactory::getUser();
 
 		// Set the default view name and format from the Request.
-		\$vName = JRequest::getCmd('view', '${2:hello}');
+		\$vName = JRequest::getCmd('view', '${2:categories}');
 		JRequest::setVar('view', \$vName);
 
+		\$user = JFactory::getUser();
+
+		if (\$user->get('id') || (\$_SERVER['REQUEST_METHOD'] == 'POST' && \$vName = 'category' ))
+		{
+			\$cachable = false;
+		}
+
 		\$safeurlparams = array(
-			'id'				=> 'INT',
-			'limit'				=> 'INT',
-			'limitstart'		=> 'INT',
-			'filter_order'		=> 'CMD',
-			'filter_order_Dir'	=> 'CMD',
-			'lang'				=> 'CMD'
+			'id' => 'INT',
+			'limit' => 'UINT',
+			'limitstart' => 'UINT',
+			'filter_order' => 'CMD',
+			'filter_order_Dir' => 'CMD',
+			'lang' => 'CMD'
 		);
 
 		parent::display(\$cachable, \$safeurlparams);
-
-		return \$this;
 	}
 }
 

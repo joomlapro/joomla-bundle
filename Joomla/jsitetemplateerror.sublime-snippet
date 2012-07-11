@@ -18,7 +18,7 @@ if (!isset(\$this->error))
 	<link rel="stylesheet" href="<?php echo \$this->baseurl; ?>/templates/system/css/error.css">
 	<?php if (\$this->direction == 'rtl'): ?>
 		<link rel="stylesheet" href="<?php echo \$this->baseurl; ?>/templates/system/css/error_rtl.css">
-	<?php endif ?>
+	<?php endif; ?>
 </head>
 <body>
 	<div class="error">
@@ -37,7 +37,7 @@ if (!isset(\$this->error))
 					</ol>
 					<p><strong><?php echo JText::_('JERROR_LAYOUT_PLEASE_TRY_ONE_OF_THE_FOLLOWING_PAGES'); ?></strong></p>
 					<ul>
-						<li><a href="<?php echo \$this->baseurl ?>/index.php" title="<?php echo JText::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?>"><?php echo JText::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></li>
+						<li><a href="<?php echo \$this->baseurl; ?>/index.php" title="<?php echo JText::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?>"><?php echo JText::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></li>
 					</ul>
 					<p><?php echo JText::_('JERROR_LAYOUT_PLEASE_CONTACT_THE_SYSTEM_ADMINISTRATOR'); ?>.</p>
 					<div id="techinfo">
@@ -45,7 +45,7 @@ if (!isset(\$this->error))
 						<p>
 							<?php if (\$this->debug): ?>
 								<?php echo \$this->renderBacktrace(); ?>
-							<?php endif ?>
+							<?php endif; ?>
 						</p>
 					</div>
 				</div>

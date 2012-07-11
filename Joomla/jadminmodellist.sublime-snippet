@@ -115,9 +115,9 @@ class $1Model${2:Hellos} extends JModelList
 		// Select the required fields from the table.
 		\$query->select(
 			\$this->getState(
-				'list.select', 
-				'a.id, a.catid, a.$3, a.alias, a.description' . 
-				', a.ordering, a.published, a.created, a.created_by, a.checked_out, a.checked_out_time'
+				'list.select',
+				'a.id, a.catid, a.$3, a.alias, a.description'
+				. ', a.ordering, a.published, a.created, a.created_by, a.checked_out, a.checked_out_time'
 			)
 		);
 		\$query->from('#__${4:hello} AS a');

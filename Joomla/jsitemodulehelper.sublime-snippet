@@ -28,6 +28,7 @@ class Mod$1Helper
 		\$query->select('');
 		\$query->from('#__');
 		\$query->where('');
+		\$query->order('');
 
 		// Inject the query and load the items.
 		\$db->setQuery(\$query);

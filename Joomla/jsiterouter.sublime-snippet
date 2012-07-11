@@ -8,6 +8,8 @@ jimport('joomla.application.categories');
  * @param   array  &\$query  An array of URL arguments
  *
  * @return  array  The URL arguments to use to assemble the subsequent URL.
+ * 
+ * @since   2.5
  */
 function ${1:Hello}BuildRoute(&\$query)
 {
@@ -73,7 +75,7 @@ function ${1:Hello}BuildRoute(&\$query)
 			}
 
 			\$menuCatid  = \$mId;
-			\$categories = JCategories::getInstance('${1/(.+)/\u\1/g}');
+			\$categories = JCategories::getInstance('$1');
 			\$category   = \$categories->get(\$catid);
 
 			if (\$category)
@@ -97,6 +99,7 @@ function ${1:Hello}BuildRoute(&\$query)
 
 					\$array[] = \$id;
 				}
+
 				\$segments = array_merge(\$segments, array_reverse(\$array));
 			}
 
@@ -146,21 +149,21 @@ function ${1:Hello}BuildRoute(&\$query)
  *
  * @return  array  The URL attributes to be used by the application.
  */
-function ${1/(.+)/\u\1/g}ParseRoute(\$segments)
+function $1ParseRoute(\$segments)
 {
 	\$vars = array();
 
 	// Get the active menu item.
-	\$app	= JFactory::getApplication();
-	\$menu	= \$app->getMenu();
-	\$item	= \$menu->getActive();
-	\$params = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
+	\$app      = JFactory::getApplication();
+	\$menu     = \$app->getMenu();
+	\$item     = \$menu->getActive();
+	\$params   = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
 	\$advanced = \$params->get('sef_advanced_link', 0);
 
 	// Count route segments
 	\$count = count(\$segments);
 
-	// Standard routing for ${3:hellos}.
+	// Standard routing for ${1/(.+)/\L\1/g}.
 	if (!isset(\$item))
 	{
 		\$vars['view'] = \$segments[0];
@@ -172,7 +175,7 @@ function ${1/(.+)/\u\1/g}ParseRoute(\$segments)
 	// From the categories view, we can only jump to a category.
 	\$id = (isset(\$item->query['id']) && \$item->query['id'] > 1) ? \$item->query['id'] : 'root';
 
-	\$category = JCategories::getInstance('${1/(.+)/\u\1/g}')->get(\$id);
+	\$category = JCategories::getInstance('$1')->get(\$id);
 
 	\$categories = \$category->getChildren();
 	\$found = 0;
@@ -197,7 +200,7 @@ function ${1/(.+)/\u\1/g}ParseRoute(\$segments)
 			if (\$advanced)
 			{
 				\$db = JFactory::getDBO();
-				\$query = 'SELECT id FROM #__${3:hellos} WHERE catid = ' . \$vars['id'] . ' AND alias = ' . \$db->Quote(str_replace(':', '-', \$segment));
+				\$query = 'SELECT id FROM #__${1/(.+)/\L\1/g} WHERE catid = ' . \$vars['id'] . ' AND alias = ' . \$db->Quote(str_replace(':', '-', \$segment));
 				\$db->setQuery(\$query);
 				\$id = \$db->loadResult();
 			}

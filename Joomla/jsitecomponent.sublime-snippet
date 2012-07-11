@@ -1,11 +1,11 @@
 <snippet>
 	<content><![CDATA[
 // Include dependancies
-jimport('joomla.application.component.controller');
 require_once JPATH_COMPONENT . '/helpers/route.php';
+JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR . '/tables');
 
 // Execute the task.
-\$controller = JController::getInstance('${1:Hello}');
+\$controller = JControllerLegacy::getInstance('${1:Hello}');
 \$controller->execute(JRequest::getCmd('task'));
 \$controller->redirect();
 

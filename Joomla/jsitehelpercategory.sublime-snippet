@@ -26,7 +26,8 @@ class $1Categories extends JCategories
 	{
 		\$options['table'] = '#__${2:hello}';
 		\$options['extension'] = 'com_${1/(.+)/\L\1/g}';
-		//\$options['statefield'] = 'published';
+		\$options['statefield'] = 'published';
+
 		parent::__construct(\$options);
 	}
 }

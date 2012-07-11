@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * ${1} component helper.
+ *
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
+ */
+abstract class ${1}Helper
+{
+	
+}
+
+]]></content>
+<tabTrigger>jsitehelper</tabTrigger>
+</snippet>
