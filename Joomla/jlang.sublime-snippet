@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+// Load the ${1:hello} component language file.
+\$lang = JFactory::getLanguage();
+\$lang->load('com_$1', JPATH_SITE);
+]]></content>
+<tabTrigger>jlang</tabTrigger>
+</snippet>

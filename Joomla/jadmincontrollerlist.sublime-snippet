@@ -44,6 +44,7 @@ class $1Controller${2:Hellos} extends JControllerAdmin
 	public function getModel(\$name = '${3:Hello}', \$prefix = '$1Model', \$config = array('ignore_request' => true))
 	{
 		\$model = parent::getModel(\$name, \$prefix, \$config);
+
 		return \$model;
 	}
 }

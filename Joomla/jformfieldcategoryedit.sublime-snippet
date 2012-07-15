@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+<field name="${1:catid}" type="categoryedit" extension="com_${2:hello}" class="inputbox" required="true" addfieldpath="/administrator/components/com_$2/models/fields" label="JCATEGORY" description="JFIELD_CATEGORY_DESC">
+	<option value="">JSELECT</option>
+</field>
+]]></content>
+<tabTrigger>jformfieldcategoryedit</tabTrigger>
+</snippet>

@@ -44,7 +44,7 @@ class JFormFieldOrdering extends JFormField
 
 		// Build the query for the ordering list.
 		\$query = 'SELECT ordering AS value, name AS text'
-			. ' FROM #__${2:hello}'
+			. ' FROM #__${1/(.+)/\L\1/g}'
 			. ' WHERE catid = '
 			. (int) \$categoryId
 			. ' ORDER BY ordering';

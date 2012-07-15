@@ -24,7 +24,6 @@
 	<files folder="site">
 		<folder>controllers</folder>
 		<folder>helpers</folder>
-		<folder>language</folder>
 		<folder>models</folder>
 		<folder>views</folder>
 		<filename>${1/(.+)/\L\1/g}.php</filename>
@@ -44,7 +43,6 @@
 		<files folder="admin">
 			<folder>controllers</folder>
 			<folder>helpers</folder>
-			<folder>language</folder>
 			<folder>models</folder>
 			<folder>sql</folder>
 			<folder>tables</folder>

@@ -45,6 +45,13 @@ class $1Table${2:Hello} extends JTable
 			\$array['params'] = (string) \$registry;
 		}
 
+		if (isset(\$array['metadata']) && is_array(\$array['metadata']))
+		{
+			\$registry = new JRegistry;
+			\$registry->loadArray(\$array['metadata']);
+			\$array['metadata'] = (string) \$registry;
+		}
+
 		return parent::bind(\$array, \$ignore);
 	}
 
@@ -60,6 +67,14 @@ class $1Table${2:Hello} extends JTable
 	 */
 	public function check()
 	{
+		// Check for valid name.
+		if (trim(\$this->name) == '')
+		{
+			\$this->setError(JText::_('COM_${1/(.+)/\U\1/g}_WARNING_PROVIDE_VALID_NAME'));
+
+			return false;
+		}
+
 		if (trim(\$this->alias) == '')
 		{
 			\$this->alias = \$this->${4:title};
@@ -70,6 +85,14 @@ class $1Table${2:Hello} extends JTable
 		if (trim(str_replace('-', '', \$this->alias)) == '')
 		{
 			\$this->alias = JFactory::getDate()->format('Y-m-d-H-i-s');
+		}
+
+		// Check the publish down date is not earlier than publish up.
+		if (intval(\$this->publish_down) > 0 && \$this->publish_down < \$this->publish_up)
+		{
+			\$this->setError(JText::_('JGLOBAL_START_PUBLISH_AFTER_FINISH'));
+
+			return false;
 		}
 
 		return true;
@@ -118,8 +141,10 @@ class $1Table${2:Hello} extends JTable
 		if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
 		{
 			\$this->setError(JText::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));
+
 			return false;
 		}
+
 		return parent::store(\$updateNulls);
 	}
 }

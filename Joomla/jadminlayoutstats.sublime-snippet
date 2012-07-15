@@ -28,7 +28,7 @@
 		foreach (\$this->items as \$item):
 
 		// Define variables
-		\$link = JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&task=${2/(.+)/\L\1/g}.edit&id=' . \$item->id);
+		\$link = JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&task=${3:hello}.edit&id=' . \$item->id);
 		\$component = JRequest::getCmd('option');
 		?>
 		<tr class="row<?php echo \$k; ?>">

@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Utility class working with ${2/(.+)/\L\1/g}
+ * 
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
+ */
+abstract class JHtml${2:Hello}
+{
+	
+}
+
+]]></content>
+<tabTrigger>jadminmodelhtml</tabTrigger>
+</snippet>

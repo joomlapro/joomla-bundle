@@ -1,8 +1,9 @@
 <snippet>
 	<content><![CDATA[
+<!-- Add fields to the request variables for the layout. -->
 <fields name="request">
 	<fieldset name="request" addfieldpath="/administrator/components/com_${1:hello}/models/fields">
-		<field name="id" type="text" label="COM_${1/(.+)/\U\1/g}_${2:HELLO}_LABEL" description="COM_${1/(.+)/\U\1/g}_$2_DESC" required="true" />
+		<field name="id" type="category" extension="com_$1" show_root="true" required="true" description="JGLOBAL_FIELD_CATEGORIES_CHOOSE_CATEGORY_DESC" label="JGLOBAL_FIELD_CATEGORIES_CHOOSE_CATEGORY_LABEL" />
 	</fieldset>
 </fields>
 ]]></content>

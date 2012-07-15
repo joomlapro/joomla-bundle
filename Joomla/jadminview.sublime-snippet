@@ -50,7 +50,7 @@ class $1View${2:Hellos} extends JView
 
 		\$canDo = $1Helper::getActions();
 		\$user = JFactory::getUser();
-		JToolBarHelper::title(JText::_('COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}'), '${2/(.+)/\L\1/g}.png');
+		JToolBarHelper::title(JText::_('COM_${1/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}'), '${2/(.+)/\L\1/g}.png');
 
 		if (\$canDo->get('core.admin'))
 		{

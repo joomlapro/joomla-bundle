@@ -11,8 +11,6 @@ jimport('joomla.application.component.view');
  */
 class $1View${2:Hellos} extends JView
 {
-	protected \$categories;
-
 	protected \$items;
 
 	protected \$pagination;
@@ -31,7 +29,6 @@ class $1View${2:Hellos} extends JView
 	public function display(\$tpl = null)
 	{
 		// Initialise variables.
-		\$this->categories = \$this->get('CategoryOrders');
 		\$this->items      = \$this->get('Items');
 		\$this->pagination = \$this->get('Pagination');
 		\$this->state      = \$this->get('State');
@@ -62,9 +59,12 @@ class $1View${2:Hellos} extends JView
 	{
 		require_once JPATH_COMPONENT . '/helpers/${1/(.+)/\L\1/g}.php';
 
-		\$canDo = $1Helper::getActions(\$this->state->get('filter.category_id'));
-		\$user = JFactory::getUser();
+		\$state = \$this->get('State');
+		\$canDo = $1Helper::getActions(\$state->get('filter.category_id'));
+		\$user  = JFactory::getUser();
+
 		JToolBarHelper::title(JText::_('COM_${1/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}'), '${2/(.+)/\L\1/g}.png');
+
 		if (count(\$user->getAuthorisedCategories('com_${1/(.+)/\L\1/g}', 'core.create')) > 0)
 		{
 			JToolBarHelper::addNew('${9:hello}.add');
@@ -77,21 +77,21 @@ class $1View${2:Hellos} extends JView
 
 		if (\$canDo->get('core.edit.state'))
 		{
-			if (\$this->state->get('filter.state') != 2)
+			if (\$state->get('filter.state') != 2)
 			{
 				JToolBarHelper::divider();
 				JToolBarHelper::publish('${2/(.+)/\L\1/g}.publish', 'JTOOLBAR_PUBLISH', true);
 				JToolBarHelper::unpublish('${2/(.+)/\L\1/g}.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 			}
 
-			if (\$this->state->get('filter.state') != -1)
+			if (\$state->get('filter.state') != -1)
 			{
 				JToolBarHelper::divider();
-				if (\$this->state->get('filter.state') != 2)
+				if (\$state->get('filter.state') != 2)
 				{
 					JToolBarHelper::archiveList('${2/(.+)/\L\1/g}.archive');
 				}
-				elseif (\$this->state->get('filter.state') == 2)
+				elseif (\$state->get('filter.state') == 2)
 				{
 					JToolBarHelper::unarchiveList('${2/(.+)/\L\1/g}.publish');
 				}
@@ -103,7 +103,7 @@ class $1View${2:Hellos} extends JView
 			JToolBarHelper::checkin('${2/(.+)/\L\1/g}.checkin');
 		}
 
-		if (\$this->state->get('filter.state') == -2 && \$canDo->get('core.delete'))
+		if (\$state->get('filter.state') == -2 && \$canDo->get('core.delete'))
 		{
 			JToolBarHelper::deleteList('', '${2/(.+)/\L\1/g}.delete', 'JTOOLBAR_EMPTY_TRASH');
 			JToolBarHelper::divider();
