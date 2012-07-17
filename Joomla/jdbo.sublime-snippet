@@ -16,9 +16,9 @@
 // Check for errors.
 if (\$error = \$db->getErrorMsg())
 {
-	\$this->setError(\$error);
-	\$result = false;
-	return \$result;
+	\$this->setError($error);
+
+	return false;
 }
 
 ]]></content>

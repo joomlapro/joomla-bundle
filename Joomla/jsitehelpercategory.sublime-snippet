@@ -24,7 +24,7 @@ class $1Categories extends JCategories
 	 */
 	public function __construct(\$options = array())
 	{
-		\$options['table'] = '#__${2:hello}';
+		\$options['table'] = '#__${1/(.+)/\L\1/g}';
 		\$options['extension'] = 'com_${1/(.+)/\L\1/g}';
 		\$options['statefield'] = 'published';
 

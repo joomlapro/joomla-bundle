@@ -9,7 +9,7 @@
 	<jdoc:include type="head" />
 	<link rel="stylesheet" href="<?php echo \$this->baseurl; ?>/templates/system/css/general.css">
 	<link rel="stylesheet" href="<?php echo \$path; ?>/css/template.css">
-	<?php if (\$this->direction == 'rtl'): ?>
+	<?php if (\$this->direction == 'rtl') : ?>
 		<link rel="stylesheet" href="<?php echo \$path; ?>/css/template_rtl.css">
 	<?php endif; ?>
 </head>

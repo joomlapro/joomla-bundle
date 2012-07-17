@@ -5,9 +5,9 @@
  */
 function modChrome_${1/(.+)/\L\1/g}(\$module, &\$params, &\$attribs)
 {
-	if (!empty (\$module->content)): ?>
+	if (!empty (\$module->content)) : ?>
 		<div class="moduletable<?php echo htmlspecialchars(\$params->get('moduleclass_sfx')); ?>">
-		<?php if (\$module->showtitle != 0): ?>
+		<?php if (\$module->showtitle != 0) : ?>
 			<h3><?php echo \$module->title; ?></h3>
 		<?php endif; ?>
 			<?php echo \$module->content; ?>

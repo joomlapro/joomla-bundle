@@ -16,7 +16,7 @@ if (!isset(\$this->error))
 <head>
 	<title><?php echo \$this->error->getCode(); ?> - <?php echo \$this->title; ?></title>
 	<link rel="stylesheet" href="<?php echo \$this->baseurl; ?>/templates/system/css/error.css">
-	<?php if (\$this->direction == 'rtl'): ?>
+	<?php if (\$this->direction == 'rtl') : ?>
 		<link rel="stylesheet" href="<?php echo \$this->baseurl; ?>/templates/system/css/error_rtl.css">
 	<?php endif; ?>
 </head>
@@ -43,7 +43,7 @@ if (!isset(\$this->error))
 					<div id="techinfo">
 						<p><?php echo \$this->error->getMessage(); ?></p>
 						<p>
-							<?php if (\$this->debug): ?>
+							<?php if (\$this->debug) : ?>
 								<?php echo \$this->renderBacktrace(); ?>
 							<?php endif; ?>
 						</p>

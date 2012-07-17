@@ -15,6 +15,7 @@ public static function get${1:Hello}Options()
 	\$db    = JFactory::getDbo();
 	\$query = \$db->getQuery(true);
 
+	// Prepare query.
 	\$query->select('a.id AS value, a.name AS text');
 	\$query->from('#__${2:hello} AS a');
 	\$query->order('a.name ASC');

@@ -33,10 +33,10 @@
 		?>
 		<tr class="row<?php echo \$k; ?>">
 			<td class="center">
-				<?php echo \$item->id; ?>
+				<?php echo $this->escape(\$item->id); ?>
 			</td>
 			<td>
-				<a href="<?php echo \$link; ?>"><?php echo \$item->name; ?></a>
+				<a href="<?php echo \$link; ?>"><?php echo $this->escape(\$item->name); ?></a>
 			</td>
 			<td class="center nowrap">
 				<?php echo JHtml::_('date', \$item->created, JText::_('DATE_FORMAT_LC4')); ?>
