@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <?php echo JHtml::_('sliders.start', 'stat-pane'); ?>
-<?php echo JHtml::_('sliders.panel', JText::_('COM_${1:HELLO}_FIELDSET_${2:HELLO}'), '${2/(.+)/\L\1/g}'); ?>
+<?php echo JHtml::_('sliders.panel', JText::_('COM_${1:HELLO}_FIELDSET_${2:HELLO}'), '${2/(.+)/\L\1/g}-panel'); ?>
 <table class="adminlist">
 	<thead>
 		<tr>

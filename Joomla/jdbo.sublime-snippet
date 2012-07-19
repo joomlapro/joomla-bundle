@@ -13,12 +13,11 @@
 \$db->setQuery(\$query);
 \$result = \$db->loadObjectList();
 
-// Check for errors.
-if (\$error = \$db->getErrorMsg())
+// Check for a database error.
+if (\$db->getErrorNum())
 {
-	\$this->setError($error);
-
-	return false;
+	JError::raiseWarning(500, \$db->getErrorMsg());
+	return null;
 }
 
 ]]></content>

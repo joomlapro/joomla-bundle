@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/administrator/components/com_categories/models/fields">
+		<field name="id" type="hidden" default="0" readonly="true" required="true" size="10" label="COM_${1:HELLO}_ID_LABEL" />
+		<field name="title" type="text" required="true" size="30" label="JGLOBAL_TITLE" description="COM_${1/(.+)/\U\1/g}_FIELD_TITLE_DESC" />
+		<field name="alias" type="text" size="45" label="JFIELD_ALIAS_LABEL" description="COM_${1/(.+)/\U\1/g}_FIELD_ALIAS_DESC" />
+		<field name="description" type="editor" buttons="true" hide="pagebreak,readmore" filter="safehtml" asset_id="com_${1/(.+)/\L\1/g}" label="JGLOBAL_DESCRIPTION" description="COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
+		<field name="published" type="list" default="1" size="1" label="JSTATUS" description="JFIELD_PUBLISHED_DESC">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		<field name="catid" type="categoryedit" extension="com_${1/(.+)/\L\1/g}" required="true" label="JCATEGORY" description="COM_${1/(.+)/\U\1/g}_FIELD_CATEGORY_DESC" />
+		<field name="language" type="contentlanguage" class="inputbox" label="JFIELD_LANGUAGE_LABEL" description="JFIELD_LANGUAGE_DESC">
+			<option value="*">JALL</option>
+		</field>
+	</fieldset>
+</form>
+
+]]></content>
+<tabTrigger>jsiteform</tabTrigger>
+</snippet>

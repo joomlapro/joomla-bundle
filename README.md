@@ -1,7 +1,7 @@
 Sublime Text 2 Bundle Joomla!
 =============================
 
-Snippets for Sublime Text 2
+Snippets package for Sublime Text 2
 
 ## Authors
 

@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-<field name="${1:hello}" type="media" label="${2:COM}_${3:HELLO}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="$2_$3_FIELD_${1/(.+)/\U\1/g}_DESC" />
+<field name="${1:hello}" type="media" directory="$4" label="${2:COM}_${3:HELLO}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="$2_$3_FIELD_${1/(.+)/\U\1/g}_DESC" />
 ]]></content>
 <tabTrigger>jformfieldmedia</tabTrigger>
 </snippet>
