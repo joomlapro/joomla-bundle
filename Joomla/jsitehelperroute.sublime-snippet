@@ -16,9 +16,9 @@ abstract class ${1:Hello}HelperRoute
 	protected static \$lookup;
 
 	/**
-	 * Get the hello route
+	 * Get the ${2/(.+)/\L\1/g} route
 	 *
-	 * @param   int  \$id     The route of the hello.
+	 * @param   int  \$id     The route of the ${2/(.+)/\L\1/g}.
 	 * @param   int  \$catid  The id of the category.
 	 *
 	 * @return  string

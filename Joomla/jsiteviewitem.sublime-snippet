@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 /**
- * HTML View class for the $1 component
+ * HTML $2 View class for the $1 component
  *
  * @static
  * @package     ${1:Hello}
@@ -28,8 +28,8 @@ class $1View${2:Hello} extends JViewLegacy
 	public function display(\$tpl = null)
 	{
 		// Initialise variables.
-		\$app  = JFactory::getApplication();
-		\$user = JFactory::getUser();
+		\$app   = JFactory::getApplication();
+		\$user  = JFactory::getUser();
 		\$dispatcher = JDispatcher::getInstance();
 
 		// Get view related request variables.
@@ -37,7 +37,7 @@ class $1View${2:Hello} extends JViewLegacy
 
 		// Get model data.
 		\$state = \$this->get('State');
-		\$item = \$this->get('Item');
+		\$item  = \$this->get('Item');
 
 		if (\$item)
 		{
@@ -46,6 +46,7 @@ class $1View${2:Hello} extends JViewLegacy
 			\$categoryModel->setState('category.id', \$item->catid);
 			\$categoryModel->setState('list.ordering', 'a.name');
 			\$categoryModel->setState('list.direction', 'asc');
+
 			\$items = \$categoryModel->getItems();
 		}
 
@@ -69,6 +70,7 @@ class $1View${2:Hello} extends JViewLegacy
 		if (!is_writable(\$cacheDir))
 		{
 			JError::raiseNotice('0', JText::_('COM_${1/(.+)/\U\1/g}_CACHE_DIRECTORY_UNWRITABLE'));
+
 			return;
 		}
 
@@ -84,7 +86,7 @@ class $1View${2:Hello} extends JViewLegacy
 		{
 			\$currentLink = \$active->link;
 
-			// If the current view is the active item and an ${2/(.+)/\L\1/g} view for this feed, then the menu item params take priority
+			// If the current view is the active item and an ${2/(.+)/\L\1/g} view for this ${2/(.+)/\L\1/g}, then the menu item params take priority
 			if (strpos(\$currentLink, 'view=${2/(.+)/\L\1/g}') && (strpos(\$currentLink, '&id=' . (string) \$item->id)))
 			{
 				// \$item->params are the ${2/(.+)/\L\1/g} params, \$temp are the menu item params
@@ -133,6 +135,7 @@ class $1View${2:Hello} extends JViewLegacy
 		if (!in_array(\$item->access, \$levels) or ((in_array(\$item->access, \$levels) and (!in_array(\$item->category_access, \$levels)))))
 		{
 			JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
+
 			return;
 		}
 
@@ -144,49 +147,9 @@ class $1View${2:Hello} extends JViewLegacy
 		// Get the ${2/(.+)/\L\1/g}
 		\$${2/(.+)/\L\1/g} = \$item;
 
-		\$temp = new JRegistry;
+		\$temp   = new JRegistry;
 		\$temp->loadString(\$item->params);
 		\$params->merge(\$temp);
-
-		//  get RSS parsed object
-		\$rssDoc = JFactory::getFeedParser(\$${2/(.+)/\L\1/g}->link, \$${2/(.+)/\L\1/g}->cache_time);
-
-		if (\$rssDoc == false)
-		{
-			\$msg = JText::_('COM_${1/(.+)/\U\1/g}_ERRORS_FEED_NOT_RETRIEVED');
-			\$app->redirect($1HelperRoute::getCategoryRoute(\$${2/(.+)/\L\1/g}->catslug), \$msg);
-
-			return;
-		}
-
-		\$lists = array();
-
-		// Channel header and link
-		\$${2/(.+)/\L\1/g}->channel['title']       = \$rssDoc->get_title();
-		\$${2/(.+)/\L\1/g}->channel['link']        = \$rssDoc->get_link();
-		\$${2/(.+)/\L\1/g}->channel['description'] = \$rssDoc->get_description();
-		\$${2/(.+)/\L\1/g}->channel['language']    = \$rssDoc->get_language();
-
-		// Channel image if exists
-		\$${2/(.+)/\L\1/g}->image['url']    = \$rssDoc->get_image_url();
-		\$${2/(.+)/\L\1/g}->image['title']  = \$rssDoc->get_image_title();
-		\$${2/(.+)/\L\1/g}->image['link']   = \$rssDoc->get_image_link();
-		\$${2/(.+)/\L\1/g}->image['height'] = \$rssDoc->get_image_height();
-		\$${2/(.+)/\L\1/g}->image['width']  = \$rssDoc->get_image_width();
-
-		// Items
-		\$${2/(.+)/\L\1/g}->items = \$rssDoc->get_items();
-
-		// Feed elements
-		\$${2/(.+)/\L\1/g}->items = array_slice(\$${2/(.+)/\L\1/g}->items, 0, \$${2/(.+)/\L\1/g}->numarticles);
-
-		// Feed display order
-		\$feed_display_order = \$params->get('feed_display_order', 'des');
-
-		if (\$feed_display_order == 'asc')
-		{
-			\$${2/(.+)/\L\1/g}->items = array_reverse(\$${2/(.+)/\L\1/g}->items);
-		}
 
 		// Escape strings for HTML output
 		\$this->pageclass_sfx = htmlspecialchars(\$params->get('pageclass_sfx'));
@@ -220,7 +183,6 @@ class $1View${2:Hello} extends JViewLegacy
 		// Because the application sets a default page title,
 		// we need to get it from the menu item itself
 		\$menu = \$menus->getActive();
-
 		if (\$menu)
 		{
 			\$this->params->def('page_heading', \$this->params->get('page_title', \$menu->title));
@@ -277,7 +239,6 @@ class $1View${2:Hello} extends JViewLegacy
 		{
 			\$title = \$this->item->name;
 		}
-
 		\$this->document->setTitle(\$title);
 
 		if (\$this->item->metadesc)

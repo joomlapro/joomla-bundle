@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * $1 Component HTML Helper
+ *
+ * @static
+ * @package     ${1:Hello}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       2.5
+ */
+class JHtml${2:Hello}
+{
+	
+}
+
+]]></content>
+<tabTrigger>jhtml</tabTrigger>
+</snippet>

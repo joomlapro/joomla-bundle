@@ -57,8 +57,6 @@ class $1Model${2:Category} extends JModelList
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
 				'name', 'a.name',
-				'numarticles', 'a.numarticles',
-				'link', 'a.link',
 				'ordering', 'a.ordering',
 			);
 		}
@@ -111,7 +109,7 @@ class $1Model${2:Category} extends JModelList
 
 		// Select required fields from the categories.
 		\$query->select(\$this->getState('list.select', 'a.*'));
-		\$query->from(\$db->quoteName('#__newsfeeds') . ' AS a');
+		\$query->from(\$db->quoteName('#__${1/(.+)/\L\1/g}') . ' AS a');
 		\$query->where('a.access IN (' . \$groups . ')');
 
 		// Filter by category.
@@ -168,7 +166,7 @@ class $1Model${2:Category} extends JModelList
 	{
 		// Initialise variables.
 		\$app	= JFactory::getApplication();
-		\$params	= JComponentHelper::getParams('com_newsfeeds');
+		\$params	= JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
 
 		// List state information
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
@@ -195,7 +193,7 @@ class $1Model${2:Category} extends JModelList
 		\$this->setState('category.id', \$id);
 
 		\$user = JFactory::getUser();
-		if ((!\$user->authorise('core.edit.state', 'com_newsfeeds')) &&  (!\$user->authorise('core.edit', 'com_newsfeeds')))
+		if ((!\$user->authorise('core.edit.state', '${1/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', '${1/(.+)/\L\1/g}')))
 		{
 			// Limit to published for people who can't edit or edit.state.
 			\$this->setState('filter.published',	1);
@@ -235,6 +233,7 @@ class $1Model${2:Category} extends JModelList
 			\$options['countItems'] = \$params->get('show_cat_items', 1) || \$params->get('show_empty_categories', 0);
 			\$categories = JCategories::getInstance('$1', \$options);
 			\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
+
 			if (is_object(\$this->_item))
 			{
 				\$this->_children = \$this->_item->getChildren();

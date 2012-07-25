@@ -6,7 +6,7 @@ jimport('joomla.application.categories');
  * Build the route for the com_${1/(.+)/\L\1/g} component
  *
  * @param   array  &\$query  An array of URL arguments
- *
+ * 
  * @return  array  The URL arguments to use to assemble the subsequent URL.
  * 
  * @since   2.5
@@ -25,106 +25,184 @@ function ${1:Hello}BuildRoute(&\$query)
 	if (empty(\$query['Itemid']))
 	{
 		\$menuItem = \$menu->getActive();
+		\$menuItemGiven = false;
 	}
 	else
 	{
 		\$menuItem = \$menu->getItem(\$query['Itemid']);
+		\$menuItemGiven = true;
 	}
-
-	\$mView  = (empty(\$menuItem->query['view'])) ? null : \$menuItem->query['view'];
-	\$mCatid = (empty(\$menuItem->query['catid'])) ? null : \$menuItem->query['catid'];
-	\$mId    = (empty(\$menuItem->query['id'])) ? null : \$menuItem->query['id'];
 
 	if (isset(\$query['view']))
 	{
 		\$view = \$query['view'];
-
-		if (empty(\$query['Itemid']))
-		{
-			\$segments[] = \$query['view'];
-		}
-
-		// We need to keep the view for forms since they never have their own menu item
-		if (\$view != 'form')
-		{
-			unset(\$query['view']);
-		}
+	}
+	else
+	{
+		// We need to have a view in the query or it is an invalid URL
+		return \$segments;
 	}
 
-	// Are we dealing with an ${2:hello} that is attached to a menu item?
-	if (isset(\$query['view']) && (\$mView == \$query['view']) and (isset(\$query['id'])) and (\$mId == intval(\$query['id'])))
+	// Are we dealing with an $2 or category that is attached to a menu item?
+	if ((\$menuItem instanceof stdClass) && \$menuItem->query['view'] == \$query['view'] && isset(\$query['id']) && \$menuItem->query['id'] == intval(\$query['id']))
 	{
 		unset(\$query['view']);
-		unset(\$query['catid']);
+
+		if (isset(\$query['catid']))
+		{
+			unset(\$query['catid']);
+		}
+
+		if (isset(\$query['layout']))
+		{
+			unset(\$query['layout']);
+		}
+
 		unset(\$query['id']);
 
 		return \$segments;
 	}
 
-	if (isset(\$view) and (\$view == 'category' or \$view == '$2' ))
+	if (\$view == 'category' || \$view == '${2:hello}')
 	{
-		if (\$mId != intval(\$query['id']) || \$mView != \$view)
+		if (!\$menuItemGiven)
 		{
-			if (\$view == '$2' && isset(\$query['catid']))
+			\$segments[] = \$view;
+		}
+
+		unset(\$query['view']);
+
+		if (\$view == '$2')
+		{
+			if (isset(\$query['id']) && isset(\$query['catid']) && \$query['catid'])
 			{
 				\$catid = \$query['catid'];
+
+				// Make sure we have the id and the alias
+				if (strpos(\$query['id'], ':') === false)
+				{
+					\$db = JFactory::getDbo();
+					\$aquery = \$db->setQuery(\$db->getQuery(true)
+						->select('alias')
+						->from('#__${1/(.+)/\L\1/g}')
+						->where('id = ' . (int) \$query['id'])
+					);
+					\$alias = \$db->loadResult();
+					\$query['id'] = \$query['id'] . ':' . \$alias;
+				}
 			}
-			elseif (isset(\$query['id']))
+			else
+			{
+				// We should have these two set for this view.  If we don't, it is an error
+				return \$segments;
+			}
+		}
+		else
+		{
+			if (isset(\$query['id']))
 			{
 				\$catid = \$query['id'];
 			}
-
-			\$menuCatid  = \$mId;
-			\$categories = JCategories::getInstance('$1');
-			\$category   = \$categories->get(\$catid);
-
-			if (\$category)
+			else
 			{
-				// TODO Throw error that the category either not exists or is unpublished
-				\$path = \$category->getPath();
-				\$path = array_reverse(\$path);
+				// We should have id set for this view.  If we don't, it is an error
+				return \$segments;
+			}
+		}
 
-				\$array = array();
-				foreach (\$path as \$id)
-				{
-					if ((int) \$id == (int) \$menuCatid)
-					{
-						break;
-					}
+		if (\$menuItemGiven && isset(\$menuItem->query['id']))
+		{
+			\$mCatid = \$menuItem->query['id'];
+		}
+		else
+		{
+			\$mCatid = 0;
+		}
 
-					if (\$advanced)
-					{
-						list(\$tmp, \$id) = explode(':', \$id, 2);
-					}
+		\$categories = JCategories::getInstance('$1');
+		\$category = \$categories->get(\$catid);
 
-					\$array[] = \$id;
-				}
+		if (!\$category)
+		{
+			// We couldn't find the category we were given.  Bail.
+			return \$segments;
+		}
 
-				\$segments = array_merge(\$segments, array_reverse(\$array));
+		\$path = array_reverse(\$category->getPath());
+
+		\$array = array();
+
+		foreach (\$path as \$id)
+		{
+			if ((int) \$id == (int) \$mCatid)
+			{
+				break;
 			}
 
-			if (\$view == '$2')
-			{
-				if (\$advanced)
-				{
-					list(\$tmp, \$id) = explode(':', \$query['id'], 2);
-				}
-				else
-				{
-					\$id = \$query['id'];
-				}
+			list(\$tmp, \$id) = explode(':', \$id, 2);
 
-				\$segments[] = \$id;
+			\$array[] = \$id;
+		}
+
+		\$array = array_reverse(\$array);
+
+		if (!\$advanced && count(\$array))
+		{
+			\$array[0] = (int) \$catid . ':' . \$array[0];
+		}
+
+		\$segments = array_merge(\$segments, \$array);
+
+		if (\$view == '$2')
+		{
+			if (\$advanced)
+			{
+				list(\$tmp, \$id) = explode(':', \$query['id'], 2);
 			}
+			else
+			{
+				\$id = \$query['id'];
+			}
+
+			\$segments[] = \$id;
 		}
 
 		unset(\$query['id']);
 		unset(\$query['catid']);
 	}
 
+	if (\$view == 'archive')
+	{
+		if (!\$menuItemGiven)
+		{
+			\$segments[] = \$view;
+			unset(\$query['view']);
+		}
+
+		if (isset(\$query['year']))
+		{
+			if (\$menuItemGiven)
+			{
+				\$segments[] = \$query['year'];
+				unset(\$query['year']);
+			}
+		}
+
+		if (isset(\$query['year']) && isset(\$query['month']))
+		{
+			if (\$menuItemGiven)
+			{
+				\$segments[] = \$query['month'];
+				unset(\$query['month']);
+			}
+		}
+	}
+
+	// If the layout is specified and it is the same as the layout in the menu item, we
+	// unset it so it doesn't go into the query string.
 	if (isset(\$query['layout']))
 	{
-		if (!empty(\$query['Itemid']) && isset(\$menuItem->query['layout']))
+		if (\$menuItemGiven && isset(\$menuItem->query['layout']))
 		{
 			if (\$query['layout'] == \$menuItem->query['layout'])
 			{
@@ -142,28 +220,33 @@ function ${1:Hello}BuildRoute(&\$query)
 
 	return \$segments;
 }
+
 /**
  * Parse the segments of a URL.
  *
  * @param   array  \$segments  The segments of the URL to parse.
  *
  * @return  array  The URL attributes to be used by the application.
+ * 
+ * @since   2.5
  */
 function $1ParseRoute(\$segments)
 {
 	\$vars = array();
 
 	// Get the active menu item.
-	\$app      = JFactory::getApplication();
-	\$menu     = \$app->getMenu();
-	\$item     = \$menu->getActive();
-	\$params   = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
+	\$app    = JFactory::getApplication();
+	\$menu	= \$app->getMenu();
+	\$item	= \$menu->getActive();
+	\$params = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
 	\$advanced = \$params->get('sef_advanced_link', 0);
+	\$db = JFactory::getDBO();
 
 	// Count route segments
 	\$count = count(\$segments);
 
-	// Standard routing for ${1/(.+)/\L\1/g}.
+	// Standard routing for ${1/(.+)/\L\1/g}.  If we don't pick up an Itemid then we get the view from the segments
+	// the first segment is the view and the last segment is the id of the $2 or category.
 	if (!isset(\$item))
 	{
 		\$vars['view'] = \$segments[0];
@@ -172,21 +255,102 @@ function $1ParseRoute(\$segments)
 		return \$vars;
 	}
 
-	// From the categories view, we can only jump to a category.
-	\$id = (isset(\$item->query['id']) && \$item->query['id'] > 1) ? \$item->query['id'] : 'root';
+	// If there is only one segment, then it points to either an $2 or a category
+	// we test it first to see if it is a category.  If the id and alias match a category
+	// then we assume it is a category.  If they don't we assume it is an $2
+	if (\$count == 1)
+	{
+		// We check to see if an alias is given.  If not, we assume it is an $2
+		if (strpos(\$segments[0], ':') === false)
+		{
+			\$vars['view'] = '$2';
+			\$vars['id'] = (int) \$segments[0];
 
+			return \$vars;
+		}
+
+		list(\$id, \$alias) = explode(':', \$segments[0], 2);
+
+		// First we check if it is a category
+		\$category = JCategories::getInstance('$1')->get(\$id);
+
+		if (\$category && \$category->alias == \$alias)
+		{
+			\$vars['view'] = 'category';
+			\$vars['id']   = \$id;
+
+			return \$vars;
+		}
+		else
+		{
+			\$query = 'SELECT alias, catid FROM #__${1/(.+)/\L\1/g} WHERE id = ' . (int) \$id;
+			\$db->setQuery(\$query);
+			\$$2 = \$db->loadObject();
+
+			if (\$$2)
+			{
+				if (\$$2->alias == \$alias)
+				{
+					\$vars['view'] = '$2';
+					\$vars['catid'] = (int) \$$2->catid;
+					\$vars['id'] = (int) \$id;
+
+					return \$vars;
+				}
+			}
+		}
+	}
+
+	// If there was more than one segment, then we can determine where the URL points to
+	// because the first segment will have the target category id prepended to it.  If the
+	// last segment has a number prepended, it is an $2, otherwise, it is a category.
+	if (!\$advanced)
+	{
+		\$cat_id = (int) \$segments[0];
+
+		\$$2_id = (int) \$segments[\$count - 1];
+
+		if (\$$2_id > 0)
+		{
+			\$vars['view'] = '$2';
+			\$vars['catid'] = \$cat_id;
+			\$vars['id'] = \$$2_id;
+		}
+		else
+		{
+			\$vars['view'] = 'category';
+			\$vars['id'] = \$cat_id;
+		}
+
+		return \$vars;
+	}
+
+	// We get the category id from the menu item and search from there
+	\$id = \$item->query['id'];
 	\$category = JCategories::getInstance('$1')->get(\$id);
 
+	if (!\$category)
+	{
+		JError::raiseError(404, JText::_('COM_COURSES_ERROR_PARENT_CATEGORY_NOT_FOUND'));
+
+		return \$vars;
+	}
+
 	\$categories = \$category->getChildren();
+	\$vars['catid'] = \$id;
+	\$vars['id'] = \$id;
 	\$found = 0;
 
 	foreach (\$segments as \$segment)
 	{
+		\$segment = str_replace(':', '-', \$segment);
+
 		foreach (\$categories as \$category)
 		{
-			if ((\$category->slug == \$segment) || (\$advanced && \$category->alias == str_replace(':', '-', \$segment)))
+			if (\$category->alias == \$segment)
 			{
 				\$vars['id'] = \$category->id;
+				\$vars['catid'] = \$category->id;
 				\$vars['view'] = 'category';
 				\$categories = \$category->getChildren();
 				\$found = 1;
@@ -200,19 +364,27 @@ function $1ParseRoute(\$segments)
 			if (\$advanced)
 			{
 				\$db = JFactory::getDBO();
-				\$query = 'SELECT id FROM #__${1/(.+)/\L\1/g} WHERE catid = ' . \$vars['id'] . ' AND alias = ' . \$db->Quote(str_replace(':', '-', \$segment));
+				\$query = 'SELECT id FROM #__${1/(.+)/\L\1/g} WHERE catid = ' . \$vars['catid'] . ' AND alias = ' . \$db->Quote(\$segment);
 				\$db->setQuery(\$query);
-				\$id = \$db->loadResult();
+				\$cid = \$db->loadResult();
 			}
 			else
 			{
-				\$id = \$segment;
+				\$cid = \$segment;
 			}
 
-			\$vars['id'] = \$id;
-			\$vars['view'] = '$2';
+			\$vars['id'] = \$cid;
 
-			break;
+			if (\$item->query['view'] == 'archive' && \$count != 1)
+			{
+				\$vars['year']  = \$count >= 2 ? \$segments[\$count - 2] : null;
+				\$vars['month'] = \$segments[\$count - 1];
+				\$vars['view']  = 'archive';
+			}
+			else
+			{
+				\$vars['view']  = '$2';
+			}
 		}
 
 		\$found = 0;

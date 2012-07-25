@@ -7,7 +7,7 @@
  * @subpackage  mod_${1/(.+)/\L\1/g}
  * @since       2.5
  */
-class Mod$1Helper
+abstract class Mod$1Helper
 {
 	/**
 	 * Get a list of the ${2:hello} items.
@@ -18,7 +18,7 @@ class Mod$1Helper
 	 *
 	 * @since   2.5
 	 */
-	static function getList(&\$params)
+	public static function getList(&\$params)
 	{
 		// Initialiase variables.
 		\$db = JFactory::getDbo();
@@ -34,12 +34,11 @@ class Mod$1Helper
 		\$db->setQuery(\$query);
 		\$items = \$db->loadObjectList();
 
-		// Check for errors.
-		if (\$error = \$db->getErrorMsg())
+		// Check for a database error.
+		if (\$db->getErrorNum())
 		{
-			\$this->setError(\$error);
-			\$items = false;
-			return \$items;
+			JError::raiseWarning(500, \$db->getErrorMsg());
+			return null;
 		}
 
 		return \$items;

@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+COM_${1:HELLO}${2:_HELLO}_N_ITEMS_ARCHIVED="%d ${3:hellos} successfully archived"
+COM_$1$2_N_ITEMS_ARCHIVED_0="No ${4:Hello} archived."
+COM_$1$2_N_ITEMS_ARCHIVED_1="%d $4 successfully archived"
+COM_$1$2_N_ITEMS_CHECKED_IN_MORE="%d $3 successfully checked in"
+COM_$1$2_N_ITEMS_CHECKED_IN_0="No $4 successfully checked in"
+COM_$1$2_N_ITEMS_CHECKED_IN_1="%d $4 successfully checked in"
+COM_$1$2_N_ITEMS_DELETED="%d $3 successfully deleted"
+COM_$1$2_N_ITEMS_DELETED_0="No $4 deleted."
+COM_$1$2_N_ITEMS_DELETED_1="%d $4 successfully deleted"
+COM_$1$2_N_ITEMS_PUBLISHED="%d $3 successfully published"
+COM_$1$2_N_ITEMS_PUBLISHED_0="No $4 published."
+COM_$1$2_N_ITEMS_PUBLISHED_1="%d $4 successfully published"
+COM_$1$2_N_ITEMS_TRASHED="%d $3 successfully trashed"
+COM_$1$2_N_ITEMS_TRASHED_0="No $4 trashed."
+COM_$1$2_N_ITEMS_TRASHED_1="%d $4 successfully trashed"
+COM_$1$2_N_ITEMS_UNPUBLISHED="%d $3 successfully unpublished"
+COM_$1$2_N_ITEMS_UNPUBLISHED_0="No $4 unpublished."
+COM_$1$2_N_ITEMS_UNPUBLISHED_1="%d $4 successfully unpublished"
+
+]]></content>
+<tabTrigger>jadminlanguagelisten</tabTrigger>
+</snippet>

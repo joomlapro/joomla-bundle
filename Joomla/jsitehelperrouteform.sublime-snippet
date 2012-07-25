@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Get the ${2/(.+)/\L\1/g} route
+ * 
+ * @param   int  \$id  The id of the ${2/(.+)/\L\1/g}.
+ * 
+ * @return  string
+ * 
+ * @since   2.5
+ */
+public static function get${2:Form}Route(\$id)
+{
+	// Create the link
+	if (\$id)
+	{
+		\$link = 'index.php?option=com_${1:hello}&task=${3:hello}.edit&${1/(.)(.+)/\L\1/g}_id=' . \$id;
+	}
+	else
+	{
+		\$link = 'index.php?option=com_$1&task=$3.edit&${1/(.)(.+)/\L\1/g}_id=0';
+	}
+
+	return \$link;
+}
+
+]]></content>
+<tabTrigger>jsitehelperrouteform</tabTrigger>
+</snippet>

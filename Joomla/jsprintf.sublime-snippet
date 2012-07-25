@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[
+<?php echo JText::sprintf('$1', $2); ?>
+]]></content>
+<tabTrigger>jsprintf</tabTrigger>
+</snippet>

@@ -14,8 +14,8 @@ class $1Model${2:Hello} extends JModelItem
 	/**
 	 * Model context string.
 	 *
-	 * @var		string
-	 * @since	1.6
+	 * @var     string
+	 * @since   2.5
 	 */
 	protected \$_context = 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}';
 
@@ -44,6 +44,7 @@ class $1Model${2:Hello} extends JModelItem
 		\$this->setState('params', \$params);
 
 		\$user = JFactory::getUser();
+
 		if ((!\$user->authorise('core.edit.state', 'com_${1/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${1/(.+)/\L\1/g}')))
 		{
 			\$this->setState('filter.published', 1);
@@ -78,7 +79,7 @@ class $1Model${2:Hello} extends JModelItem
 				\$query = \$db->getQuery(true);
 
 				\$query->select(\$this->getState('item.select', 'a.*'));
-				\$query->from('#__${1/(.+)/\L\1/g} AS a');
+				\$query->from('#__${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g} AS a');
 
 				// Join on category table.
 				\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');
@@ -101,6 +102,7 @@ class $1Model${2:Hello} extends JModelItem
 				// Filter by published state.
 				\$published = \$this->getState('filter.published');
 				\$archived = \$this->getState('filter.archived');
+
 				if (is_numeric(\$published))
 				{
 					\$query->where('(a.published = ' . (int) \$published . ' OR a.published =' . (int) \$archived . ')');
@@ -120,13 +122,13 @@ class $1Model${2:Hello} extends JModelItem
 
 				if (empty(\$data))
 				{
-					throw new JException(JText::_('COM_${1/(.+)/\U\1/g}_ERROR_FEED_NOT_FOUND'), 404);
+					throw new JException(JText::_('COM_${1/(.+)/\U\1/g}_ERROR_${2/(.+)/\U\1/g}_NOT_FOUND'), 404);
 				}
 
 				// Check for published state if filter set.
 				if (((is_numeric(\$published)) || (is_numeric(\$archived))) && ((\$data->published != \$published) && (\$data->published != \$archived)))
 				{
-					JError::raiseError(404, JText::_('COM_${1/(.+)/\U\1/g}_ERROR_FEED_NOT_FOUND'));
+					JError::raiseError(404, JText::_('COM_${1/(.+)/\U\1/g}_ERROR_${2/(.+)/\U\1/g}_NOT_FOUND'));
 				}
 
 				// Convert parameter fields to objects.
@@ -150,6 +152,7 @@ class $1Model${2:Hello} extends JModelItem
 					// If no access filter is set, the layout takes some responsibility for display of limited information.
 					\$user = JFactory::getUser();
 					\$groups = \$user->getAuthorisedViewLevels();
+
 					\$data->params->set('access-view', in_array(\$data->access, \$groups) && in_array(\$data->category_access, \$groups));
 				}
 
