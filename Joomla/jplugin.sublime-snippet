@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[
 /**
- * $3 $2 plugin
+ * ${2/(.+)/\u\1/g} ${1/(.+)/\u\1/g} plugin
  *
- * @package     ${1:Hello}
- * @subpackage  plg_${2/(.+)/\L\1/g}_${3/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  plg_${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class plg${2:Folder}${3:Hello} extends JPlugin
+class plg${1:Folder}${2:Hello} extends JPlugin
 {
 	/**
 	 * Constructor
@@ -15,7 +15,7 @@ class plg${2:Folder}${3:Hello} extends JPlugin
 	 * @param   object  &\$subject  The object to observe
 	 * @param   array   \$config    An array that holds the plugin configuration
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(&\$subject, \$config)
 	{

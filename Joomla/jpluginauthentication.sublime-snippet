@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[
 /**
- * $2 Authentication plugin
+ * ${1/(.+)/\u\1/g} Authentication plugin
  *
- * @package     ${1:Hello}
- * @subpackage  plg_authentication_${2/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  plg_authentication_${1/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class plgAuthentication${2:Hello} extends JPlugin
+class plgAuthentication${1:Hello} extends JPlugin
 {
 	/**
 	 * This method should handle any authentication and report back to the subject
@@ -19,7 +19,7 @@ class plgAuthentication${2:Hello} extends JPlugin
 	 *
 	 * @return  boolean
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	function onUserAuthenticate(\$credentials, \$options, &\$response)
 	{

@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[
 /**
- * $1 Component Controller
+ * ${TM_PROJECT/(.+)/\u\1/g} Component Controller
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Controller extends JControllerLegacy
+class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 {
 	/**
 	 * Method to display a view.
@@ -17,7 +17,7 @@ class $1Controller extends JControllerLegacy
 	 *
 	 * @return  JController  This object to support chaining.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{
@@ -26,14 +26,14 @@ class $1Controller extends JControllerLegacy
 		\$user     = JFactory::getUser();
 
 		// Set the default view name and format from the Request.
-		// Note we are using ${1/(.)(.+)/\L\1/g}_id to avoid collisions with the router and the return page.
+		// Note we are using ${TM_PROJECT/(.)(.+)/\L\1/g}_id to avoid collisions with the router and the return page.
 		// Frontend is a bit messier than the backend.
-		\$id    = JRequest::getInt('${1/(.)(.+)/\L\1/g}_id');
-		\$vName = JRequest::getCmd('view', '${2:categories}');
+		\$id    = JRequest::getInt('${TM_PROJECT/(.)(.+)/\L\1/g}_id');
+		\$vName = JRequest::getCmd('view', '${1:categories}');
 
 		JRequest::setVar('view', \$vName);
 
-		if (\$user->get('id') ||(\$_SERVER['REQUEST_METHOD'] == 'POST' && \$vName = '$2'))
+		if (\$user->get('id') ||(\$_SERVER['REQUEST_METHOD'] == 'POST' && \$vName = '${1/(.+)/\L\1/g}'))
 		{
 			\$cachable = false;
 		}
@@ -48,7 +48,7 @@ class $1Controller extends JControllerLegacy
 		);
 
 		// Check for edit form.
-		if (\$vName == 'form' && !\$this->checkEditId('com_${1/(.+)/\L\1/g}.edit.${3:hello}', \$id))
+		if (\$vName == 'form' && !\$this->checkEditId('com_${TM_PROJECT/(.+)/\L\1/g}.edit.${3:hello}', \$id))
 		{
 			// Somehow the person just went to the form - we don't allow that.
 			return JError::raiseError(403, JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', \$id));

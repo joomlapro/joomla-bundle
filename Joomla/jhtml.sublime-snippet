@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[
 /**
- * $1 Component HTML Helper
+ * ${TM_PROJECT/(.+)/\u\1/g} Component HTML Helper
  *
  * @static
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
 class JHtml${2:Hello}
 {

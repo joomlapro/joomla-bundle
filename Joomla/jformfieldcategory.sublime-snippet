@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-<field name="id" type="category" extension="com_${1:hello}" show_root="true" required="true" label="JGLOBAL_FIELD_CATEGORIES_CHOOSE_CATEGORY_LABEL" description="JGLOBAL_FIELD_CATEGORIES_CHOOSE_CATEGORY_DESC" />
+<field name="id" type="category" extension="com_${TM_PROJECT/(.+)/\L\1/g}" show_root="true" required="true" label="JGLOBAL_FIELD_CATEGORIES_CHOOSE_CATEGORY_LABEL" description="JGLOBAL_FIELD_CATEGORIES_CHOOSE_CATEGORY_DESC" />
 ]]></content>
 <tabTrigger>jformfieldcategory</tabTrigger>
 </snippet>

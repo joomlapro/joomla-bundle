@@ -3,9 +3,9 @@
 /**
  * Supports an HTML select list of products
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
 class JFormFieldOrdering extends JFormField
 {
@@ -13,7 +13,7 @@ class JFormFieldOrdering extends JFormField
 	 * The form field type.
 	 *
 	 * @var		string
-	 * @since	2.5
+	 * @since	$TM_VERSION
 	 */
 	protected \$type = 'Ordering';
 
@@ -22,7 +22,7 @@ class JFormFieldOrdering extends JFormField
 	 *
 	 * @return	string	The field input markup.
 	 * 
-	 * @since	2.5
+	 * @since	$TM_VERSION
 	 */
 	protected function getInput()
 	{
@@ -44,7 +44,7 @@ class JFormFieldOrdering extends JFormField
 
 		// Build the query for the ordering list.
 		\$query = 'SELECT ordering AS value, name AS text'
-			. ' FROM #__${1/(.+)/\L\1/g}'
+			. ' FROM #__${TM_PROJECT/(.+)/\L\1/g}'
 			. ' WHERE catid = '
 			. (int) \$categoryId
 			. ' ORDER BY ordering';

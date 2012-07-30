@@ -3,13 +3,13 @@
 jimport('joomla.application.component.modellist');
 
 /**
- * Methods supporting a list of $2 records.
+ * Methods supporting a list of ${1/(.+)/\L\1/g} records.
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Model${2:Hellos} extends JModelList
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 {
 	/**
 	 * Constructor.
@@ -18,7 +18,7 @@ class $1Model${2:Hellos} extends JModelList
 	 *
 	 * @see     JController
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())
 	{
@@ -26,7 +26,7 @@ class $1Model${2:Hellos} extends JModelList
 		{
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
-				'${3:title}', 'a.$3',
+				'${2:title}', 'a.${2/(.+)/\L\1/g}',
 				'alias', 'a.alias',
 				'published', 'a.published',
 				'catid', 'a.catid', 'category_title',
@@ -51,7 +51,7 @@ class $1Model${2:Hellos} extends JModelList
 	 *
 	 * @return	void
 	 *
-	 * @since	2.5
+	 * @since	$TM_VERSION
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
@@ -81,11 +81,11 @@ class $1Model${2:Hellos} extends JModelList
 		\$this->setState('filter.language', \$language);
 
 		// Load the parameters.
-		\$params = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
+		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
 		\$this->setState('params', \$params);
 
 		// List state information.
-		parent::populateState('a.$3', 'asc');
+		parent::populateState('a.${2/(.+)/\L\1/g}', 'asc');
 	}
 
 	/**
@@ -99,7 +99,7 @@ class $1Model${2:Hellos} extends JModelList
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function getStoreId(\$id = '')
 	{
@@ -118,7 +118,7 @@ class $1Model${2:Hellos} extends JModelList
 	 *
 	 * @return	JDatabaseQuery
 	 *
-	 * @since	2.5
+	 * @since	$TM_VERSION
 	 */
 	protected function getListQuery()
 	{
@@ -131,11 +131,11 @@ class $1Model${2:Hellos} extends JModelList
 		\$query->select(
 			\$this->getState(
 				'list.select',
-				'a.id, a.catid, a.$3, a.alias, a.description'
+				'a.id, a.catid, a.${2/(.+)/\L\1/g}, a.alias, a.description'
 				. ', a.ordering, a.published, a.access, a.language, a.created, a.created_by, a.checked_out, a.checked_out_time'
 			)
 		);
-		\$query->from(\$db->quoteName('#__${4:hello}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS a');
 
 		// Join over the language
 		\$query->select('l.title AS language_title');
@@ -201,7 +201,7 @@ class $1Model${2:Hellos} extends JModelList
 			else
 			{
 				\$search = \$db->Quote('%' . \$db->escape(\$search, true) . '%');
-				\$query->where('(a.$3 LIKE ' . \$search . ' OR a.alias LIKE ' . \$search . ')');
+				\$query->where('(a.${2/(.+)/\L\1/g} LIKE ' . \$search . ' OR a.alias LIKE ' . \$search . ')');
 			}
 		}
 
@@ -212,7 +212,7 @@ class $1Model${2:Hellos} extends JModelList
 		}
 
 		// Add the list ordering clause.
-		\$orderCol  = \$this->state->get('list.ordering', 'a.$3');
+		\$orderCol  = \$this->state->get('list.ordering', 'a.${2/(.+)/\L\1/g}');
 		\$orderDirn = \$this->state->get('list.direction', 'asc');
 		if (\$orderCol == 'a.ordering' || \$orderCol == 'category_title')
 		{

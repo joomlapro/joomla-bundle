@@ -7,7 +7,7 @@
  *
  * @return  boolean
  *
- * @since   2.5
+ * @since   $TM_VERSION
  */
 public function onContentChangeState(\$context, \$pks, \$value)
 {

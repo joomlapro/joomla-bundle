@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[
 /**
- * Content ${2/(.+)/\L\1/g} view.
+ * HTML ${1/(.+)/\u\1/g} View class for the ${TM_PROJECT/(.+)/\u\1/g} component
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1View${2:Categories} extends JViewLegacy
+class ${TM_PROJECT/(.+)/\u\1/g}View${1:Categories} extends JViewLegacy
 {
 	protected \$state = null;
 
@@ -22,7 +22,7 @@ class $1View${2:Categories} extends JViewLegacy
 	 *
 	 * @return  mixed  JError object on failure, void on success.
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function display(\$tpl = null)
 	{
@@ -70,7 +70,7 @@ class $1View${2:Categories} extends JViewLegacy
 	 * 
 	 * @return  void
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function _prepareDocument()
 	{
@@ -88,7 +88,7 @@ class $1View${2:Categories} extends JViewLegacy
 		}
 		else
 		{
-			\$this->params->def('page_heading', JText::_('COM_${1/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
+			\$this->params->def('page_heading', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
 		}
 
 		\$title = \$this->params->get('page_title', '');

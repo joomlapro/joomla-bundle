@@ -1,15 +1,15 @@
 <snippet>
 	<content><![CDATA[
 /**
- * $1 component helper.
+ * ${TM_PROJECT/(.+)/\u\1/g} component helper.
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Helper
+class ${TM_PROJECT/(.+)/\u\1/g}Helper
 {
-	public static \$extension = 'com_${1/(.+)/\L\1/g}';
+	public static \$extension = 'com_${TM_PROJECT/(.+)/\L\1/g}';
 
 	/**
 	 * Configure the Linkbar.
@@ -18,18 +18,18 @@ class $1Helper
 	 *
 	 * @return  void
      * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public static function addSubmenu(\$vName)
 	{
 		JSubMenuHelper::addEntry(
-			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_${1/(.+)/\U\1/g}'),
-			'index.php?option=com_${1/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}',
-			\$vName == '${1/(.+)/\L\1/g}'
+			JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_${TM_PROJECT/(.+)/\U\1/g}'),
+			'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${TM_PROJECT/(.+)/\L\1/g}',
+			\$vName == '${TM_PROJECT/(.+)/\L\1/g}'
 		);
 		JSubMenuHelper::addEntry(
-			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_CATEGORIES'),
-			'index.php?option=com_categories&extension=com_${1/(.+)/\L\1/g}',
+			JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_CATEGORIES'),
+			'index.php?option=com_categories&extension=com_${TM_PROJECT/(.+)/\L\1/g}',
 			\$vName == 'categories'
 		);
 	}
@@ -39,13 +39,13 @@ class $1Helper
 	 *
 	 * @return	JObject
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public static function getActions()
 	{
 		\$user      = JFactory::getUser();
 		\$result    = new JObject;
-		\$assetName = 'com_${1/(.+)/\L\1/g}';
+		\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}';
 
 		\$actions = array(
 			'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.state', 'core.delete'

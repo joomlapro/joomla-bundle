@@ -10,7 +10,7 @@
  *
  * @return	void
  *
- * @since	2.5
+ * @since	$TM_VERSION
  * @throws	Exception on error.
  */
 public function onUserAfterSave(\$user, \$isnew, \$success, \$msg)

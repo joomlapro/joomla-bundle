@@ -20,7 +20,7 @@ protected function _prepareDocument()
 	}
 	else
 	{
-		\$this->params->def('page_heading', JText::_('COM_${1:HELLO}_DEFAULT_PAGE_TITLE'));
+		\$this->params->def('page_heading', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
 	}
 
 	\$title = \$this->params->get('page_title', '');

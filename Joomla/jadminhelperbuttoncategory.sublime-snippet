@@ -9,7 +9,7 @@
  *
  * @return  string
  *
- * @since   2.5
+ * @since   $TM_VERSION
  */
 public static function buttonCategory(\$category, \$image, \$text)
 {

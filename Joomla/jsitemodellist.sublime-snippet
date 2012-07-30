@@ -3,13 +3,13 @@
 jimport('joomla.application.component.modellist');
 
 /**
- * $2 Component Model
+ * ${1/(.+)/\u\1/g} Component Model
  * 
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Model${2:Hello} extends JModelList
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelList
 {
 	/**
 	 * Category items data
@@ -48,7 +48,7 @@ class $1Model${2:Hello} extends JModelList
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 * 
 	 * @see     JController
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())
 	{
@@ -99,7 +99,7 @@ class $1Model${2:Hello} extends JModelList
 	 *
 	 * @return  string	An SQL query
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function getListQuery()
 	{
@@ -112,7 +112,7 @@ class $1Model${2:Hello} extends JModelList
 
 		// Select required fields from the categories.
 		\$query->select(\$this->getState('list.select', 'a.*'));
-		\$query->from(\$db->quoteName('#__${1/(.+)/\L\1/g}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}') . ' AS a');
 		\$query->where('a.access IN (' . \$groups . ')');
 		\$query->where('a.featured = 1');
 		
@@ -131,10 +131,10 @@ class $1Model${2:Hello} extends JModelList
 		\$query->select('c.published as cat_published, CASE WHEN badcats.id is null THEN c.published ELSE 0 END AS parents_published');
 		\$subquery = 'SELECT cat.id as id FROM #__categories AS cat JOIN #__categories AS parent ';
 		\$subquery .= 'ON cat.lft BETWEEN parent.lft AND parent.rgt ';
-		\$subquery .= 'WHERE parent.extension = ' . \$db->quote('com_contact');
+		\$subquery .= 'WHERE parent.extension = ' . \$db->quote('com_${TM_PROJECT/(.+)/\L\1/g}');
 
 		// Find any up-path categories that are not published
-		// If all categories are published, badcats.id will be null, and we just use the contact state
+		// If all categories are published, badcats.id will be null, and we just use the ${TM_PROJECT/(.+)/\L\1/g} state
 		\$subquery .= ' AND parent.published != 1 GROUP BY cat.id ';
 
 		// Select state to unpublished if up-path category is unpublished
@@ -179,13 +179,13 @@ class $1Model${2:Hello} extends JModelList
 	 * 
 	 * @return  void
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
 		// Initialise variables.
 		\$app    = JFactory::getApplication();
-		\$params = JComponentHelper::getParams('com_contact');
+		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
 
 		// List state information
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
@@ -214,7 +214,7 @@ class $1Model${2:Hello} extends JModelList
 
 		\$user = JFactory::getUser();
 
-		if ((!\$user->authorise('core.edit.state', 'com_contact')) &&  (!\$user->authorise('core.edit', 'com_contact')))
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
 		{
 			// Limit to published for people who can't edit or edit.state.
 			\$this->setState('filter.published', 1);

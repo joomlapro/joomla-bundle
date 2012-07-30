@@ -3,24 +3,24 @@
 jimport('joomla.database.table');
 
 /**
- * $2 table class.
+ * ${1/(.+)/\u\1/g} table class.
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Table${2:Hello} extends JTable
+class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Hello} extends JTable
 {
 	/**
 	 * Constructor
 	 *
 	 * @param   object  &\$db  JDatabase connector object.
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(&\$db)
 	{
-		parent::__construct('#__${3:hellos}', 'id', \$db);
+		parent::__construct('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}', 'id', \$db);
 	}
 
 	/**
@@ -34,7 +34,7 @@ class $1Table${2:Hello} extends JTable
 	 *
 	 * @return  mixed  Null if operation was satisfactory, otherwise returns an error string
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function bind(\$array, \$ignore = '')
 	{
@@ -63,21 +63,21 @@ class $1Table${2:Hello} extends JTable
 	 *
 	 * @return  boolean  True if the instance is sane and able to be stored in the database.
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function check()
 	{
 		// Check for valid name.
 		if (trim(\$this->name) == '')
 		{
-			\$this->setError(JText::_('COM_${1/(.+)/\U\1/g}_WARNING_PROVIDE_VALID_NAME'));
+			\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_WARNING_PROVIDE_VALID_NAME'));
 
 			return false;
 		}
 
 		if (trim(\$this->alias) == '')
 		{
-			\$this->alias = \$this->${4:title};
+			\$this->alias = \$this->${2:title};
 		}
 
 		\$this->alias = JApplication::stringURLSafe(\$this->alias);
@@ -109,7 +109,7 @@ class $1Table${2:Hello} extends JTable
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function store(\$updateNulls = false)
 	{
@@ -137,7 +137,7 @@ class $1Table${2:Hello} extends JTable
 		}
 
 		// Verify that the alias is unique
-		\$table = JTable::getInstance('$2', '$1Table');
+		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
 		if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
 		{
 			\$this->setError(JText::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));

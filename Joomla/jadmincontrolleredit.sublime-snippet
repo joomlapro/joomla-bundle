@@ -3,19 +3,19 @@
 jimport('joomla.application.component.controllerform');
 
 /**
- * $2 controller class.
+ * ${1/(.+)/\u\1/g} controller class.
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Controller${2:Hello} extends JControllerForm
+class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 {
 	/**
 	 * @var    string  The prefix to use with controller messages.
-	 * @since  2.5
+	 * @since  $TM_VERSION
 	 */
-	protected \$text_prefix = 'COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}';
+	protected \$text_prefix = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
 }
 
 ]]></content>

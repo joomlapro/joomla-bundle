@@ -5,11 +5,11 @@ jimport('joomla.application.component.view');
 /**
  * View class for a list of ${2/(.+)/\L\1/g}.
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1View${2:Hellos} extends JView
+class ${TM_PROJECT/(.+)/\u\1/g}View${2:Hellos} extends JView
 {
 	protected \$items;
 
@@ -24,7 +24,7 @@ class $1View${2:Hellos} extends JView
 	 *
 	 * @return  mixed  A string if successful, otherwise a JError object.
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function display(\$tpl = null)
 	{
@@ -50,19 +50,19 @@ class $1View${2:Hellos} extends JView
 	 *
 	 * @return  void
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function addToolbar()
 	{
 		require_once JPATH_COMPONENT . '/helpers/${1/(.+)/\L\1/g}.php';
 
 		\$state = \$this->get('State');
-		\$canDo = $1Helper::getActions(\$state->get('filter.category_id'));
+		\$canDo = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions(\$state->get('filter.category_id'));
 		\$user  = JFactory::getUser();
 
-		JToolBarHelper::title(JText::_('COM_${1/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}'), '${2/(.+)/\L\1/g}.png');
+		JToolBarHelper::title(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}'), '${2/(.+)/\L\1/g}.png');
 
-		if (count(\$user->getAuthorisedCategories('com_${1/(.+)/\L\1/g}', 'core.create')) > 0)
+		if (count(\$user->getAuthorisedCategories('com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create')) > 0)
 		{
 			JToolBarHelper::addNew('${9:hello}.add');
 		}
@@ -113,7 +113,7 @@ class $1View${2:Hellos} extends JView
 
 		if (\$canDo->get('core.admin'))
 		{
-			JToolBarHelper::preferences('com_${1/(.+)/\L\1/g}');
+			JToolBarHelper::preferences('com_${TM_PROJECT/(.+)/\L\1/g}');
 			JToolBarHelper::divider();
 		}
 

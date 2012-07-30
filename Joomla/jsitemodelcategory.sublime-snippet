@@ -3,16 +3,16 @@
 jimport('joomla.application.component.modellist');
 
 /**
- * $1 Component $2 Model
+ * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Model${2:Category} extends JModelList
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 {
 	/**
-	 * $2 items data
+	 * ${1/(.+)/\u\1/g} items data
 	 *
 	 * @var     array
 	 */
@@ -48,7 +48,7 @@ class $1Model${2:Category} extends JModelList
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 * 
 	 * @see     JController
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())
 	{
@@ -69,7 +69,7 @@ class $1Model${2:Category} extends JModelList
 	 *
 	 * @return  mixed  An array of objects on success, false on failure.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function getItems()
 	{
@@ -96,7 +96,7 @@ class $1Model${2:Category} extends JModelList
 	 *
 	 * @return  string  An SQL query
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function getListQuery()
 	{
@@ -160,13 +160,13 @@ class $1Model${2:Category} extends JModelList
 	 * 
 	 * @return  void
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
 		// Initialise variables.
 		\$app	= JFactory::getApplication();
-		\$params	= JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
+		\$params	= JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
 
 		// List state information
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
@@ -209,13 +209,13 @@ class $1Model${2:Category} extends JModelList
 	}
 
 	/**
-	 * Method to get ${2/(.+)/\L\1/g} data for the current ${2/(.+)/\L\1/g}
+	 * Method to get ${1/(.+)/\L\1/g} data for the current ${1/(.+)/\L\1/g}
 	 *
 	 * @return  object
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
-	public function get$2()
+	public function get${1/(.+)/\u\1/g}()
 	{
 		if (!is_object(\$this->_item))
 		{
@@ -231,7 +231,7 @@ class $1Model${2:Category} extends JModelList
 
 			\$options = array();
 			\$options['countItems'] = \$params->get('show_cat_items', 1) || \$params->get('show_empty_categories', 0);
-			\$categories = JCategories::getInstance('$1', \$options);
+			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
 			\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
 
 			if (is_object(\$this->_item))
@@ -256,17 +256,17 @@ class $1Model${2:Category} extends JModelList
 	}
 
 	/**
-	 * Get the parent ${2/(.+)/\L\1/g}.
+	 * Get the parent ${1/(.+)/\L\1/g}.
 	 * 
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function getParent()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get$2();
+			\$this->get${1/(.+)/\u\1/g}();
 		}
 
 		return \$this->_parent;
@@ -277,13 +277,13 @@ class $1Model${2:Category} extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	function &getLeftSibling()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get$2();
+			\$this->get${1/(.+)/\u\1/g}();
 		}
 
 		return \$this->_leftsibling;
@@ -294,13 +294,13 @@ class $1Model${2:Category} extends JModelList
 	 * 
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	function &getRightSibling()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get$2();
+			\$this->get${1/(.+)/\u\1/g}();
 		}
 
 		return \$this->_rightsibling;
@@ -311,13 +311,13 @@ class $1Model${2:Category} extends JModelList
 	 * 
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	function &getChildren()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get$2();
+			\$this->get${1/(.+)/\u\1/g}();
 		}
 
 		return \$this->_children;

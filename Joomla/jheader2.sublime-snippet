@@ -2,9 +2,9 @@
 	<content><![CDATA[
 <?php
 /**
- * @package     ${1:Hello}
- * @subpackage  ${2:com}_${1/(.+)/\L\1/g}
- * @copyright   Copyright (C) 2012 ${3:AtomTech}, Inc. All rights reserved.
+ * @package     $TM_PROJECT
+ * @subpackage  ${2:com}_${TM_PROJECT/(.+)/\L\1/g}
+ * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 

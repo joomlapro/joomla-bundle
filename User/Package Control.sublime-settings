@@ -1,0 +1,16 @@
+{
+	"auto_upgrade_last_run": 1343666671,
+	"installed_packages":
+	[
+		"Alignment",
+		"Case Conversion",
+		"Gist",
+		"JsFormat",
+		"Package Control",
+		"Prefixr",
+		"Sublime-HTMLPrettify",
+		"SublimeLinter",
+		"Tag",
+		"Terminal"
+	]
+}

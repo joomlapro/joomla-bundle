@@ -1,24 +1,24 @@
 <snippet>
 	<content><![CDATA[
 /**
- * Get the ${2/(.+)/\L\1/g} route
+ * Get the ${1/(.+)/\L\1/g} route
  * 
- * @param   int  \$id  The id of the ${2/(.+)/\L\1/g}.
+ * @param   int  \$id  The id of the ${1/(.+)/\L\1/g}.
  * 
  * @return  string
  * 
- * @since   2.5
+ * @since   $TM_VERSION
  */
-public static function get${2:Form}Route(\$id)
+public static function get${1:Form}Route(\$id)
 {
 	// Create the link
 	if (\$id)
 	{
-		\$link = 'index.php?option=com_${1:hello}&task=${3:hello}.edit&${1/(.)(.+)/\L\1/g}_id=' . \$id;
+		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:hello}.edit&${1/(.)(.+)/\L\1/g}_id=' . \$id;
 	}
 	else
 	{
-		\$link = 'index.php?option=com_$1&task=$3.edit&${1/(.)(.+)/\L\1/g}_id=0';
+		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2/(.+)/\L\1/g}.edit&${1/(.)(.+)/\L\1/g}_id=0';
 	}
 
 	return \$link;

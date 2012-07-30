@@ -3,8 +3,8 @@
 <!-- Add fields to the parameters object for the layout. -->
 <fields name="params">
 	<!-- Basic options. -->
-	<fieldset name="basic" label="COM_${1:HELLO}_FIELDSET_MORE_OPTIONS_LABEL">
-		<field name="${2:hello}_display_order" type="list" description="COM_$1_FIELD_${2/(.+)/\U\1/g}_DISPLAY_ORDER_DESC" label="COM_$1_FIELD_${2/(.+)/\U\1/g}_DISPLAY_ORDER_LABEL">
+	<fieldset name="basic" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_MORE_OPTIONS_LABEL">
+		<field name="${1:hello}_display_order" type="list" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_DISPLAY_ORDER_DESC" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_DISPLAY_ORDER_LABEL">
 			<option value="">JGLOBAL_USE_GLOBAL</option>
 			<option value="des">JGLOBAL_MOST_RECENT_FIRST</option>
 			<option value="asc">JGLOBAL_OLDEST_FIRST</option>

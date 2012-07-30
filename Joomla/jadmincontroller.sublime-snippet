@@ -3,19 +3,19 @@
 jimport('joomla.application.component.controller');
 
 /**
- * $1 Component Controller
+ * ${TM_PROJECT/(.+)/\u\1/g} Component Controller
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Controller extends JController
+class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JController
 {
 	/**
 	 * @var		string	The default view.
-	 * @since	2.5
+	 * @since	$TM_VERSION
 	 */
-	protected \$default_view = '${2:cpanel}';
+	protected \$default_view = '${1:cpanel}';
 
 	/**
 	 * Method to display a view.
@@ -25,16 +25,16 @@ class $1Controller extends JController
 	 *
 	 * @return  JController  This object to support chaining.
      * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{
-		require_once JPATH_COMPONENT . '/helpers/${1/(.+)/\L\1/g}.php';
+		require_once JPATH_COMPONENT . '/helpers/${TM_PROJECT/(.+)/\L\1/g}.php';
 
 		// Load the submenu.
-		$1Helper::addSubmenu(JRequest::getCmd('view', '$2'));
+		${TM_PROJECT/(.+)/\u\1/g}Helper::addSubmenu(JRequest::getCmd('view', '${1/(.+)/\L\1/g}'));
 
-		\$view   = JRequest::getCmd('view', '$2');
+		\$view   = JRequest::getCmd('view', '${1/(.+)/\L\1/g}');
 		\$layout = JRequest::getCmd('layout', 'default');
 		\$id     = JRequest::getInt('id');
 

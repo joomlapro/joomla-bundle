@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[
 /**
- * $1 Quickicon plugin
+ * ${TM_PROJECT/(.+)/\u\1/g} Quickicon plugin
  *
- * @package     ${1:Hello}
+ * @package     $TM_PROJECT
  * @subpackage  plg_quickicon_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @since       $TM_VERSION
  */
-class plgQuickicon$1 extends JPlugin
+class plgQuickicon${TM_PROJECT/(.+)/\u\1/g} extends JPlugin
 {
 	/**
 	 * Constructor
@@ -15,7 +15,7 @@ class plgQuickicon$1 extends JPlugin
 	 * @param   object  &\$subject  The object to observe
 	 * @param   array   \$config    An array that holds the plugin configuration
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(&\$subject, \$config)
 	{
@@ -33,7 +33,7 @@ class plgQuickicon$1 extends JPlugin
 	 * @return  array   A list of icon definition associative arrays, consisting of the
 	 *				    keys link, image, text and access.
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function onGetIcons(\$context)
 	{
@@ -43,10 +43,10 @@ class plgQuickicon$1 extends JPlugin
 		}
 
 		return array(array(
-			'link' => 'index.php?option=com_${1/(.+)/\L\1/g}',
-			'image' => JURI::root() . 'media/com_${1/(.+)/\L\1/g}/images/icon/${1/(.+)/\L\1/g}.png',
+			'link' => 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}',
+			'image' => JURI::root() . 'media/com_${TM_PROJECT/(.+)/\L\1/g}/images/icon/${1/(.+)/\L\1/g}.png',
 			'text' => JText::_('PLG_QUICKICON_${1/(.+)/\U\1/g}_${1/(.+)/\U\1/g}'),
-			'id' => 'plg_quickicon_com_${1/(.+)/\L\1/g}'
+			'id' => 'plg_quickicon_com_${TM_PROJECT/(.+)/\L\1/g}'
 		));
 	}
 }

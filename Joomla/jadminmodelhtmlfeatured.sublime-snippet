@@ -9,14 +9,14 @@
  *
  * @return  string  The anchor tag to toggle featured/unfeatured ${2/(.+)/\L\1/g}.
  * 
- * @since   2.5
+ * @since   $TM_VERSION
  */
 public static function featured(\$value = 0, \$i, \$canChange = true)
 {
 	// Array of image, task, title, action
 	\$states	= array(
-		0	=> array('disabled.png', '${2:hello}.featured', 'COM_${1:HELLO}_UNFEATURED', 'COM_${1/(.+)/\U\1/g}_TOGGLE_TO_FEATURE'),
-		1	=> array('featured.png', '${2/(.+)/\L\1/g}.unfeatured', 'JFEATURED', 'COM_${1/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE'),
+		0	=> array('disabled.png', '${2:hello}.featured', 'COM_${TM_PROJECT/(.+)/\U\1/g}_UNFEATURED', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_FEATURE'),
+		1	=> array('featured.png', '${2/(.+)/\L\1/g}.unfeatured', 'JFEATURED', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE'),
 	);
 	\$state	= JArrayHelper::getValue(\$states, (int) \$value, \$states[1]);
 	\$html	= JHtml::_('image', 'admin/' . \$state[0], JText::_(\$state[2]), null, true);

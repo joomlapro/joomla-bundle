@@ -10,7 +10,7 @@ JHtml::_('behavior.formvalidation');
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task) {
-		if (task == '${3:hello}.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
+		if (task == '${2:hello}.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
 			<?php echo \$this->form->getField('description')->save(); ?>
 			Joomla.submitform(task);
 		}
@@ -25,9 +25,9 @@ JHtml::_('behavior.formvalidation');
 		<?php echo \$this->escape(\$this->params->get('page_heading')); ?>
 	</h1>
 	<?php endif; ?>
-	<form action="<?php echo JRoute::_('index.php?option=com_${1:hello}&view=${2:form}&${1/(.)(.+)/\L\1/g}_id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="$2-validate">
+	<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:form}&${TM_PROJECT/(.)(.+)/\L\1/g}_id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="${1/(.+)/\L\1/g}-validate">
 		<fieldset>
-			<legend><?php echo JText::_('COM_${1/(.+)/\U\1/g}_${3/(.+)/\U\1/g}'); ?></legend>
+			<legend><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}'); ?></legend>
 			<div class="formelm">
 				<?php echo \$this->form->getLabel('title'); ?>
 				<?php echo \$this->form->getInput('title'); ?>
@@ -41,7 +41,7 @@ JHtml::_('behavior.formvalidation');
 				<?php echo \$this->form->getInput('catid'); ?>
 			</div>
 
-			<?php if (\$this->user->authorise('core.edit.state', 'com_${1/(.+)/\L\1/g}.${3/(.+)/\L\1/g}')) : ?>
+			<?php if (\$this->user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}')) : ?>
 			<div class="formelm">
 				<?php echo \$this->form->getLabel('published'); ?>
 				<?php echo \$this->form->getInput('published'); ?>
@@ -54,8 +54,8 @@ JHtml::_('behavior.formvalidation');
 			</div>
 
 			<div class="formelm-buttons">
-				<button type="button" onclick="Joomla.submitbutton('${3/(.+)/\L\1/g}.save')"><?php echo JText::_('JSAVE') ?></button>
-				<button type="button" onclick="Joomla.submitbutton('${3/(.+)/\L\1/g}.cancel')"><?php echo JText::_('JCANCEL') ?></button>
+				<button type="button" onclick="Joomla.submitbutton('${2/(.+)/\L\1/g}.save')"><?php echo JText::_('JSAVE') ?></button>
+				<button type="button" onclick="Joomla.submitbutton('${2/(.+)/\L\1/g}.cancel')"><?php echo JText::_('JCANCEL') ?></button>
 			</div>
 
 			<div>

@@ -8,27 +8,27 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 
 // Initialise variables.
-\$canDo = ${1:Hello}Helper::getActions();
+\$canDo = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions();
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
 	{
-		if (task == '$2.cancel' || document.formvalidator.isValid(document.id('$2-form'))) {
+		if (task == '${1/(.+)/\L\1/g}.cancel' || document.formvalidator.isValid(document.id('${1/(.+)/\L\1/g}-form'))) {
 			<?php echo \$this->form->getField('description')->save(); ?>
-			Joomla.submitform(task, document.getElementById('$2-form'));
+			Joomla.submitform(task, document.getElementById('${1/(.+)/\L\1/g}-form'));
 		}
 		else {
 			alert('<?php echo \$this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED')); ?>');
 		}
 	}
 </script>
-<form action="<?php echo JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${2:hello}-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${1:hello}-form" class="form-validate">
 	<div class="width-60 fltlft">
 		<fieldset class="adminform">
-			<legend><?php echo empty(\$this->item->id) ? JText::_('COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ADD') : JText::sprintf('COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_EDIT', \$this->item->id); ?></legend>
+			<legend><?php echo empty(\$this->item->id) ? JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_ADD') : JText::sprintf('COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_EDIT', \$this->item->id); ?></legend>
 			<ul class="adminformlist">
-				<li><?php echo \$this->form->getLabel('${3:title}'); ?>
-				<?php echo \$this->form->getInput('$3'); ?></li>
+				<li><?php echo \$this->form->getLabel('${2:title}'); ?>
+				<?php echo \$this->form->getInput('${2/(.+)/\L\1/g}'); ?></li>
 				<li><?php echo \$this->form->getLabel('alias'); ?>
 				<?php echo \$this->form->getInput('alias'); ?></li>
 				<li><?php echo \$this->form->getLabel('catid'); ?>
@@ -57,7 +57,7 @@ JHtml::_('behavior.formvalidation');
 		</fieldset>
 	</div>
 	<div class="width-40 fltrt">
-		<?php echo JHtml::_('sliders.start', '$2-sliders-' . \$this->item->id, array('useCookie' => 1)); ?>
+		<?php echo JHtml::_('sliders.start', '${1/(.+)/\L\1/g}-sliders-' . \$this->item->id, array('useCookie' => 1)); ?>
 		<?php echo JHtml::_('sliders.panel', JText::_('JGLOBAL_FIELDSET_PUBLISHING'), 'publishing-details'); ?>
 		<fieldset class="panelform">
 			<ul class="adminformlist">

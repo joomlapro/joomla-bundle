@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Method to increment the hit counter for the ${2/(.+)/\L\1/g}
+ *
+ * @param   int  \$id  Optional ID of the ${2/(.+)/\L\1/g}.
+ * 
+ * @return  boolean  True on success
+ * 
+ * @since   $TM_VERSION
+ */
+public function hit(\$id = null)
+{
+	if (empty(\$id))
+	{
+		\$id = \$this->getState('${2/(.+)/\L\1/g}.id');
+	}
+
+	\$${2/(.+)/\L\1/g} = \$this->getTable('${2:Hello}', '${1:Hello}Table');
+
+	return \$${2/(.+)/\L\1/g}->hit(\$id);
+}
+]]></content>
+<tabTrigger>jsitemodelhit</tabTrigger>
+</snippet>

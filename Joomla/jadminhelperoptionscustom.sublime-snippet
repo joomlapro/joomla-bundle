@@ -5,14 +5,14 @@
  *
  * @return  array  An array of JHtmlOption elements.
  *
- * @since   2.5
+ * @since   $TM_VERSION
  */
 public static function get${1:Hello}Options()
 {
 	// Build the filter options.
 	\$options = array();
 
-	\$options[] = JHtml::_('select.option', '0', JText::_('COM_${2:HELLO}_OPTION_${3:HELLO}'));
+	\$options[] = JHtml::_('select.option', '0', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_${2:HELLO}'));
 
 	return \$options;
 }

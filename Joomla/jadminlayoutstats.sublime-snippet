@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <?php echo JHtml::_('sliders.start', 'stat-pane'); ?>
-<?php echo JHtml::_('sliders.panel', JText::_('COM_${1:HELLO}_FIELDSET_${2:HELLO}'), '${2/(.+)/\L\1/g}-panel'); ?>
+<?php echo JHtml::_('sliders.panel', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}'), '${1:hello}-panel'); ?>
 <table class="adminlist">
 	<thead>
 		<tr>
@@ -9,7 +9,7 @@
 				<?php echo JText::_('JGRID_HEADING_ID'); ?>
 			</th>
 			<th class="left">
-				<?php echo JText::_('COM_$1_HEADING_NAME'); ?>
+				<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_NAME'); ?>
 			</th>
 			<th width="10%">
 				<?php echo JText::_('JDATE'); ?>
@@ -28,7 +28,7 @@
 		foreach (\$this->items as \$item):
 
 		// Define variables
-		\$link = JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&task=${3:hello}.edit&id=' . \$item->id);
+		\$link = JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:hello}.edit&id=' . \$item->id);
 		\$component = JRequest::getCmd('option');
 		?>
 		<tr class="row<?php echo \$k; ?>">
@@ -45,7 +45,7 @@
 		<?php \$k = 1 - \$k; ?>
 		<?php endforeach; ?>
 	<?php else: ?>
-		<?php echo '<tr class="row' . \$k . '"><td colspan="3" align="center">' . JText::_('COM_$1_NO_RESULTS') . '</td></tr>'; ?>
+		<?php echo '<tr class="row' . \$k . '"><td colspan="3" align="center">' . JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_RESULTS') . '</td></tr>'; ?>
 	<?php endif ?>
 	</tbody>
 </table>

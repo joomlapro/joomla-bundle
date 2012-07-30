@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[
 /**
- * $1 module helper.
+ * ${1/(.+)/\u\1/g} module helper.
  *
- * @package     ${1:Hello}
+ * @package     $TM_PROJECT
  * @subpackage  mod_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @since       $TM_VERSION
  */
-abstract class Mod$1Helper
+abstract class Mod${1:Hello}Helper
 {
 	/**
 	 * Get a list of the ${2:hello} items.
@@ -16,7 +16,7 @@ abstract class Mod$1Helper
 	 *
 	 * @return  array
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public static function getList(&\$params)
 	{

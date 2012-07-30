@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-<fieldset name="component" label="COM_${1:HELLO}_COMPONENT_LABEL" description="COM_$1_COMPONENT_LABEL">
+<fieldset name="component" label="COM_${TM_PROJECT/(.+)/\U\1/g}_COMPONENT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_COMPONENT_LABEL">
 
 </fieldset>
 ]]></content>

@@ -1,22 +1,22 @@
 <snippet>
 	<content><![CDATA[
-require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/${3/(.+)/\L\1/g}.php';
+require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/${2/(.+)/\L\1/g}.php';
 
 /**
- * $2 model.
+ * ${1/(.+)/\u\1/g} model.
  *
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Model${2:Form} extends $1Model${3:Hello}
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}Model${2:Hello}
 {
 	/**
 	 * Get the return URL.
 	 *
 	 * @return  string  The return URL.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function getReturnPage()
 	{
@@ -30,7 +30,7 @@ class $1Model${2:Form} extends $1Model${3:Hello}
 	 * 
 	 * @return  void
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function populateState()
 	{
@@ -38,13 +38,13 @@ class $1Model${2:Form} extends $1Model${3:Hello}
 
 		// Load state from the request.
 		\$pk = JRequest::getInt('${1/(.)(.+)/\L\1/g}_id');
-		\$this->setState('${3/(.+)/\L\1/g}.id', \$pk);
-
-		// Add compatibility variable for default naming conventions.
 		\$this->setState('${2/(.+)/\L\1/g}.id', \$pk);
 
+		// Add compatibility variable for default naming conventions.
+		\$this->setState('${1/(.+)/\L\1/g}.id', \$pk);
+
 		\$categoryId = JRequest::getInt('catid');
-		\$this->setState('${3/(.+)/\L\1/g}.catid', \$categoryId);
+		\$this->setState('${2/(.+)/\L\1/g}.catid', \$categoryId);
 
 		\$return = JRequest::getVar('return', null, 'default', 'base64');
 

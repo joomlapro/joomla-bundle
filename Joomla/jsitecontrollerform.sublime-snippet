@@ -3,24 +3,24 @@
 jimport('joomla.application.component.controllerform');
 
 /**
- * $2 Controller
+ * ${1/(.+)/\u\1/g} Controller
  * 
- * @package     ${1:Hello}
- * @subpackage  com_${1/(.+)/\L\1/g}
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class $1Controller${2:Hello} extends JControllerForm
+class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 {
-	protected \$view_item = '${3:form}';
+	protected \$view_item = '${2:form}';
 
-	protected \$view_list = '${4:categories}';
+	protected \$view_list = '${3:categories}';
 
 	/**
 	 * Method to add a new record.
 	 *
 	 * @return  boolean  True if the article can be added, false if not.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function add()
 	{
@@ -38,7 +38,7 @@ class $1Controller${2:Hello} extends JControllerForm
 	 * 
 	 * @return  boolean
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function allowAdd(\$data = array())
 	{
@@ -72,7 +72,7 @@ class $1Controller${2:Hello} extends JControllerForm
 	 *
 	 * @return  boolean
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function allowEdit(\$data = array(), \$key = 'id')
 	{
@@ -104,9 +104,9 @@ class $1Controller${2:Hello} extends JControllerForm
 	 *
 	 * @return  Boolean  True if access level checks pass, false otherwise.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
-	public function cancel(\$key = '${1/(.)(.+)/\L\1/g}_id')
+	public function cancel(\$key = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
 	{
 		parent::cancel(\$key);
 
@@ -122,9 +122,9 @@ class $1Controller${2:Hello} extends JControllerForm
 	 *
 	 * @return  Boolean	True if access level check and checkout passes, false otherwise.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
-	public function edit(\$key = null, \$urlVar = '${1/(.)(.+)/\L\1/g}_id')
+	public function edit(\$key = null, \$urlVar = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
 	{
 		\$result = parent::edit(\$key, \$urlVar);
 
@@ -140,9 +140,9 @@ class $1Controller${2:Hello} extends JControllerForm
 	 *
 	 * @return  object  The model.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
-	public function getModel(\$name = '${3/(.+)/\u\1/g}', \$prefix = '', \$config = array('ignore_request' => true))
+	public function getModel(\$name = '${2/(.+)/\u\1/g}', \$prefix = '', \$config = array('ignore_request' => true))
 	{
 		\$model = parent::getModel(\$name, \$prefix, \$config);
 
@@ -157,7 +157,7 @@ class $1Controller${2:Hello} extends JControllerForm
 	 *
 	 * @return  string  The arguments to append to the redirect URL.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = null)
 	{
@@ -185,7 +185,7 @@ class $1Controller${2:Hello} extends JControllerForm
 	 *
 	 * @return  string  The return URL.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function getReturnPage()
 	{
@@ -209,7 +209,7 @@ class $1Controller${2:Hello} extends JControllerForm
 	 *
 	 * @return  void
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function postSaveHook(JModel &\$model, \$validData = array())
 	{
@@ -217,7 +217,7 @@ class $1Controller${2:Hello} extends JControllerForm
 
 		if (\$task == 'save')
 		{
-			\$this->setRedirect(JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&view=category&id=' . \$validData['catid'], false));
+			\$this->setRedirect(JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=category&id=' . \$validData['catid'], false));
 		}
 	}
 
@@ -229,9 +229,9 @@ class $1Controller${2:Hello} extends JControllerForm
 	 *
 	 * @return  Boolean  True if successful, false otherwise.
 	 * 
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
-	public function save(\$key = null, \$urlVar = '${1/(.)(.+)/\L\1/g}_id')
+	public function save(\$key = null, \$urlVar = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
 	{
 		\$result = parent::save(\$key, \$urlVar);
 

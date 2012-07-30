@@ -5,38 +5,38 @@ jimport('joomla.application.component.helper');
 jimport('joomla.application.categories');
 
 /**
- * $1 Component Route Helper
+ * ${TM_PROJECT/(.+)/\u\1/g} Component Route Helper
  *
- * @package     Products
- * @subpackage  com_products
- * @since       2.5
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-abstract class ${1:Hello}HelperRoute
+abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 {
 	protected static \$lookup;
 
 	/**
-	 * Get the ${2/(.+)/\L\1/g} route
+	 * Get the ${1/(.+)/\L\1/g} route
 	 *
-	 * @param   int  \$id     The route of the ${2/(.+)/\L\1/g}.
+	 * @param   int  \$id     The route of the ${1/(.+)/\L\1/g}.
 	 * @param   int  \$catid  The id of the category.
 	 *
 	 * @return  string
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
-	public static function get${2:Hello}Route(\$id, \$catid)
+	public static function get${1:Hello}Route(\$id, \$catid)
 	{
 		\$needles = array(
-			'${2/(.+)/\L\1/g}' => array((int) \$id)
+			'${1/(.+)/\L\1/g}' => array((int) \$id)
 		);
 
 		// Create the link
-		\$link = 'index.php?option=com_${1/(.+)/\L\1/g}&view=${2/(.+)/\L\1/g}&id=' . \$id;
+		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&id=' . \$id;
 
 		if ((int) \$catid > 1)
 		{
-			\$categories = JCategories::getInstance('$1');
+			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}');
 			\$category = \$categories->get((int) \$catid);
 
 			if (\$category)
@@ -67,7 +67,7 @@ abstract class ${1:Hello}HelperRoute
 	 *
 	 * @return  string
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public static function getCategoryRoute(\$catid)
 	{
@@ -79,7 +79,7 @@ abstract class ${1:Hello}HelperRoute
 		else
 		{
 			\$id = (int) \$catid;
-			\$category = JCategories::getInstance('$1')->get(\$id);
+			\$category = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}')->get(\$id);
 		}
 
 		if (\$id < 1)
@@ -99,7 +99,7 @@ abstract class ${1:Hello}HelperRoute
 			else
 			{
 				// Create the link
-				\$link = 'index.php?option=com_${1/(.+)/\L\1/g}&view=category&id=' . \$id;
+				\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=category&id=' . \$id;
 
 				if (\$category)
 				{
@@ -131,7 +131,7 @@ abstract class ${1:Hello}HelperRoute
 	 *
 	 * @return  void
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected static function _findItem(\$needles = null)
 	{
@@ -143,7 +143,7 @@ abstract class ${1:Hello}HelperRoute
 		{
 			self::\$lookup = array();
 
-			\$component = JComponentHelper::getComponent('com_${1/(.+)/\L\1/g}');
+			\$component = JComponentHelper::getComponent('com_${TM_PROJECT/(.+)/\L\1/g}');
 			\$items     = \$menus->getItems('component_id', \$component->id);
 
 			foreach (\$items as \$item)

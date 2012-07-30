@@ -1,23 +1,23 @@
 <snippet>
 	<content><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="2.5" type="plugin" group="${1:user}">
-	<name>plg_$1_${2:hello}</name>
-	<author>${3:Bruno Batista}</author>
-	<creationDate>$4</creationDate>
-	<copyright>(C) ${5:2012 AtomTech, Inc}. All rights reserved.</copyright>
+<extension version="$TM_VERSION" type="plugin" group="${1:user}">
+	<name>plg_${1/(.+)/\L\1/g}_${2:hello}</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>$3/$4/$TM_YEAR</creationDate>
+	<copyright>(C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail>${6:bruno@atomtech.com.br}</authorEmail>
-	<authorUrl>${7:http://www.atomtech.com.br}</authorUrl>
-	<version>2.5.0</version>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_MANIFEST_VERSION</version>
 	<description>PLG_${2/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
-		<filename plugin="$2">$2.php</filename>
+		<filename plugin="${2/(.+)/\L\1/g}">${2/(.+)/\L\1/g}.php</filename>
 		<filename>index.html</filename>
 	</files>
 	<languages folder="language">
-		<language tag="${8:pt-BR}">$8/$8.plg_$1_$2.ini</language>
-		<language tag="$8">$8/$8.plg_$1_$2.sys.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.plg_${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.plg_${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">

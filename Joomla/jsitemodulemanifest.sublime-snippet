@@ -1,26 +1,26 @@
 <snippet>
 	<content><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="2.5" client="site" method="upgrade">
+<extension type="module" version="$TM_VERSION" client="site" method="upgrade">
 	<name>mod_${1:hello}</name>
-	<author>${2:Bruno Batista}</author>
-	<creationDate>$3</creationDate>
-	<copyright>Copyright (C) ${4:2012 AtomTech, Inc}. All rights reserved.</copyright>
+	<author>$TM_FULLNAME</author>
+	<creationDate>$2/$3/$TM_YEAR</creationDate>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail>${5:bruno@atomtech.com.br}</authorEmail>
-	<authorUrl>${6:http://www.atomtech.com.br}</authorUrl>
-	<version>2.5.0</version>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_MANIFEST_VERSION</version>
 	<description>MOD_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
-		<filename module="mod_$1">mod_$1.php</filename>
+		<filename module="mod_${1/(.+)/\L\1/g}">mod_${1/(.+)/\L\1/g}.php</filename>
 		<folder>tmpl</folder>
-		<filename>mod_$1.xml</filename>
+		<filename>mod_${1/(.+)/\L\1/g}.xml</filename>
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
 	</files>
 	<languages folder="language">
-		<language tag="${7:pt-BR}">$7/$7.mod_$1.ini</language>
-		<language tag="$7">$7/$7.mod_$1.sys.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.mod_${1/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.mod_${1/(.+)/\L\1/g}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">
