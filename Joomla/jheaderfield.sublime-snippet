@@ -3,7 +3,7 @@
 <?php
 /**
  * @package     $TM_PROJECT
- * @subpackage  ${2:com}_${TM_PROJECT/(.+)/\L\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -13,5 +13,5 @@ defined('JPATH_BASE') or die;
 
 
 ]]></content>
-<tabTrigger>jheader2</tabTrigger>
+<tabTrigger>jheaderfield</tabTrigger>
 </snippet>

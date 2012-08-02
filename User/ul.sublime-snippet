@@ -1,7 +1,8 @@
 <snippet>
 	<content><![CDATA[
-$TM_FULLNAME
-$TM_EMAIL
+<ul>
+	<li></li>
+</ul>
 ]]></content>
-<tabTrigger>test</tabTrigger>
+<tabTrigger>ul</tabTrigger>
 </snippet>
