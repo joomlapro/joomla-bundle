@@ -2,7 +2,7 @@
 	<content><![CDATA[
 <modules>
 	<module folder="modules" module="mod_${1:hello}" />
-</modules> 
+</modules>
 ]]></content>
 <tabTrigger>jcomponentmanifestmodules</tabTrigger>
 </snippet>

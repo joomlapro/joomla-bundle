@@ -4,7 +4,7 @@ jimport('joomla.application.component.controllerform');
 
 /**
  * ${1/(.+)/\u\1/g} Controller
- * 
+ *
  * @package     $TM_PROJECT
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
@@ -19,7 +19,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * Method to add a new record.
 	 *
 	 * @return  boolean  True if the article can be added, false if not.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function add()
@@ -35,9 +35,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * Method override to check if you can add a new record.
 	 *
 	 * @param   array  \$data  An array of input data.
-	 * 
+	 *
 	 * @return  boolean
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function allowAdd(\$data = array())
@@ -71,7 +71,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * @param   string  \$key   The name of the key for the primary key.
 	 *
 	 * @return  boolean
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function allowEdit(\$data = array(), \$key = 'id')
@@ -103,7 +103,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * @param   string  \$key  The name of the primary key of the URL variable.
 	 *
 	 * @return  Boolean  True if access level checks pass, false otherwise.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function cancel(\$key = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
@@ -121,7 +121,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * @param   string  \$urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
 	 *
 	 * @return  Boolean	True if access level check and checkout passes, false otherwise.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function edit(\$key = null, \$urlVar = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
@@ -139,7 +139,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * @param   array   \$config  Configuration array for model. Optional.
 	 *
 	 * @return  object  The model.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function getModel(\$name = '${2/(.+)/\u\1/g}', \$prefix = '', \$config = array('ignore_request' => true))
@@ -156,7 +156,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * @param   string  \$urlVar    The name of the URL variable for the id.
 	 *
 	 * @return  string  The arguments to append to the redirect URL.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = null)
@@ -184,7 +184,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * If a "return" variable has been passed in the request
 	 *
 	 * @return  string  The return URL.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function getReturnPage()
@@ -208,7 +208,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * @param   array   \$validData  The validated data.
 	 *
 	 * @return  void
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function postSaveHook(JModel &\$model, \$validData = array())
@@ -228,7 +228,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 * @param   string  \$urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
 	 *
 	 * @return  Boolean  True if successful, false otherwise.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function save(\$key = null, \$urlVar = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')

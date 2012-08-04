@@ -46,7 +46,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 * Constructor.
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
-	 * 
+	 *
 	 * @see     JController
 	 * @since   $TM_VERSION
 	 */
@@ -68,7 +68,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 * Method to get a list of items.
 	 *
 	 * @return  mixed  An array of objects on success, false on failure.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function getItems()
@@ -95,7 +95,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 * Method to build an SQL query to load the list data.
 	 *
 	 * @return  string  An SQL query
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function getListQuery()
@@ -154,10 +154,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 * Method to auto-populate the model state.
 	 *
 	 * Note. Calling getState in this method will result in recursion.
-	 * 
+	 *
 	 * @param   string  \$ordering   An optional ordering field.
 	 * @param   string  \$direction  An optional direction (asc|desc).
-	 * 
+	 *
 	 * @return  void
 	 *
 	 * @since   $TM_VERSION
@@ -212,7 +212,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 * Method to get ${1/(.+)/\L\1/g} data for the current ${1/(.+)/\L\1/g}
 	 *
 	 * @return  object
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function get${1/(.+)/\u\1/g}()
@@ -257,9 +257,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 
 	/**
 	 * Get the parent ${1/(.+)/\L\1/g}.
-	 * 
+	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function getParent()
@@ -276,7 +276,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 * Get the sibling (adjacent) categories.
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	function &getLeftSibling()
@@ -291,9 +291,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 
 	/**
 	 * Get the sibling (adjacent) categories.
-	 * 
+	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	function &getRightSibling()
@@ -308,9 +308,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 
 	/**
 	 * Get the child categories.
-	 * 
+	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	function &getChildren()

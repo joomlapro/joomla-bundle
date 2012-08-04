@@ -4,7 +4,7 @@ jimport('joomla.application.component.modellist');
 
 /**
  * ${1/(.+)/\u\1/g} Component Model
- * 
+ *
  * @package     $TM_PROJECT
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
@@ -46,7 +46,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	 * Constructor.
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
-	 * 
+	 *
 	 * @see     JController
 	 * @since   $TM_VERSION
 	 */
@@ -98,7 +98,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	 * Method to build an SQL query to load the list data.
 	 *
 	 * @return  string	An SQL query
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function getListQuery()
@@ -115,7 +115,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS a');
 		\$query->where('a.access IN (' . \$groups . ')');
 		\$query->where('a.featured = 1');
-		
+
 		// Join on category table.
 		\$query->join('INNER', '#__categories AS c ON c.id = a.catid');
 		\$query->where('c.access IN (' . \$groups . ')');
@@ -173,10 +173,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	 * Method to auto-populate the model state.
 	 *
 	 * Note. Calling getState in this method will result in recursion.
-	 * 
+	 *
 	 * @param   string  \$ordering   An optional ordering field.
 	 * @param   string  \$direction  An optional direction (asc|desc).
-	 * 
+	 *
 	 * @return  void
 	 *
 	 * @since   $TM_VERSION

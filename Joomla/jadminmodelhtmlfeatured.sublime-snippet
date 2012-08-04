@@ -2,13 +2,13 @@
 	<content><![CDATA[
 /**
  * Method to create a clickable icon to change the featured of an item
- * 
+ *
  * @param   int   \$value      The featured value
  * @param   int   \$i          The row index
  * @param   bool  \$canChange  Whether the value can be changed or not
  *
  * @return  string  The anchor tag to toggle featured/unfeatured ${2/(.+)/\L\1/g}.
- * 
+ *
  * @since   $TM_VERSION
  */
 public static function featured(\$value = 0, \$i, \$canChange = true)

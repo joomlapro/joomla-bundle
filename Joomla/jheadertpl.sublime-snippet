@@ -12,8 +12,8 @@
 defined('_JEXEC') or die;
 
 // Initialiase variables.
-$app = JFactory::getApplication();
-$path = $this->baseurl . '/templates/' . $this->template;
+\$app = JFactory::getApplication();
+\$path = \$this->baseurl . '/templates/' . \$this->template;
 
 
 ]]></content>

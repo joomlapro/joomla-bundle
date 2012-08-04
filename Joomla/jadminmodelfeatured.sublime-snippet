@@ -7,7 +7,7 @@
  * @param   int    \$value  The value to toggle to.
  *
  * @return  boolean  True on success.
- * 
+ *
  * @since   $TM_VERSION
  */
 public function featured(\$pks, \$value = 0)

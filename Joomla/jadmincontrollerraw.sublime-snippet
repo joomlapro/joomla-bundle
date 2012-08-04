@@ -15,7 +15,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hellos} extends JControllerAdmin
 	 * Constructor.
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
-	 * 
+	 *
 	 * @see     JController
 	 * @since   $TM_VERSION
 	 */

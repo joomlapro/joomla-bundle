@@ -17,7 +17,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Helper
 	 * @param   string  \$vName  The name of the active view.
 	 *
 	 * @return  void
-     * 
+     *
 	 * @since   $TM_VERSION
 	 */
 	public static function addSubmenu(\$vName)

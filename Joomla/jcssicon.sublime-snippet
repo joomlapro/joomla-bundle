@@ -4,6 +4,7 @@
 	background: url(../images/toolbar/${2/(.+)/\L\1/g}.png) no-repeat left;
 }
 
+
 ]]></content>
 <tabTrigger>jcssicon</tabTrigger>
 </snippet>

@@ -15,7 +15,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 	 * Get the return URL.
 	 *
 	 * @return  string  The return URL.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function getReturnPage()
@@ -27,7 +27,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 	 * Method to auto-populate the model state.
 	 *
 	 * Note. Calling getState in this method will result in recursion.
-	 * 
+	 *
 	 * @return  void
 	 *
 	 * @since   $TM_VERSION

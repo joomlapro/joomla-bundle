@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-JHtml::stylesheet('${1:com_hello}/${2:template}.css', false, true, false);
+JHtml::stylesheet('com_${TM_PROJECT/(.+)/\L\1/g}/${2:backend}.css', false, true, false);
 ]]></content>
 <tabTrigger>jhtmlstylesheet</tabTrigger>
 </snippet>

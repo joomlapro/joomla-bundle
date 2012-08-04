@@ -21,7 +21,7 @@ class JFormFieldOrdering extends JFormField
 	 * Method to get the field input markup.
 	 *
 	 * @return	string	The field input markup.
-	 * 
+	 *
 	 * @since	$TM_VERSION
 	 */
 	protected function getInput()

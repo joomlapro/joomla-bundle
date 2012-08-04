@@ -67,9 +67,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Categories} extends JViewLegacy
 
 	/**
 	 * Prepares the document
-	 * 
+	 *
 	 * @return  void
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function _prepareDocument()

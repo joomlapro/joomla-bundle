@@ -31,7 +31,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	 * Method to auto-populate the model state.
 	 *
 	 * Note. Calling getState in this method will result in recursion.
-	 * 
+	 *
 	 * @return  void
 	 *
 	 * @since	$TM_VERSION
@@ -62,7 +62,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	 * @param   string  \$id  A prefix for the store id.
 	 *
 	 * @return  string  A store id.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function getStoreId(\$id = '')
@@ -80,7 +80,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	 * Redefine the function an add some properties to make the styling more easy
 	 *
 	 * @return  mixed  An array of data items on success, false on failure.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function getItems()
@@ -117,9 +117,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 
 	/**
 	 * Get the parent item.
-	 * 
+	 *
 	 * @return  mixed  An array of items or false if an error occurs.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function getParent()

@@ -2,11 +2,11 @@
 	<content><![CDATA[
 /**
  * Get the ${1/(.+)/\L\1/g} route
- * 
+ *
  * @param   int  \$id  The id of the ${1/(.+)/\L\1/g}.
- * 
+ *
  * @return  string
- * 
+ *
  * @since   $TM_VERSION
  */
 public static function get${1:Form}Route(\$id)

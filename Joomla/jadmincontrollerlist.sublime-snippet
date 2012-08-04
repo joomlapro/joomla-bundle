@@ -21,7 +21,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hellos} extends JControllerAdmin
 	 * Constructor.
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
-     * 
+     *
 	 * @see     JController
 	 * @since   $TM_VERSION
 	 */
@@ -32,13 +32,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hellos} extends JControllerAdmin
 
 	/**
 	 * Proxy for getModel.
-     * 
+     *
 	 * @param   string  \$name    The model name. Optional.
 	 * @param   string  \$prefix  The class prefix. Optional.
 	 * @param   array   \$config  Configuration array for model. Optional.
-     * 
+     *
 	 * @return  object  The model.
-     * 
+     *
 	 * @since	$TM_VERSION
 	 */
 	public function getModel(\$name = '${2:Hello}', \$prefix = '${TM_PROJECT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))

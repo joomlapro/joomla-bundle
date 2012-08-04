@@ -3,12 +3,8 @@
 <table class="adminlist">
 	<thead>
 		<tr>
-			<th>
-				
-			</th>
-			<th class="nowrap" width="10%">
-				
-			</th>
+			<th></th>
+			<th class="nowrap" width="10%"></th>
 		</tr>
 	</thead>
 	<tfoot>
@@ -18,12 +14,8 @@
 	</tfoot>
 	<tbody>
 		<tr>
-			<td>
-				
-			</td>
-			<td class="center">
-				
-			</td>
+			<td></td>
+			<td class="center"></td>
 		</tr>
 	</tbody>
 </table>

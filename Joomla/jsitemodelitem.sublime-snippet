@@ -25,7 +25,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 	 * Note. Calling getState in this method will result in recursion.
 	 *
 	 * @return  void
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function populateState()
@@ -58,7 +58,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 	 * @param   integer  \$pk  The id of the ${1/(.+)/\L\1/g}.
 	 *
 	 * @return  mixed  Menu item data object on success, false on failure.
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	public function &getItem(\$pk = null)

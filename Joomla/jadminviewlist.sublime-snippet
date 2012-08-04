@@ -54,7 +54,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${2:Hellos} extends JView
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_COMPONENT . '/helpers/${1/(.+)/\L\1/g}.php';
+		require_once JPATH_COMPONENT . '/helpers/${TM_PROJECT/(.+)/\L\1/g}.php';
 
 		\$state = \$this->get('State');
 		\$canDo = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions(\$state->get('filter.category_id'));
@@ -100,7 +100,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${2:Hellos} extends JView
 			JToolBarHelper::checkin('${2/(.+)/\L\1/g}.checkin');
 		}
 
-		if (\$state->get('filter.state') == -2 && \$canDo->get('core.delete'))
+		if (\$state->get('filter.published') == -2 && \$canDo->get('core.delete'))
 		{
 			JToolBarHelper::deleteList('', '${2/(.+)/\L\1/g}.delete', 'JTOOLBAR_EMPTY_TRASH');
 			JToolBarHelper::divider();

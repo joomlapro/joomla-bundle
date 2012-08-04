@@ -19,11 +19,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 
 	/**
 	 * Method to display the view.
-	 * 
+	 *
 	 * @param   string  \$tpl  A template file to load. [optional]
 	 *
 	 * @return  mixed  False on error, null otherwise.
-	 * 
+	 *
 	 * @return  $TM_VERSION
 	 */
 	public function display(\$tpl = null)
@@ -81,9 +81,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 
 	/**
 	 * Prepares the document
-	 * 
+	 *
 	 * @return  void
-	 * 
+	 *
 	 * @since   $TM_VERSION
 	 */
 	protected function _prepareDocument()
