@@ -74,21 +74,21 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${2:Hellos} extends JView
 
 		if (\$canDo->get('core.edit.state'))
 		{
-			if (\$state->get('filter.state') != 2)
+			if (\$state->get('filter.published') != 2)
 			{
 				JToolBarHelper::divider();
 				JToolBarHelper::publish('${2/(.+)/\L\1/g}.publish', 'JTOOLBAR_PUBLISH', true);
 				JToolBarHelper::unpublish('${2/(.+)/\L\1/g}.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 			}
 
-			if (\$state->get('filter.state') != -1)
+			if (\$state->get('filter.published') != -1)
 			{
 				JToolBarHelper::divider();
-				if (\$state->get('filter.state') != 2)
+				if (\$state->get('filter.published') != 2)
 				{
 					JToolBarHelper::archiveList('${2/(.+)/\L\1/g}.archive');
 				}
-				elseif (\$state->get('filter.state') == 2)
+				elseif (\$state->get('filter.published') == 2)
 				{
 					JToolBarHelper::unarchiveList('${2/(.+)/\L\1/g}.publish');
 				}
