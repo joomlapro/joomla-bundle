@@ -1,5 +1,5 @@
 {
-	"auto_upgrade_last_run": 1344096243,
+	"auto_upgrade_last_run": 1344427999,
 	"installed_packages":
 	[
 		"Alignment",
@@ -8,6 +8,7 @@
 		"CTags for PHP",
 		"DocBlockr",
 		"Gist",
+		"Goto Documentation",
 		"Indent XML",
 		"JsFormat",
 		"Package Control",
@@ -15,6 +16,7 @@
 		"Prefixr",
 		"RailsCasts Colour Scheme",
 		"Sublime-HTMLPrettify",
+		"SublimeCodeIntel",
 		"sublimelint",
 		"SublimeLinter",
 		"Tag",
