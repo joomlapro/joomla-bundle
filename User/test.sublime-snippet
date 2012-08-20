@@ -1,7 +1,10 @@
 <snippet>
 	<content><![CDATA[
-$TM_FULLNAME
-$TM_EMAIL
+${1:Testes}
+${2:Test}
+
+${1/(.+)(s\b)/\L\1/g}
+${2/(.+)(s\b)/\L\1/g}
 ]]></content>
 <tabTrigger>test</tabTrigger>
 </snippet>

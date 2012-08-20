@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <th class="nowrap" width="${1:5}%">
-	<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_${2:HELLO}', 'a.${3:hello}', \$listDirn, \$listOrder); ?>
+	<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_${2:HELLO}', 'a.${2/(.+)/\L\1/g}', \$listDirn, \$listOrder); ?>
 </th>
 ]]></content>
 <tabTrigger>jtableth</tabTrigger>

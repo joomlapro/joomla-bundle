@@ -44,7 +44,13 @@
 				<key>name</key>
 				<string>TM_PROJECT</string>
 				<key>value</key>
-				<string><![CDATA[Vehicles]]></string>
+				<string><![CDATA[Portfolio]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_TEMPLATE</string>
+				<key>value</key>
+				<string><![CDATA[Bootstrap]]></string>
 			</dict>
 			<dict>
 				<key>name</key>

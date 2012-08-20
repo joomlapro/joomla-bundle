@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[
 /**
- * Method to increment the hit counter for the ${2/(.+)/\L\1/g}
+ * Method to increment the hit counter for the ${1/(.+)/\L\1/g}
  *
- * @param   int  \$id  Optional ID of the ${2/(.+)/\L\1/g}.
+ * @param   int  \$id  Optional ID of the ${1/(.+)/\L\1/g}.
  *
  * @return  boolean  True on success
  *
@@ -13,12 +13,12 @@ public function hit(\$id = null)
 {
 	if (empty(\$id))
 	{
-		\$id = \$this->getState('${2/(.+)/\L\1/g}.id');
+		\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
 	}
 
-	\$${2/(.+)/\L\1/g} = \$this->getTable('${2:Hello}', '${1:Hello}Table');
+	\$${1/(.+)/\L\1/g} = \$this->getTable('${1:Hello}', '${TM_PROJECT/(.+)/\u\1/g}Table');
 
-	return \$${2/(.+)/\L\1/g}->hit(\$id);
+	return \$${1/(.+)/\L\1/g}->hit(\$id);
 }
 ]]></content>
 <tabTrigger>jsitemodelhit</tabTrigger>

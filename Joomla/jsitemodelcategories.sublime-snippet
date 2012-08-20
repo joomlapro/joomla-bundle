@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 /**
- * This models supports retrieving lists of ${3:hello} ${2/(.+)/\L\1/g}.
+ * This models supports retrieving lists of ${TM_PROJECT/(.+)(s\b)/\L\1/g} ${2/(.+)/\L\1/g}.
  *
  * @package     $TM_PROJECT
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}

@@ -3,11 +3,11 @@
 jimport('joomla.application.component.modellist');
 
 /**
- * ${1/(.+)/\u\1/g} Component Model
+ * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     Events
+ * @subpackage  com_events
+ * @since       2.5
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 {
@@ -29,16 +29,16 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	/**
 	 * The category that applies.
 	 *
-	 * @access	protected
-	 * @var		object
+	 * @access  protected
+	 * @var     object
 	 */
 	protected \$_category = null;
 
 	/**
-	 * The list of other cotnact categories.
+	 * The list of other ${1/(.+)(s\b)/\L\1/g} categories.
 	 *
-	 * @access	protected
-	 * @var		array
+	 * @access  protected
+	 * @var     array
 	 */
 	protected \$_categories = null;
 
@@ -48,7 +48,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
 	 * @see     JController
-	 * @since   $TM_VERSION
+	 * @since   2.5
 	 */
 	public function __construct(\$config = array())
 	{
@@ -57,10 +57,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
 				'name', 'a.name',
-				'con_position', 'a.con_position',
-				'suburb', 'a.suburb',
-				'state', 'a.state',
-				'country', 'a.country',
+				'published', 'a.published',
 				'ordering', 'a.ordering',
 			);
 		}
@@ -71,7 +68,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	/**
 	 * Method to get a list of items.
 	 *
-	 * @return	mixed	An array of objects on success, false on failure.
+	 * @return  mixed  An array of objects on success, false on failure.
+	 *
+	 * @since   2.5
 	 */
 	public function getItems()
 	{
@@ -97,9 +96,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	/**
 	 * Method to build an SQL query to load the list data.
 	 *
-	 * @return  string	An SQL query
+	 * @return  string  An SQL query
 	 *
-	 * @since   $TM_VERSION
+	 * @since   2.5
 	 */
 	protected function getListQuery()
 	{
@@ -115,8 +114,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS a');
 		\$query->where('a.access IN (' . \$groups . ')');
 		\$query->where('a.featured = 1');
-
-		// Join on category table.
+		\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');
 		\$query->join('INNER', '#__categories AS c ON c.id = a.catid');
 		\$query->where('c.access IN (' . \$groups . ')');
 
@@ -141,12 +139,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		\$publishedWhere = 'CASE WHEN badcats.id is null THEN a.published ELSE 0 END';
 		\$query->join('LEFT OUTER', '(' . \$subquery . ') AS badcats ON badcats.id = c.id');
 
-		// Filter by state
-		\$state = \$this->getState('filter.published');
-
-		if (is_numeric(\$state))
+		// Filter by published state
+		\$published = \$this->getState('filter.published');
+		if (is_numeric(\$published))
 		{
-			\$query->where('a.published = ' . (int) \$state);
+			\$query->where('a.published = ' . (int) \$published);
 
 			// Filter by start and end dates.
 			\$nullDate = \$db->Quote(\$db->getNullDate());
@@ -154,7 +151,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 			\$nowDate = \$db->Quote(\$date->toSql());
 			\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')');
 			\$query->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
-			\$query->where(\$publishedWhere . ' = ' . (int) \$state);
+			\$query->where(\$publishedWhere . ' = ' . (int) \$published);
 		}
 
 		// Filter by language
@@ -179,7 +176,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   2.5
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
@@ -200,7 +197,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		{
 			\$orderCol = 'ordering';
 		}
-
 		\$this->setState('list.ordering', \$orderCol);
 
 		\$listOrder = JRequest::getCmd('filter_order_Dir', 'ASC');
@@ -214,7 +210,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 
 		\$user = JFactory::getUser();
 
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
 		{
 			// Limit to published for people who can't edit or edit.state.
 			\$this->setState('filter.published', 1);

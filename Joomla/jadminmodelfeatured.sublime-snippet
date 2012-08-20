@@ -29,7 +29,7 @@ public function featured(\$pks, \$value = 0)
 		\$db = \$this->getDbo();
 
 		\$db->setQuery(
-			'UPDATE #__${1/(.+)/\L\1/g}'
+			'UPDATE #__${TM_PROJECT/(.+)/\L\1/g}'
 			. ' SET featured = ' . (int) \$value
 			. ' WHERE id IN (' . implode(',', \$pks) . ')'
 		);

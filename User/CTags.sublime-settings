@@ -1,3 +1,0 @@
-{
-    "ctags_command"   :  "ctags -R '--exclude=*/vendor/*' '--exclude=*/.*/*' -f .tags"
-}

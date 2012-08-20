@@ -2,9 +2,9 @@
 	<content><![CDATA[
 JSubMenuHelper::addEntry(
 	JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_${1:HELLO}'),
-	'index.php?option=com_events&view=${1/(.+)/\L\1/g}',
+	'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}',
 	\$vName == '${1/(.+)/\L\1/g}'
 );
 ]]></content>
-<tabTrigger>jsubmenuhelper</tabTrigger>
+<tabTrigger>jmenuhelper</tabTrigger>
 </snippet>

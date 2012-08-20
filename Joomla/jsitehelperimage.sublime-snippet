@@ -7,8 +7,8 @@ jimport('joomla.filesystem.file');
 /**
  * Image component helper.
  *
- * @package     Hello
- * @subpackage  com_hello
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       2.5
  */
 abstract class ImageHelper

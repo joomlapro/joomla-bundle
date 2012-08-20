@@ -79,7 +79,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 				\$query = \$db->getQuery(true);
 
 				\$query->select(\$this->getState('item.select', 'a.*'));
-				\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g} AS a');
+				\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hellos} AS a');
 
 				// Join on category table.
 				\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');

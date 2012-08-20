@@ -3,8 +3,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
 <extension version="$TM_VERSION" type="template" client="site">
-	<name>${1:hello}</name>
-	<creationDate>$2/$3/$TM_YEAR</creationDate>
+	<name>${TM_TEMPLATE/(.+)/\L\1/g}</name>
+	<creationDate>$1/$TM_YEAR</creationDate>
 	<author>$TM_FULLNAME</author>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
@@ -29,15 +29,15 @@
 		<filename>templateDetails.xml</filename>
 	</files>
 	<positions>
-		<position>${1/(.+)/\L\1/g}-mainmenu</position>
-		<position>${1/(.+)/\L\1/g}-search</position>
-		<position>${1/(.+)/\L\1/g}-sidebar</position>
-		<position>${1/(.+)/\L\1/g}-footer</position>
-		<position>${1/(.+)/\L\1/g}-footermenu</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-mainmenu</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-search</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-sidebar</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footer</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footermenu</position>
 	</positions>
 	<languages folder="language">
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${1/(.+)/\L\1/g}.ini</language>
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${1/(.+)/\L\1/g}.sys.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${TM_TEMPLATE/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${TM_TEMPLATE/(.+)/\L\1/g}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">

@@ -68,11 +68,12 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Category} extends JViewLegacy
 		}
 
 		// Prepare the data.
-		// Compute the newsfeed slug.
+		// Compute the ${TM_PROJECT/(.+)(s\b)/\L\1/g} slug.
 		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
 		{
 			\$item = &\$items[\$i];
 			\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+			\$item->catslug = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
 			\$temp = new JRegistry;
 			\$temp->loadString(\$item->params);
 			\$item->params = clone(\$params);
@@ -145,17 +146,17 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Category} extends JViewLegacy
 		}
 		else
 		{
-			\$this->params->def('page_heading', JText::_('COM_NEWSFEEDS_DEFAULT_PAGE_TITLE'));
+			\$this->params->def('page_heading', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
 		}
 
 		\$id = (int) @\$menu->query['id'];
 
-		if (\$menu && (\$menu->query['option'] != 'com_newsfeeds' || \$menu->query['view'] == 'newsfeed' || \$id != \$this->category->id))
+		if (\$menu && (\$menu->query['option'] != 'com_${TM_PROJECT/(.+)/\L\1/g}' || \$menu->query['view'] == '${2:hello}' || \$id != \$this->category->id))
 		{
 			\$path = array(array('title' => \$this->category->title, 'link' => ''));
 			\$category = \$this->category->getParent();
 
-			while ((\$menu->query['option'] != 'com_newsfeeds' || \$menu->query['view'] == 'newsfeed' || \$id != \$category->id) && \$category->id > 1)
+			while ((\$menu->query['option'] != 'com_${TM_PROJECT/(.+)/\L\1/g}' || \$menu->query['view'] == '${2/(.+)/\L\1/g}' || \$id != \$category->id) && \$category->id > 1)
 			{
 				\$path[] = array('title' => \$category->title, 'link' => ${TM_PROJECT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$category->id));
 				\$category = \$category->getParent();

@@ -101,7 +101,7 @@ JHtml::_('behavior.multiselect');
 					<?php if (\$canEdit) : ?>
 						<a href="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${4:hello}.edit&id=' . (int) \$item->id); ?>">
 							<?php echo \$this->escape(\$item->${2/(.+)/\L\1/g}); ?></a>
-					<?php else: ?>
+					<?php else : ?>
 							<?php echo \$this->escape(\$item->${2/(.+)/\L\1/g}); ?>
 					<?php endif; ?>
 					<p class="smallsub">
