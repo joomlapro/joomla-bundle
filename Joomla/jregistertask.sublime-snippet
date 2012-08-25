@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[
-\$this->registerTask('unfeatured', 'featured');
-]]></content>
-<tabTrigger>jregistertask</tabTrigger>
-</snippet>

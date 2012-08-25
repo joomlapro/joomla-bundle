@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[
-<field name="${1:hello}" type="textarea" class="inputbox" rows="3" cols="30" label="${2:COM}_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="${2/(.+)/\U\1/g}_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
-]]></content>
-<tabTrigger>jformfieldtextarea</tabTrigger>
-</snippet>

@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[
-<td class="center">
-	<?php echo \$this->escape(\$item->${1:hello}); ?>
-</td>
-]]></content>
-<tabTrigger>jtabletd</tabTrigger>
-</snippet>
