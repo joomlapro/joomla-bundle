@@ -1,0 +1,35 @@
+{
+	"auto_upgrade_last_run": 1345914756,
+	"installed_packages":
+	[
+		"Additional PHP Snippets",
+		"Alignment",
+		"Case Conversion",
+		"CTags",
+		"CTags for PHP",
+		"DocBlockr",
+		"Gist",
+		"Goto Documentation",
+		"Indent XML",
+		"JsFormat",
+		"Laravel Bootstrapper Snippets",
+		"Laravel Snippets",
+		"Laravel-Blade",
+		"Package Control",
+		"PhpBeautifier",
+		"Phpcs",
+		"PhpDoc",
+		"phpDocumentor",
+		"Prefixr",
+		"RailsCasts Colour Scheme",
+		"Sublime-HTMLPrettify",
+		"SublimeCodeIntel",
+		"sublimelint",
+		"SublimeLinter",
+		"Tag",
+		"Terminal",
+		"Theme - Soda",
+		"Tomorrow Color Schemes",
+		"TrailingSpaces"
+	]
+}
