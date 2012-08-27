@@ -25,7 +25,7 @@ public static function button(\$controller, \$image, \$text)
 	\$html[] = '</div>';
 	\$html[] = '</div>';
 
-	echo implode(\$html);
+	return implode(\$html);
 }]]></content>
 	<tabTrigger>jadminhelperbutton</tabTrigger>
 </snippet>

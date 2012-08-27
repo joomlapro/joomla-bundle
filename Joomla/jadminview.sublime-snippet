@@ -46,6 +46,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JView
 
 		\$canDo = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions();
 		\$user = JFactory::getUser();
+
 		JToolBarHelper::title(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}'), '${1/(.+)/\L\1/g}.png');
 
 		if (\$canDo->get('core.admin'))
@@ -53,6 +54,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JView
 			JToolBarHelper::preferences('com_${TM_PROJECT/(.+)/\L\1/g}');
 			JToolBarHelper::divider();
 		}
+
 		JToolBarHelper::help('${1/(.+)/\L\1/g}', \$com = true);
 	}
 }

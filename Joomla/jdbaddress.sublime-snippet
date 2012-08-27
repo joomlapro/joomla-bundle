@@ -6,7 +6,6 @@
 `district` varchar(72) NOT NULL DEFAULT '',
 `city` varchar(72) NOT NULL DEFAULT '',
 `state` char(2) NOT NULL DEFAULT '',
-`country` char(3) NOT NULL DEFAULT '',
-]]></content>
+`country` char(3) NOT NULL DEFAULT '',]]></content>
 	<tabTrigger>jdbaddress</tabTrigger>
 </snippet>
