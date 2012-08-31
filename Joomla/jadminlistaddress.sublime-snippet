@@ -17,5 +17,5 @@
 <?php echo \$this->form->getInput('latitude'); ?></li>
 <li><?php echo \$this->form->getLabel('longitude'); ?>
 <?php echo \$this->form->getInput('longitude'); ?></li>]]></content>
-	<tabTrigger>jformlistaddress</tabTrigger>
+	<tabTrigger>jadminlistaddress</tabTrigger>
 </snippet>

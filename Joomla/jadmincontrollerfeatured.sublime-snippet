@@ -26,12 +26,15 @@ public function featured()
 	{
 		\$item = \$model->getItem(\$id);
 
-		if (!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$item->catid))
+		if (isset(\$item->catid))
 		{
-			// Prune items that you can't change.
-			unset(\$ids[\$i]);
+			if (!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$item->catid))
+			{
+				// Prune items that you can't change.
+				unset(\$ids[\$i]);
 
-			JError::raiseNotice(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				JError::raiseNotice(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+			}
 		}
 	}
 

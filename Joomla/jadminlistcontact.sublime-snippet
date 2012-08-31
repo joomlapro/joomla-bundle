@@ -7,5 +7,5 @@
 <?php echo \$this->form->getInput('phone'); ?></li>
 <li><?php echo \$this->form->getLabel('mobile'); ?>
 <?php echo \$this->form->getInput('mobile'); ?></li>]]></content>
-	<tabTrigger>jformlistcontact</tabTrigger>
+	<tabTrigger>jadminlistcontact</tabTrigger>
 </snippet>

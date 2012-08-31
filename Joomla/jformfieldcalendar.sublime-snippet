@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[<field name="${1:hello}" type="calendar" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" label="${2:COM}_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="${2/(.+)/\U\1/g}_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
-	<tabTrigger>jformfieldcalendar</tabTrigger>
-</snippet>
