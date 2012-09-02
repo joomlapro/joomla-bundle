@@ -1,9 +1,14 @@
 <snippet>
-	<content><![CDATA[if (!isset(\$this->error))
+	<content><![CDATA[jimport('joomla.application.module.helper');
+
+if (!isset(\$this->error))
 {
 	\$this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 	\$this->debug = false;
 }
+
+// Get template params
+\$params = JFactory::getApplication()->getTemplate(true)->params;
 
 // Get language and direction
 \$doc = JFactory::getDocument();
