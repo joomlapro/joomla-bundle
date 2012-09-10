@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<fieldset name="default" label="COM_${TM_PROJECT/(.+)/\U\1/g}_${1:VIEW}_DEFAULT_LABEL" addfieldpath="/administrator/components/com_categories/models/fields">
+	<fieldset name="default" label="COM_${TM_PROJECT/(.+)/\U\1/g}_${1:VIEW}_DEFAULT_LEGEND" addfieldpath="/administrator/components/com_categories/models/fields">
 		<field id="id" name="id" type="hidden" class="inputbox" size="10" default="0" readonly="true" filter="integer" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
 		<field id="${2/(.+)/\L\1/g}" name="${2:title}" type="text" class="inputbox" size="30" required="true" label="JGLOBAL_TITLE" description="JFIELD_TITLE_DESC" />
 		<field id="alias" name="alias" type="text" class="inputbox" size="45" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[CREATE TABLE `${1:jos}_${2:hello}` (
+	<content><![CDATA[CREATE TABLE `${1:#_}_${2:hello}` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `catid` int(10) unsigned NOT NULL DEFAULT '0',
   `${3:title}` varchar(100) NOT NULL DEFAULT '',
@@ -26,7 +26,7 @@
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 ]]></content>

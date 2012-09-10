@@ -1,7 +1,0 @@
-{
-	"phpcs_additional_args": {
-		//"--standard": "PEAR",
-		"--standard": "Joomla",
-		"-n": ""
-	}
-}
