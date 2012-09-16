@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[$messages = array(
+	<content><![CDATA[\$messages = array(
 	0 => array('message' => 'Perfil salvo com sucesso', 'type' => 'error'),
 	1 => array('message' => 'Perfil salvo com sucesso', 'type' => 'message')
 );]]></content>

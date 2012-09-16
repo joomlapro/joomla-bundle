@@ -49,7 +49,7 @@ JHtml::_('behavior.multiselect');
 					<input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
 				</th>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', 'JGLOBAL_TITLE', 'a.${2:title}', \$listDirn, \$listOrder); ?>
+					<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_${2/(.+)/\U\1/g}', 'a.${2:title}', \$listDirn, \$listOrder); ?>
 				</th>
 				<th class="nowrap" width="5%">
 					<?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.published', \$listDirn, \$listOrder); ?>
@@ -76,7 +76,7 @@ JHtml::_('behavior.multiselect');
 		</thead>
 		<tfoot>
 			<tr>
-				<td colspan="13">
+				<td colspan="8">
 					<?php echo \$this->pagination->getListFooter(); ?>
 				</td>
 			</tr>

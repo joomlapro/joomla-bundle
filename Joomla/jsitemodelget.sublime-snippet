@@ -6,7 +6,7 @@
  *
  * @since   2.5
  */
-public function get${1:Hello}()
+public function get${1:Hellos}()
 {
 	// Initialiase variables.
 	\$id = \$this->getItem()->id;
@@ -20,7 +20,7 @@ public function get${1:Hello}()
 		// Prepare query.
 		\$query->select('a.*');
 		\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g} AS a');
-		\$query->where('a.user_id = ' . (int) \$id);
+		\$query->where('a.${2:hello_id} = ' . (int) \$id);
 		\$query->where('a.published = 1');
 		\$query->order('a.ordering ASC');
 
@@ -37,8 +37,6 @@ public function get${1:Hello}()
 
 		return \$items;
 	}
-}
-
-]]></content>
+}]]></content>
 	<tabTrigger>jsitemodelget</tabTrigger>
 </snippet>

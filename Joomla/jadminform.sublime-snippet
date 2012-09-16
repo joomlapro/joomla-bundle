@@ -3,7 +3,7 @@
 <form>
 	<fieldset name="details" addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/fields">
 		<field name="id" type="text" default="0" readonly="true" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
-		<field name="${1:title}" type="text" class="inputbox" size="40" required="true" label="${2:JGLOBAL_TITLE}" description="${3:JFIELD_TITLE_DESC}" />
+		<field name="${1:title}" type="text" class="inputbox" size="40" required="true" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
 		<field name="alias" type="text" class="inputbox" size="40" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
 		<field name="catid" type="categoryedit" extension="com_${TM_PROJECT/(.+)/\L\1/g}" class="inputbox" required="true" label="JCATEGORY" description="JFIELD_CATEGORY_DESC" addfieldpath="/administrator/components/com_categories/models/fields">
 			<option value="">JSELECT</option>

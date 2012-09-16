@@ -12,6 +12,7 @@ if (count(\$messages))
 		\$html = '<div class="message-box ' . strtolower(\$message['type']) . '">';
 		\$html .= '<strong>' . \$text . ':</strong> ' . \$message['message'] . ' <span class="close"></span>';
 		\$html .= '</div>';
+		\$html .= '<script type="text/javascript">\$(\'.close\').click(function(){\$(\'.message-box\').fadeOut(\'slow\');});</script>';
 
 		echo \$html;
 	}
