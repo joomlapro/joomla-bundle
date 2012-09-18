@@ -3,7 +3,7 @@
  * ${TM_PROJECT/(.+)/\u\1/g} Quickicon plugin
  *
  * @package     $TM_PROJECT
- * @subpackage  plg_quickicon_${1/(.+)/\L\1/g}
+ * @subpackage  plg_quickicon_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
 class plgQuickicon${TM_PROJECT/(.+)/\u\1/g} extends JPlugin
@@ -43,10 +43,11 @@ class plgQuickicon${TM_PROJECT/(.+)/\u\1/g} extends JPlugin
 
 		return array(array(
 			'link' => 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}',
-			'image' => JURI::root() . 'media/com_${TM_PROJECT/(.+)/\L\1/g}/images/icon/${1/(.+)/\L\1/g}.png',
-			'text' => JText::_('PLG_QUICKICON_${1/(.+)/\U\1/g}_${1/(.+)/\U\1/g}'),
-			'id' => 'plg_quickicon_com_${TM_PROJECT/(.+)/\L\1/g}'
-		));
+			'image' => JURI::root() . 'media/com_${TM_PROJECT/(.+)/\L\1/g}/images/icon/${TM_PROJECT/(.+)(s\b)/\L\1/g}.png',
+			'text' => JText::_('PLG_QUICKICON_${TM_PROJECT/(.+)/\U\1/g}_${TM_PROJECT/(.+)/\U\1/g}'),
+			'id' => 'plg_quickicon_com_${TM_PROJECT/(.+)/\L\1/g}',
+			'access' => array('core.manage', 'com_${TM_PROJECT/(.+)/\L\1/g}')),
+		);
 	}
 }
 

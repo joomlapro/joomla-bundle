@@ -13,7 +13,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	/**
 	 * Category items data
 	 *
-	 * @var array
+	 * @var     array
 	 */
 	protected \$_item = null;
 

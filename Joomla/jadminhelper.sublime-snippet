@@ -36,23 +36,33 @@ class ${TM_PROJECT/(.+)/\u\1/g}Helper
 	/**
 	 * Gets a list of the actions that can be performed.
 	 *
-	 * @return	JObject
+	 * @param   int  \$categoryId  The category ID.
+	 *
+	 * @return  JObject
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function getActions()
+	public static function getActions(\$categoryId = 0)
 	{
-		\$user      = JFactory::getUser();
-		\$result    = new JObject;
-		\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+		\$user   = JFactory::getUser();
+		\$result = new JObject;
 
-		\$actions = array(
-			'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.state', 'core.delete'
-		);
+		if (empty(\$categoryId))
+		{
+			\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+			\$level = 'component';
+		}
+		else
+		{
+			\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$categoryId;
+			\$level = 'category';
+		}
+
+		\$actions = JAccess::getActions('com_${TM_PROJECT/(.+)/\L\1/g}', \$level);
 
 		foreach (\$actions as \$action)
 		{
-			\$result->set(\$action, \$user->authorise(\$action, \$assetName));
+			\$result->set(\$action->name, \$user->authorise(\$action->name, \$assetName));
 		}
 
 		return \$result;

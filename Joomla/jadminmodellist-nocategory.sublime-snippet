@@ -29,7 +29,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 				'alias', 'a.alias',
 				'featured', 'a.featured',
 				'published', 'a.published',
-				'catid', 'a.catid', 'category_title',
 				'ordering', 'a.ordering',
 				'access', 'a.access', 'access_level',
 				'created', 'a.created',
@@ -74,9 +73,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		\$published = \$this->getUserStateFromRequest(\$this->context . '.filter.published', 'filter_published', '');
 		\$this->setState('filter.published', \$published);
 
-		\$categoryId = \$this->getUserStateFromRequest(\$this->context . '.filter.category_id', 'filter_category_id');
-		\$this->setState('filter.category_id', \$categoryId);
-
 		\$language = \$this->getUserStateFromRequest(\$this->context . '.filter.language', 'filter_language', '');
 		\$this->setState('filter.language', \$language);
 
@@ -107,7 +103,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		\$id .= ':' . \$this->getState('filter.search');
 		\$id .= ':' . \$this->getState('filter.access');
 		\$id .= ':' . \$this->getState('filter.published');
-		\$id .= ':' . \$this->getState('filter.category_id');
 		\$id .= ':' . \$this->getState('filter.language');
 
 		return parent::getStoreId(\$id);
@@ -131,7 +126,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		\$query->select(
 			\$this->getState(
 				'list.select',
-				'a.id, a.catid, a.${2/(.+)/\L\1/g}, a.alias, a.description'
+				'a.id, a.${2/(.+)/\L\1/g}, a.alias, a.description'
 				. ', a.ordering, a.published, a.access, a.language, a.created, a.created_by, a.checked_out, a.checked_out_time'
 				. ', a.featured, a.publish_up, a.publish_down'
 			)
@@ -149,10 +144,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		// Join over the asset groups.
 		\$query->select('ag.title AS access_level');
 		\$query->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access');
-
-		// Join over the categories.
-		\$query->select('c.title AS category_title');
-		\$query->join('LEFT', '#__categories AS c ON c.id = a.catid');
 
 		// Filter by access level.
 		if (\$access = \$this->getState('filter.access'))
@@ -178,19 +169,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 			\$query->where('(a.published = 0 OR a.published = 1)');
 		}
 
-		// Filter by a single or group of categories.
-		\$categoryId = \$this->getState('filter.category_id');
-		if (is_numeric(\$categoryId))
-		{
-			\$query->where('a.catid = ' . (int) \$categoryId);
-		}
-		elseif (is_array(\$categoryId))
-		{
-			JArrayHelper::toInteger(\$categoryId);
-			\$categoryId = implode(',', \$categoryId);
-			\$query->where('a.catid IN (' . \$categoryId . ')');
-		}
-
 		// Filter by search in ${2/(.+)/\L\1/g}.
 		\$search = \$this->getState('filter.search');
 		if (!empty(\$search))
@@ -213,13 +191,8 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		}
 
 		// Add the list ordering clause.
-		\$orderCol  = \$this->state->get('list.ordering', 'a.${2/(.+)/\L\1/g}');
-		\$orderDirn = \$this->state->get('list.direction', 'asc');
-		if (\$orderCol == 'a.ordering' || \$orderCol == 'category_title')
-		{
-			\$orderCol = 'c.title ' . \$orderDirn . ', a.ordering';
-		}
-		\$query->order(\$db->escape(\$orderCol . ' ' . \$orderDirn));
+		\$orderCol = \$this->getState('list.ordering', 'a.${2/(.+)/\L\1/g}');
+		\$query->order(\$db->escape(\$orderCol) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));
 
 		// echo nl2br(str_replace('#__', 'jos_', \$query));
 		return \$query;
@@ -227,5 +200,5 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 }
 
 ]]></content>
-	<tabTrigger>jadminmodellist</tabTrigger>
+	<tabTrigger>jadminmodellist-nocategory</tabTrigger>
 </snippet>

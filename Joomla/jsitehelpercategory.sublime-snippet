@@ -26,7 +26,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Categories extends JCategories
 		\$options['table'] = '#__${TM_PROJECT/(.+)/\L\1/g}';
 		\$options['extension'] = 'com_${TM_PROJECT/(.+)/\L\1/g}';
 		\$options['statefield'] = 'published';
-		//\$options['countItems'] = 1;
+		// \$options['countItems'] = 1;
 
 		parent::__construct(\$options);
 	}

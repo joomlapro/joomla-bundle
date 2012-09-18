@@ -27,14 +27,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 				'id', 'a.id',
 				'${2:title}', 'a.${2/(.+)/\L\1/g}',
 				'alias', 'a.alias',
-				'featured', 'a.featured',
 				'published', 'a.published',
-				'catid', 'a.catid', 'category_title',
 				'ordering', 'a.ordering',
-				'access', 'a.access', 'access_level',
 				'created', 'a.created',
 				'created_by', 'a.created_by',
-				'language', 'a.language',
 			);
 		}
 
@@ -68,17 +64,8 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		\$search = \$this->getUserStateFromRequest(\$this->context . '.filter.search', 'filter_search');
 		\$this->setState('filter.search', \$search);
 
-		\$accessId = \$this->getUserStateFromRequest(\$this->context . '.filter.access', 'filter_access', null, 'int');
-		\$this->setState('filter.access', \$accessId);
-
 		\$published = \$this->getUserStateFromRequest(\$this->context . '.filter.published', 'filter_published', '');
 		\$this->setState('filter.published', \$published);
-
-		\$categoryId = \$this->getUserStateFromRequest(\$this->context . '.filter.category_id', 'filter_category_id');
-		\$this->setState('filter.category_id', \$categoryId);
-
-		\$language = \$this->getUserStateFromRequest(\$this->context . '.filter.language', 'filter_language', '');
-		\$this->setState('filter.language', \$language);
 
 		// Load the parameters.
 		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
@@ -105,10 +92,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	{
 		// Compile the store id.
 		\$id .= ':' . \$this->getState('filter.search');
-		\$id .= ':' . \$this->getState('filter.access');
 		\$id .= ':' . \$this->getState('filter.published');
-		\$id .= ':' . \$this->getState('filter.category_id');
-		\$id .= ':' . \$this->getState('filter.language');
 
 		return parent::getStoreId(\$id);
 	}
@@ -131,41 +115,15 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		\$query->select(
 			\$this->getState(
 				'list.select',
-				'a.id, a.catid, a.${2/(.+)/\L\1/g}, a.alias, a.description'
-				. ', a.ordering, a.published, a.access, a.language, a.created, a.created_by, a.checked_out, a.checked_out_time'
-				. ', a.featured, a.publish_up, a.publish_down'
+				'a.id, a.${2/(.+)/\L\1/g}, a.alias, a.description'
+				. ', a.ordering, a.published, a.created, a.created_by, a.checked_out, a.checked_out_time'
 			)
 		);
 		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS a');
 
-		// Join over the language
-		\$query->select('l.title AS language_title');
-		\$query->join('LEFT', \$db->quoteName('#__languages') . ' AS l ON l.lang_code = a.language');
-
 		// Join over the users for the checked out user.
 		\$query->select('uc.name AS editor');
 		\$query->join('LEFT', '#__users AS uc ON uc.id = a.checked_out');
-
-		// Join over the asset groups.
-		\$query->select('ag.title AS access_level');
-		\$query->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access');
-
-		// Join over the categories.
-		\$query->select('c.title AS category_title');
-		\$query->join('LEFT', '#__categories AS c ON c.id = a.catid');
-
-		// Filter by access level.
-		if (\$access = \$this->getState('filter.access'))
-		{
-			\$query->where('a.access = ' . (int) \$access);
-		}
-
-		// Implement View Level Access
-		if (!\$user->authorise('core.admin'))
-		{
-			\$groups = implode(',', \$user->getAuthorisedViewLevels());
-			\$query->where('a.access IN (' . \$groups . ')');
-		}
 
 		// Filter by published state
 		\$published = \$this->getState('filter.published');
@@ -176,19 +134,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		elseif (\$published === '')
 		{
 			\$query->where('(a.published = 0 OR a.published = 1)');
-		}
-
-		// Filter by a single or group of categories.
-		\$categoryId = \$this->getState('filter.category_id');
-		if (is_numeric(\$categoryId))
-		{
-			\$query->where('a.catid = ' . (int) \$categoryId);
-		}
-		elseif (is_array(\$categoryId))
-		{
-			JArrayHelper::toInteger(\$categoryId);
-			\$categoryId = implode(',', \$categoryId);
-			\$query->where('a.catid IN (' . \$categoryId . ')');
 		}
 
 		// Filter by search in ${2/(.+)/\L\1/g}.
@@ -206,20 +151,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 			}
 		}
 
-		// Filter on the language.
-		if (\$language = \$this->getState('filter.language'))
-		{
-			\$query->where('a.language = ' . \$db->quote(\$language));
-		}
-
 		// Add the list ordering clause.
-		\$orderCol  = \$this->state->get('list.ordering', 'a.${2/(.+)/\L\1/g}');
-		\$orderDirn = \$this->state->get('list.direction', 'asc');
-		if (\$orderCol == 'a.ordering' || \$orderCol == 'category_title')
-		{
-			\$orderCol = 'c.title ' . \$orderDirn . ', a.ordering';
-		}
-		\$query->order(\$db->escape(\$orderCol . ' ' . \$orderDirn));
+		\$orderCol = \$this->getState('list.ordering', 'a.${2/(.+)/\L\1/g}');
+		\$query->order(\$db->escape(\$orderCol) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));
 
 		// echo nl2br(str_replace('#__', 'jos_', \$query));
 		return \$query;
@@ -227,5 +161,5 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 }
 
 ]]></content>
-	<tabTrigger>jadminmodellist</tabTrigger>
+	<tabTrigger>jadminmodellist-simple</tabTrigger>
 </snippet>

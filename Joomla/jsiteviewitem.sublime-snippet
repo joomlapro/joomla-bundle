@@ -146,7 +146,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hello} extends JViewLegacy
 		// Get the ${1/(.+)/\L\1/g}
 		\$${1/(.+)/\L\1/g} = \$item;
 
-		\$temp   = new JRegistry;
+		\$temp = new JRegistry;
 		\$temp->loadString(\$item->params);
 		\$params->merge(\$temp);
 
