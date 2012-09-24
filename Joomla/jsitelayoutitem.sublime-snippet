@@ -6,8 +6,13 @@
 	</h1>
 	<?php endif; ?>
 
+	<h2>
+		<?php echo \$this->escape(\$this->item->${1:title}); ?>
+	</h2>
+
+	<?php var_dump(\$this->item); ?>
 </div>
 
 ]]></content>
-	<tabTrigger>jsitelayout</tabTrigger>
+	<tabTrigger>jsitelayoutitem</tabTrigger>
 </snippet>

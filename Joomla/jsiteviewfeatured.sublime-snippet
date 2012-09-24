@@ -19,7 +19,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 	protected \$pagination;
 
 	/**
-	 * Display the view
+	 * Method to display the view.
 	 *
 	 * @param   string  \$tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *
@@ -27,17 +27,17 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 	 *
 	 * @since   $TM_VERSION
 	 */
-	function display(\$tpl = null)
+	public function display(\$tpl = null)
 	{
-		\$app       = JFactory::getApplication();
-		\$params    = \$app->getParams();
+		\$app        = JFactory::getApplication();
+		\$params     = \$app->getParams();
 
 		// Get some data from the models
-		\$state     = \$this->get('State');
-		\$items     = \$this->get('Items');
-		\$category  = \$this->get('Category');
-		\$children  = \$this->get('Children');
-		\$parent    = \$this->get('Parent');
+		\$state      = \$this->get('State');
+		\$items      = \$this->get('Items');
+		\$category   = \$this->get('Category');
+		\$children   = \$this->get('Children');
+		\$parent     = \$this->get('Parent');
 		\$pagination = \$this->get('Pagination');
 
 		// Check for errors.
@@ -56,9 +56,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
 		{
 			\$item = &\$items[\$i];
+
+			// Add router helpers.
 			\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
 			\$item->catslug = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
-			\$item->link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${2:Hello}Route(\$item->slug, \$item->catslug));
+			\$item->link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${TM_PROJECT/(.+)(s\b)/\u\1/g}Route(\$item->slug, \$item->catslug));
 
 			\$temp = new JRegistry;
 			\$temp->loadString(\$item->params);
@@ -92,14 +94,15 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 	 */
 	protected function _prepareDocument()
 	{
-		\$app   = JFactory::getApplication();
-		\$menus = \$app->getMenu();
+		\$app     = JFactory::getApplication();
+		\$menus   = \$app->getMenu();
 		\$pathway = \$app->getPathway();
-		\$title = null;
+		\$title   = null;
 
 		// Because the application sets a default page title,
 		// we need to get it from the menu item itself
 		\$menu = \$menus->getActive();
+
 		if (\$menu)
 		{
 			\$this->params->def('page_heading', \$this->params->get('page_title', \$menu->title));

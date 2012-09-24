@@ -1,6 +1,5 @@
 <snippet>
-	<content><![CDATA[
-<VirtualHost *:80>
+	<content><![CDATA[<VirtualHost *:80>
 	ServerAdmin webmaster@${1:domain.com}
 	DocumentRoot "D:\Web Server\\$1"
 	ServerName ${1/(.+)/\L\1/g}
@@ -13,8 +12,6 @@
 		Order allow,deny
 		Allow from all
 	</Directory>
-</VirtualHost>
-
-]]></content>
+</VirtualHost>]]></content>
 <tabTrigger>jvhost</tabTrigger>
 </snippet>

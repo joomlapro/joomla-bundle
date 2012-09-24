@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to toggle the featured setting of a list of $2.
+ * Method to toggle the featured setting of a list of ${2/(.+)/\L\1/g}.
  *
  * @return  void
  *
@@ -53,5 +53,5 @@ public function featured()
 
 	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${2:hellos}');
 }]]></content>
-	<tabTrigger>jadmincontrollerfeatured</tabTrigger>
+	<tabTrigger>jadmincontrollerlistfeatured</tabTrigger>
 </snippet>

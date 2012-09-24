@@ -196,6 +196,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 		\$id = JRequest::getVar('id', 0, '', 'int');
 		\$this->setState('category.id', \$id);
 
+		// Get the user object.
 		\$user = JFactory::getUser();
 
 		if ((!\$user->authorise('core.edit.state', '${1/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', '${1/(.+)/\L\1/g}')))

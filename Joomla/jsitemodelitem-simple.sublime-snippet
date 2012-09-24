@@ -81,17 +81,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 				\$query->select(\$this->getState('item.select', 'a.*'));
 				\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hellos} AS a');
 
-				// Join on category table.
-				\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');
-				\$query->join('LEFT', '#__categories AS c on c.id = a.catid');
-
 				// Join on user table.
 				\$query->select('u.name AS author');
 				\$query->join('LEFT', '#__users AS u on u.id = a.created_by');
-
-				// Join over the categories to get parent category titles
-				\$query->select('parent.title as parent_title, parent.id as parent_id, parent.path as parent_route, parent.alias as parent_alias');
-				\$query->join('LEFT', '#__categories as parent ON parent.id = c.parent_id');
 
 				\$query->where('a.id = ' . (int) \$pk);
 
@@ -106,9 +98,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 				if (is_numeric(\$published))
 				{
 					\$query->where('(a.published = ' . (int) \$published . ' OR a.published =' . (int) \$archived . ')');
-					\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')');
-					\$query->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
-					\$query->where('(c.published = ' . (int) \$published . ' OR c.published =' . (int) \$archived . ')');
 				}
 
 				\$db->setQuery(\$query);
@@ -131,29 +120,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 					JError::raiseError(404, JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
 				}
 
-				// Convert parameter fields to objects.
-				\$registry = new JRegistry;
-				\$registry->loadString(\$data->params);
-				\$data->params = clone \$this->getState('params');
-				\$data->params->merge(\$registry);
-
-				\$registry = new JRegistry;
-				\$registry->loadString(\$data->metadata);
-				\$data->metadata = \$registry;
-
 				// Compute access permissions.
 				if (\$access = \$this->getState('filter.access'))
 				{
 					// If the access filter has been set, we already know this user can view.
 					\$data->params->set('access-view', true);
-				}
-				else
-				{
-					// If no access filter is set, the layout takes some responsibility for display of limited information.
-					\$user = JFactory::getUser();
-					\$groups = \$user->getAuthorisedViewLevels();
-
-					\$data->params->set('access-view', in_array(\$data->access, \$groups) && in_array(\$data->category_access, \$groups));
 				}
 
 				\$this->_item[\$pk] = \$data;
@@ -170,5 +141,5 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 }
 
 ]]></content>
-	<tabTrigger>jsitemodelitem</tabTrigger>
+	<tabTrigger>jsitemodelitem-simple</tabTrigger>
 </snippet>

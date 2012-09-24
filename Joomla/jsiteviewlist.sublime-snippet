@@ -25,7 +25,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JViewLegacy
 	 *
 	 * @return  mixed  False on error, null otherwise.
 	 *
-	 * @return  $TM_VERSION
+	 * @since   $TM_VERSION
 	 */
 	public function display(\$tpl = null)
 	{
@@ -44,7 +44,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JViewLegacy
 		if (count(\$errors = \$this->get('Errors')))
 		{
 			JError::raiseWarning(500, implode("\n", \$errors));
-
 			return false;
 		}
 
@@ -53,7 +52,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JViewLegacy
 		\$groups = \$user->getAuthorisedViewLevels();
 
 		// Prepare the data.
-		// Compute the ${1/(.+)/\L\1/g} slug.
+		// Compute the ${1/(.+)(s\b)/\L\1/g} slug.
 		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
 		{
 			\$item = &\$items[\$i];
@@ -61,6 +60,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JViewLegacy
 			// Add router helpers.
 			\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
 			\$item->catslug = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
+			\$item->link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${TM_PROJECT/(.+)(s\b)/\u\1/g}Route(\$item->slug, \$item->catslug));
 
 			\$temp = new JRegistry;
 			\$temp->loadString(\$item->params);

@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to toggle the featured setting of contacts.
+ * Method to toggle the ${1/(.+)/\L\1/g} setting of ${TM_PROJECT/(.+)/\L\1/g}.
  *
  * @param   array  \$pks    The ids of the items to toggle.
  * @param   int    \$value  The value to toggle to.
@@ -9,7 +9,7 @@
  *
  * @since   $TM_VERSION
  */
-public function featured(\$pks, \$value = 0)
+public function ${1:hello}(\$pks, \$value = 0)
 {
 	// Sanitize the ids.
 	\$pks = (array) \$pks;
@@ -29,7 +29,7 @@ public function featured(\$pks, \$value = 0)
 
 		\$db->setQuery(
 			'UPDATE #__${TM_PROJECT/(.+)/\L\1/g}'
-			. ' SET featured = ' . (int) \$value
+			. ' SET ${2:hello} = ' . (int) \$value
 			. ' WHERE id IN (' . implode(',', \$pks) . ')'
 		);
 
@@ -51,5 +51,5 @@ public function featured(\$pks, \$value = 0)
 
 	return true;
 }]]></content>
-	<tabTrigger>jadminmodelfeatured</tabTrigger>
+	<tabTrigger>jadminmodeleditcustom</tabTrigger>
 </snippet>
