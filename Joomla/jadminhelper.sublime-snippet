@@ -8,6 +8,10 @@
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Helper
 {
+	/**
+	 * @var     string  The extension name.
+	 * @since   2.5
+	 */
 	public static \$extension = 'com_${TM_PROJECT/(.+)/\L\1/g}';
 
 	/**

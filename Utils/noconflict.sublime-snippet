@@ -4,9 +4,8 @@ jQuery.noConflict();
 
 (function (\$) {
 	\$(function () {
-		${1:// more code using \$ as alias to jQuery}
+		${1:// More code using \$ as alias to jQuery.}
 	});
-})(jQuery);
-]]></content>
+})(jQuery);]]></content>
 	<tabTrigger>noconflict</tabTrigger>
 </snippet>

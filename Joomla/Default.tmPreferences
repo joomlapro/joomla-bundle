@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Globals</string>
 	<key>scope</key>
-	<string>source.php</string>
+	<string></string>
 	<key>settings</key>
 	<dict>
 		<key>shellVariables</key>
@@ -30,6 +30,12 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>TM_YEAR</string>
+				<key>value</key>
+				<string><![CDATA[2012]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>TM_WEBSITE</string>
 				<key>value</key>
 				<string><![CDATA[http://www.atomtech.com.br]]></string>
@@ -38,67 +44,31 @@
 				<key>name</key>
 				<string>TM_PROJECT</string>
 				<key>value</key>
-				<string><![CDATA[Bolsas]]></string>
+				<string><![CDATA[Products]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_TEMPLATE</string>
 				<key>value</key>
-				<string><![CDATA[Feedback]]></string>
+				<string><![CDATA[Orange]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>TM_MODULE</string>
+				<string>TM_MANIFEST_VERSION</string>
 				<key>value</key>
-				<string><![CDATA[Bolsas_Login]]></string>
+				<string><![CDATA[2.5.0]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_VERSION</string>
+				<key>value</key>
+				<string><![CDATA[2.5]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_LANGUAGE</string>
 				<key>value</key>
 				<string><![CDATA[pt-BR]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>TM_MANIFEST_VERSION</string>
-				<key>value</key>
-				<string><![CDATA[3.0.0]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>TM_VERSION</string>
-				<key>value</key>
-				<string><![CDATA[3.0]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>TM_PLUGIN</string>
-				<key>value</key>
-				<string><![CDATA[Products_Client]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>TM_PREFIX</string>
-				<key>value</key>
-				<string><![CDATA[ui0rk]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>TM_PLUGIN_GROUP</string>
-				<key>value</key>
-				<string><![CDATA[User]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>TM_YEAR</string>
-				<key>value</key>
-				<string><![CDATA[2013]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>TM_MONTH</string>
-				<key>value</key>
-				<string><![CDATA[January]]></string>
 			</dict>
 		</array>
 	</dict>
